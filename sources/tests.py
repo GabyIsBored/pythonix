@@ -21,12 +21,9 @@ my_label=tb.Label(text='Hello World!', font=('Helvetica',28),
                   bootstyle=DEFAULT)
 my_label.pack(pady=50)
 
-my_button=tb.Button(text='Click Me!',bootstyle='info, outline',command=changer)
+my_button=tb.Button(text='Click Me!', bootstyle='info, outline',command=changer)
 my_button.pack(pady=20)
 
-my_button=tb.Button(text='Click Me!',bootstyle='info, outline',command=changer)
+my_button=tb.Button(text='Click Me!', bootstyle='info, outline',command=changer)
 
-root.mainloop() 
-
-# endpointtt
-
+root.mainloop()
