@@ -7,8 +7,9 @@ root.geometry('1280x720')
 root.resizable(False,False)
 
 # Assets
-menuIcon=PhotoImage(file='sources/icons/menu-burger.png')
-menuIcon=menuIcon.subsample(12, 12)
+menuIcon=PhotoImage(file='sources/icons/menu-burger.png').subsample(12, 12)
+rocketIcon=PhotoImage(file='sources/icons/rocket-lunch.png').subsample(11, 11)
+
 font=('Yu Gothic Ui Light', 12)
 titleFont=('Yu Gothic Ui Bold', 24)
 backgroundColor=root['background']
@@ -52,14 +53,27 @@ def open_side_menu():
 navbar=tb.Frame(root)
 navbar.grid(row=0, column=0,columnspan=2,sticky='nsew')
 
+
 navbar.columnconfigure(0,weight=1)
 navbar.rowconfigure(0,weight=1)
 
-title=tb.Label(navbar,text='Pythonix',font=titleFont)
-title.grid(row=0, column=0,sticky='ns')
-
 open_menu_button = tb.Button(root, image=menuIcon, command=open_side_menu, bootstyle='info',takefocus=False)
 open_menu_button.place(x=15,y=15)
+
+title=tb.Label(navbar,text='Dashboard',font=titleFont)
+title.grid(row=0, column=0,sticky='ns')
+
+days = tb.Label(root,text='0',font=titleFont)
+days.place(x=1170,y=15)
+
+rocket = tb.Label(root, image=rocketIcon, style='info.TLabel')
+rocketstyle = tb.Style()
+rocketstyle.configure('info.TLabel',foreground='#3F98D7')
+rocket.place(x=1200,y=15)
+
+
+
+
 
 
 
