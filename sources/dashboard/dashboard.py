@@ -1,5 +1,6 @@
 from tkinter import *
 import ttkbootstrap as tb
+from ttkbootstrap.scrolled import ScrolledFrame
 
 root=tb.Window(themename='solar')
 root.title('Dashboard')
@@ -41,18 +42,21 @@ def open_side_menu():
     global menucounter
     if menucounter%2==0:
         menuFrame.grid(row=0, column=0,rowspan=2,sticky='nsew')
+
         navbar.grid_forget()
-        navbar.grid(row=0, column=1,columnspan=1,sticky='nsew')
+        navbar.grid(row=0, column=1,sticky='nsew')
+        contentFrame.grid_forget()
+        contentFrame.grid(row=1, column=1,sticky='nsew')
     else:
         menuFrame.grid_forget()
         navbar.grid(row=0, column=0,columnspan=2,sticky='nsew')
+        contentFrame.grid(row=1, column=0,columnspan=2,sticky='nsew')
     menucounter+=1
         
 # NAVBAR
 
 navbar=tb.Frame(root)
 navbar.grid(row=0, column=0,columnspan=2,sticky='nsew')
-
 
 navbar.columnconfigure(0,weight=1)
 navbar.rowconfigure(0,weight=1)
@@ -72,9 +76,14 @@ rocketstyle.configure('info.TLabel',foreground='#3F98D7')
 rocket.place(x=1200,y=15)
 
 
+# CONTENT
+
+contentFrame=ScrolledFrame(root,autohide=False)
+contentFrame.grid(row=1,column=0,columnspan=2,sticky='nsew')
 
 
-
+for i in range(21):
+    tb.Label(contentFrame,text='filler').pack(pady=10)
 
 
 
