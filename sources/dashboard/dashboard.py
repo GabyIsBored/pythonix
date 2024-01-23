@@ -80,10 +80,8 @@ rocket.place(x=1200,y=15)
 
 contentFrame=ScrolledFrame(root,autohide=False)
 contentFrame.grid(row=1,column=0,columnspan=2,sticky='nsew')
-
-
-for i in range(21):
-    tb.Label(contentFrame,text='filler').pack(pady=10)
+contentFrame.columnconfigure(0,weight=1)
+contentFrame.rowconfigure(0,weight=1)
 
 
 
