@@ -101,7 +101,7 @@ contentFrame.rowconfigure(2,weight=4)
 
 
 
-# CHAP 1
+# CHAPITRES
 class Chapter(tb.Frame):
 	def __init__(self, parent,rowNum,columnNum,title,progressNum):
 		super().__init__(master = parent)
