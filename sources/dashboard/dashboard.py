@@ -93,7 +93,7 @@ contentFrame.columnconfigure(5,weight=1)
 contentFrame.columnconfigure(6,weight=2) 
 
 contentFrame.rowconfigure(0,weight=1)
-contentFrame.rowconfigure(1,weight=5)
+contentFrame.rowconfigure(1,weight=2)
 contentFrame.rowconfigure(2,weight=4)
 
 
@@ -101,12 +101,14 @@ contentFrame.rowconfigure(2,weight=4)
 
 
 
-# CHAPITRES
+# CHAPITRE
 class Chapter(tb.Frame):
 	def __init__(self, parent,rowNum,columnNum,title,progressNum):
 		super().__init__(master = parent)
 		tb.Label(self,text=title,font=titleFont2).pack(fill=Y)         
-		tb.Meter(self,amountused=progressNum,amounttotal=100,metersize=200,metertype="semi",subtext="miles per hour",interactive=True,).pack()         
+		tb.Meter(self,amountused=progressNum,amounttotal=100,subtext="Progres",meterthickness=20).pack(pady=5)       
+		tb.Button(self)       
+        
 		self.grid(row=rowNum,column=columnNum,sticky='nsew')
         
             
