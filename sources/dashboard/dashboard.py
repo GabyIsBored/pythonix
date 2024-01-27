@@ -13,6 +13,7 @@ rocketIcon=PhotoImage(file='sources/icons/rocket-lunch.png').subsample(11, 11)
 
 font=('Yu Gothic Ui Light', 12)
 titleFont=('Yu Gothic Ui Bold', 24)
+titleFont2=('Yu Gothic Ui Bold', 12)
 backgroundColor=root['background']
 
 
@@ -58,8 +59,8 @@ def open_side_menu():
 navbar=tb.Frame(root)
 navbar.grid(row=0, column=0,columnspan=2,sticky='nsew')
 
-navbar.columnconfigure(0,weight=1)
-navbar.rowconfigure(0,weight=1)
+navbar.columnconfigure(0,weight=1) #unecessary
+navbar.rowconfigure(0,weight=1) #unecessary
 
 open_menu_button = tb.Button(root, image=menuIcon, command=open_side_menu, bootstyle='info',takefocus=False)
 open_menu_button.place(x=15,y=15)
@@ -77,11 +78,44 @@ rocket.place(x=1200,y=15)
 
 
 # CONTENT
+s = tb.Style()
+s.configure('My.TFrame', background='red')
 
-contentFrame=ScrolledFrame(root,autohide=False)
+contentFrame=tb.Frame(root,style='My.TFrame')
 contentFrame.grid(row=1,column=0,columnspan=2,sticky='nsew')
-contentFrame.columnconfigure(0,weight=1)
+
+contentFrame.columnconfigure(0,weight=2) 
+contentFrame.columnconfigure(1,weight=1) 
+contentFrame.columnconfigure(2,weight=2) 
+contentFrame.columnconfigure(3,weight=1) 
+contentFrame.columnconfigure(4,weight=2) 
+contentFrame.columnconfigure(5,weight=1) 
+contentFrame.columnconfigure(6,weight=2) 
+
 contentFrame.rowconfigure(0,weight=1)
+contentFrame.rowconfigure(1,weight=5)
+contentFrame.rowconfigure(2,weight=4)
+
+
+
+
+
+
+# CHAP 1
+class Chapter(tb.Frame):
+	def __init__(self, parent,rowNum,columnNum,title,progressNum):
+		super().__init__(master = parent)
+		tb.Label(self,text=title,font=titleFont2).pack(fill=Y)         
+		tb.Meter(self,amountused=progressNum,amounttotal=100,metersize=200,metertype="semi",subtext="miles per hour",interactive=True,).pack()         
+		self.grid(row=rowNum,column=columnNum,sticky='nsew')
+        
+            
+
+Chapter(contentFrame,1,1,'Variables et affectations',20)
+Chapter(contentFrame,1,3,'Variables et affectations',90)
+Chapter(contentFrame,1,5,'Variables et affectations',50)
+
+
 
 
 
