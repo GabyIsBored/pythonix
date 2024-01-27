@@ -1,11 +1,17 @@
 from tkinter import *
 import ttkbootstrap as tb
 from ttkbootstrap.scrolled import ScrolledFrame
-
 root=tb.Window(themename='solar')
 root.title('Dashboard')
 root.geometry('1280x720')
 root.resizable(False,False)
+
+
+
+root.columnconfigure(0, weight=1)
+root.rowconfigure(0, weight=1)
+mainFrame=tb.Frame(root)
+mainFrame.grid(column=0, row=0, sticky=("nsew"))
 
 # Assets
 menuIcon=PhotoImage(file='sources/icons/menu-burger.png').subsample(12, 12)
@@ -14,19 +20,20 @@ rocketIcon=PhotoImage(file='sources/icons/rocket-lunch.png').subsample(11, 11)
 font=('Yu Gothic Ui Light', 12)
 titleFont=('Yu Gothic Ui Bold', 24)
 titleFont2=('Yu Gothic Ui Bold', 12)
-backgroundColor=root['background']
+
+#backgroundColor=mainFrame['background']
 
 
 # Creating grid
-root.columnconfigure(0,weight=1)
-root.columnconfigure(1,weight=5)
-root.rowconfigure(0,weight=1)
-root.rowconfigure(1,weight=15)
+mainFrame.columnconfigure(0,weight=1)
+mainFrame.columnconfigure(1,weight=5)
+mainFrame.rowconfigure(0,weight=1)
+mainFrame.rowconfigure(1,weight=15)
 
 # SIDE MENU
 
 # All side menu components
-menuFrame=tb.Frame(root,bootstyle='info')
+menuFrame=tb.Frame(mainFrame,bootstyle='info')
 menucounter=0
 
 chapitresLabel=tb.Label(menuFrame,text='Chapitres',font=font,bootstyle='inverse info')
@@ -52,26 +59,41 @@ def open_side_menu():
         menuFrame.grid_forget()
         navbar.grid(row=0, column=0,columnspan=2,sticky='nsew')
         contentFrame.grid(row=1, column=0,columnspan=2,sticky='nsew')
-    menucounter+=1
-        
+    menucounter+=1    
+
+def change_page(pageName):
+      frame = __import__(pageName, globals(), locals(), 0).mainFrame
+      frame.grid(row=1,column=0,columnspan=2,sticky='nsew')
+      contentFrame.grid_forget()
+      
+
+
+
+
+
+
+
+
+
+
 # NAVBAR
 
-navbar=tb.Frame(root)
+navbar=tb.Frame(mainFrame)
 navbar.grid(row=0, column=0,columnspan=2,sticky='nsew')
 
 navbar.columnconfigure(0,weight=1) #unecessary
 navbar.rowconfigure(0,weight=1) #unecessary
 
-open_menu_button = tb.Button(root, image=menuIcon, command=open_side_menu, bootstyle='info',takefocus=False)
+open_menu_button = tb.Button(mainFrame, image=menuIcon, command=open_side_menu, bootstyle='info',takefocus=False,text='Commencer')
 open_menu_button.place(x=15,y=15)
 
 title=tb.Label(navbar,text='Dashboard',font=titleFont)
 title.grid(row=0, column=0,sticky='ns')
 
-days = tb.Label(root,text='0',font=titleFont)
+days = tb.Label(mainFrame,text='0',font=titleFont)
 days.place(x=1170,y=15)
 
-rocket = tb.Label(root, image=rocketIcon, style='info.TLabel')
+rocket = tb.Label(mainFrame, image=rocketIcon, style='info.TLabel')
 rocketstyle = tb.Style()
 rocketstyle.configure('info.TLabel',foreground='#3F98D7')
 rocket.place(x=1200,y=15)
@@ -79,9 +101,9 @@ rocket.place(x=1200,y=15)
 
 # CONTENT
 s = tb.Style()
-s.configure('My.TFrame', background='red')
+s.configure('My.TFrame')
 
-contentFrame=tb.Frame(root,style='My.TFrame')
+contentFrame=tb.Frame(mainFrame,style='My.TFrame')
 contentFrame.grid(row=1,column=0,columnspan=2,sticky='nsew')
 
 contentFrame.columnconfigure(0,weight=2) 
@@ -98,26 +120,18 @@ contentFrame.rowconfigure(2,weight=4)
 
 
 
-
-
-
 # CHAPITRE
 class Chapter(tb.Frame):
-	def __init__(self, parent,rowNum,columnNum,title,progressNum):
+	def __init__(self, parent,rowNum,columnNum,title,progressNum,chapterName):
 		super().__init__(master = parent)
 		tb.Label(self,text=title,font=titleFont2).pack(fill=Y)         
 		tb.Meter(self,amountused=progressNum,amounttotal=100,subtext="Progres",meterthickness=20).pack(pady=5)       
-		tb.Button(self)       
-        
+		tb.Button(self,command=lambda: change_page(chapterName), bootstyle='info',takefocus=False).pack(pady=5)    
 		self.grid(row=rowNum,column=columnNum,sticky='nsew')
-        
-            
 
-Chapter(contentFrame,1,1,'Variables et affectations',20)
-Chapter(contentFrame,1,3,'Variables et affectations',90)
-Chapter(contentFrame,1,5,'Variables et affectations',50)
-
-
+Chapter(contentFrame,1,1,'Variables et affectations',20,'chap1')
+Chapter(contentFrame,1,3,'Variables et affectations',90,'chap2')
+Chapter(contentFrame,1,5,'Variables et affectations',50,'chap3')
 
 
 
