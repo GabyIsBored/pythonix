@@ -38,10 +38,8 @@ def changeTags(targetTextWidget: tk.Text, targetText: str, arr: list):
     # turn targetTextWidget in read only
     targetTextWidget['state'] = tk.DISABLED
 
-def getTagsUnchanged(targetText: str) -> dict:      # [(type, [start_line, start_index], [stop_line, stop_index]), ...] Welcome to wheelchair function n°1
-    # result = {'bold': [], 'italic': [], 'underline': [], 'code': []}
-    # occurrence = [0, 0, 0]     # [*, $, ~]
-    occurredValue = []         # [(type, start_index, stop_index), ()]
+def getTagsUnchanged(targetText: str) -> list:      # [(type, [start_line, start_index], [stop_line, stop_index]), ...] Welcome to wheelchair function n°1
+    occurredValue = []
     startingIndex = 0
     stoppingIndex = 0
     isStartMatched = False
@@ -63,7 +61,7 @@ def getTagsUnchanged(targetText: str) -> dict:      # [(type, [start_line, start
                 startingLine[0] = currentLine
             else:
                 isStartMatched = False
-                stoppingIndex = currentChar - 3          # To change if miscalculation
+                stoppingIndex = currentChar - 3
                 occurredValue.append(('bold', [startingLine[0], startingIndex], [currentLine, stoppingIndex]))
                 startingIndex = 0
                 stoppingIndex = 0
@@ -74,7 +72,7 @@ def getTagsUnchanged(targetText: str) -> dict:      # [(type, [start_line, start
                 if targetText[i-1] == '\n':
                     startingIndex = currentChar
                 else:
-                    startingIndex = currentChar + 1      # To change if miscalculation
+                    startingIndex = currentChar + 1
             else:
                 isStartMatched = False
                 stoppingIndex = currentChar
@@ -88,7 +86,7 @@ def getTagsUnchanged(targetText: str) -> dict:      # [(type, [start_line, start
                 if targetText[i-1] == '\n':
                     startingIndex = currentChar
                 else:
-                    startingIndex = currentChar + 1      # To change if miscalculation
+                    startingIndex = currentChar + 1
             else:
                 isStartMatched = False
                 stoppingIndex = currentChar
