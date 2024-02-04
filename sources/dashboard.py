@@ -17,9 +17,21 @@ mainFrame.grid(column=0, row=0, sticky=("nsew"))
 menuIcon=PhotoImage(file='sources/icons/menu-burger.png').subsample(12, 12)
 rocketIcon=PhotoImage(file='sources/icons/rocket-lunch.png').subsample(11, 11)
 
-font=('Yu Gothic Ui Light', 12)
-titleFont=('Yu Gothic Ui Bold', 24)
-titleFont2=('Yu Gothic Ui Bold', 12)
+commencerImg=PhotoImage(file='sources/assets/Dashboard/commencer.png')
+continuerImg=PhotoImage(file='sources/assets/Dashboard/continuer.png')
+dashboardImg=PhotoImage(file='sources/assets/Dashboard/dashboard.png')
+fleche_dImg=PhotoImage(file='sources/assets/Dashboard/fleche_d.png')
+fleche_gImg=PhotoImage(file='sources/assets/Dashboard/fleche_g.png')
+fondImg=PhotoImage(file='sources/assets/Dashboard/fond.png')
+pourcentageImg=PhotoImage(file='sources/assets/Dashboard/continuer.png')
+rectangle_chapitreImg=PhotoImage(file='sources/assets/Dashboard/rectangle_chapitre.png')
+serpent_haut_gImg=PhotoImage(file='sources/assets/Dashboard/serpent_haut_g.png')
+
+font = ('Yu Gothic Ui Light', 12)
+titleFont = ('Yu Gothic Ui Bold', 24)
+titleFont2 = ('Yu Gothic Ui Bold', 12)
+h1Font = ('Yu Gothic Ui', 34, "bold")
+h3Font = ('Yu Gothic Ui', 18, "bold")
 
 #backgroundColor=mainFrame['background']
 
