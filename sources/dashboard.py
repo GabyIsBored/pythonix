@@ -8,10 +8,9 @@ root.resizable(False,False)
 
 
 
-root.columnconfigure(0, weight=1)
-root.rowconfigure(0, weight=1)
+
 mainFrame=tb.Frame(root)
-mainFrame.grid(column=0, row=0, sticky=("nsew"))
+mainFrame.pack(expand=True, fill='both')
 
 # Assets
 menuIcon=PhotoImage(file='sources/icons/menu-burger.png').subsample(12, 12)
@@ -23,25 +22,32 @@ dashboardImg=PhotoImage(file='sources/assets/Dashboard/dashboard.png')
 fleche_dImg=PhotoImage(file='sources/assets/Dashboard/fleche_d.png')
 fleche_gImg=PhotoImage(file='sources/assets/Dashboard/fleche_g.png')
 fondImg=PhotoImage(file='sources/assets/Dashboard/fond.png')
-pourcentageImg=PhotoImage(file='sources/assets/Dashboard/continuer.png')
+pourcentageImg=PhotoImage(file='sources/assets/Dashboard/pourcentage.png')
 rectangle_chapitreImg=PhotoImage(file='sources/assets/Dashboard/rectangle_chapitre.png')
 serpent_haut_gImg=PhotoImage(file='sources/assets/Dashboard/serpent_haut_g.png')
 
 font = ('Yu Gothic Ui Light', 12)
-titleFont = ('Yu Gothic Ui Bold', 24)
-titleFont2 = ('Yu Gothic Ui Bold', 12)
-h1Font = ('Yu Gothic Ui', 34, "bold")
-h3Font = ('Yu Gothic Ui', 18, "bold")
+h1Font = ('Inter', 34, "bold")
+h3Font = ('Inter', 20, "bold")
+pFont = ('Inter', 9, "bold")
 
 #backgroundColor=mainFrame['background']
 
 
 # Creating grid
-mainFrame.columnconfigure(0,weight=1)
-mainFrame.columnconfigure(1,weight=5)
-mainFrame.rowconfigure(0,weight=1)
-mainFrame.rowconfigure(1,weight=15)
+mainFrame.columnconfigure(0,weight=10)
+mainFrame.columnconfigure(1,weight=23)
+mainFrame.columnconfigure(2,weight=5)
+mainFrame.columnconfigure(3,weight=23)
+mainFrame.columnconfigure(4,weight=5)
+mainFrame.columnconfigure(5,weight=23)
+mainFrame.columnconfigure(6,weight=10)
 
+
+mainFrame.rowconfigure(0,weight=23)
+mainFrame.rowconfigure(1,weight=70)
+mainFrame.rowconfigure(2,weight=7)
+'''
 # SIDE MENU
 
 # All side menu components
@@ -72,79 +78,74 @@ def open_side_menu():
         navbar.grid(row=0, column=0,columnspan=2,sticky='nsew')
         contentFrame.grid(row=1, column=0,columnspan=2,sticky='nsew')
     menucounter+=1    
-
+'''
 def change_page(pageName):
       frame = __import__(pageName, globals(), locals(), 0).mainFrame
       frame.grid(row=1,column=0,columnspan=2,sticky='nsew')
-      contentFrame.grid_forget()
-      
-
-
-
-
-
-
-
-
-
+      mainFrame.grid_forget() 
 
 # NAVBAR
-
-navbar=tb.Frame(mainFrame)
-navbar.grid(row=0, column=0,columnspan=2,sticky='nsew')
-
-navbar.columnconfigure(0,weight=1) #unecessary
-navbar.rowconfigure(0,weight=1) #unecessary
-
-open_menu_button = tb.Button(mainFrame, image=menuIcon, command=open_side_menu, bootstyle='info',takefocus=False,text='Commencer')
-open_menu_button.place(x=15,y=15)
-
-title=tb.Label(navbar,text='Dashboard',font=titleFont)
-title.grid(row=0, column=0,sticky='ns')
-
+'''
 days = tb.Label(mainFrame,text='0',font=titleFont)
 days.place(x=1170,y=15)
 
-rocket = tb.Label(mainFrame, image=rocketIcon, style='info.TLabel')
-rocketstyle = tb.Style()
-rocketstyle.configure('info.TLabel',foreground='#3F98D7')
-rocket.place(x=1200,y=15)
+rocket = tb.Label(mainFrame, image=rocketIcon)
+rocket.place(x=1200,y=15)'''
 
 
 # CONTENT
+
+dashboard = tb.Canvas(mainFrame, width=dashboardImg.width(), height=dashboardImg.height())
+dashboard.create_image(0, 0, anchor=NW, image=dashboardImg)
+dashboard.grid(row=0,column=0,columnspan=7,sticky='ns',pady=(50,0))  
+
+
+# FLECHE GAUCHE
+fleche_g=Button(mainFrame,bg="#002b36",image=fleche_gImg)
+fleche_g.configure(bg= "#002b36")
+fleche_g.grid(row=1,column=0) 
+
+# FLECHE DROITE
+
+fleche_d=Button(mainFrame,bg="#002b36",image=fleche_dImg)
+fleche_d.configure(bg= "#002b36")
+fleche_d.grid(row=1,column=6) 
+
+
+
 s = tb.Style()
-s.configure('My.TFrame')
-
-contentFrame=tb.Frame(mainFrame,style='My.TFrame')
-contentFrame.grid(row=1,column=0,columnspan=2,sticky='nsew')
-
-contentFrame.columnconfigure(0,weight=2) 
-contentFrame.columnconfigure(1,weight=1) 
-contentFrame.columnconfigure(2,weight=2) 
-contentFrame.columnconfigure(3,weight=1) 
-contentFrame.columnconfigure(4,weight=2) 
-contentFrame.columnconfigure(5,weight=1) 
-contentFrame.columnconfigure(6,weight=2) 
-
-contentFrame.rowconfigure(0,weight=1)
-contentFrame.rowconfigure(1,weight=2)
-contentFrame.rowconfigure(2,weight=4)
-
-
+s.configure('My.TFrame', background='white')
 
 # CHAPITRE
 class Chapter(tb.Frame):
-	def __init__(self, parent,rowNum,columnNum,title,progressNum,chapterName):
+	def __init__(self, parent,columnNum,rowNum,chapName,new):
 		super().__init__(master = parent)
-		tb.Label(self,text=title,font=titleFont2).pack(fill=Y)         
-		tb.Meter(self,amountused=progressNum,amounttotal=100,subtext="Progres",meterthickness=20).pack(pady=5)       
-		tb.Button(self,command=lambda: change_page(chapterName), bootstyle='info',takefocus=False).pack(pady=5)    
-		self.grid(row=rowNum,column=columnNum,sticky='nsew')
-
-Chapter(contentFrame,1,1,'Variables et affectations',20,'chap1')
-Chapter(contentFrame,1,3,'Variables et affectations',90,'chap2')
-Chapter(contentFrame,1,5,'Variables et affectations',50,'chap3')
-
+		rectangle_chapitre = tb.Canvas(mainFrame, width=rectangle_chapitreImg.width(), height=rectangle_chapitreImg.height())
+		rectangle_chapitre.create_image(0, 0, anchor=NW, image=rectangle_chapitreImg)
+		rectangle_chapitre.grid(row=rowNum,column=columnNum) 
+		
+		chapitreFrame=tb.Frame(mainFrame, width=rectangle_chapitreImg.width(), height=rectangle_chapitreImg.height(),style='My.TFrame')
+		chapitreFrame.grid(row=rowNum,column=columnNum)
+		
+		tb.Label(chapitreFrame,text=chapName,font=h3Font,background ='white',foreground='#002b36',justify="center").pack(pady = (0, 30))
+		
+		pourcentage = tb.Canvas(chapitreFrame, width=pourcentageImg.width(), height=pourcentageImg.height())
+		pourcentage.configure(bg= "white")
+		pourcentage.create_image(0, 0, anchor=NW, image=pourcentageImg)
+		pourcentage.pack(fill='y')
+		
+		tb.Label(chapitreFrame,text='0%',font=h3Font,background ='white',foreground='#002b36',justify="center").pack()
+		
+		chapitreButton=Button(chapitreFrame)
+		if new==True: 
+			chapitreButton.configure(bg= "white",image=commencerImg)
+		else:
+			chapitreButton.configure(bg= "white",image=continuerImg)
+		chapitreButton.pack(pady = (30, 0))	
+			
+Chapter(mainFrame,1,1,'Introduction\n',True)
+Chapter(mainFrame,3,1,'Variables \net affectations',True)
+Chapter(mainFrame,5,1,'Arithmetique \net comparaisons',False)
 
 
 root.mainloop()
