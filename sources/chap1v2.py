@@ -13,7 +13,42 @@ titleFont2 = ('Yu Gothic Ui Bold', 12)
 h1Font = ('Yu Gothic Ui', 34, "bold")
 h3Font = ('Yu Gothic Ui', 18, "bold")
 p_Font = ('Yu Gothic Ui', 16)
+class ToolTip(object):
+    def __init__(self, widget):
+        self.widget = widget
+        self.tipwindow = None
+        self.id = None
+        self.x = self.y = 0
 
+    def showtip(self, text):
+        "Display text in tooltip window"
+        self.text = text
+        if self.tipwindow or not self.text:
+            return
+        x, y, cx, cy = self.widget.bbox("insert")
+        x = x + self.widget.winfo_rootx() + 500
+        y = y + cy + self.widget.winfo_rooty() +27
+        self.tipwindow = tw = tk.Toplevel(self.widget)
+        tw.wm_overrideredirect(1)
+        tw.wm_geometry("+%d+%d" % (x, y))
+        label = tk.Label(tw, text=self.text, justify=tk.LEFT,
+                      background="#002b36", relief=tk.SOLID, borderwidth=1,
+                      font=p_Font)
+        label.pack(ipadx=1)
+
+    def hidetip(self):
+        tw = self.tipwindow
+        self.tipwindow = None
+        if tw:
+            tw.destroy()
+def CreateToolTip(widget, text):
+    toolTip = ToolTip(widget)
+    def enter(event):
+        toolTip.showtip(text)
+    def leave(event):
+        toolTip.hidetip()
+    widget.bind('<Enter>', enter)
+    widget.bind('<Leave>', leave)
 def changePage(currentFrame, nextFrame):
     nextFrame.pack(expand=True, fill='both',pady='10',padx='10')
     currentFrame.pack_forget()
@@ -77,7 +112,10 @@ a_content = {
 
 h1_titre = tb.Label(a_frame, text = a_content['h1_titre'], font=h1Font,background='#D9D9D9')
 h1_titre.grid(row=0,column=0,columnspan=2,sticky='nsew')
-
+CreateToolTip(h1_titre, text = 'Hello World\n'
+                 'This is how tip looks like.'
+                 'Best part is, it\'s not a menu.\n'
+                 'Purely tipbox.')
 h3_stitre1 = tb.Label(coursFrame, text="L'opérateur '='", font=h3Font,background='#D9D9D9')
 h3_stitre1.pack(fill='x')
 
