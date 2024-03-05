@@ -74,9 +74,6 @@ def findIndexAfterFormat(detectedMarkdownIndex: dict) -> dict:
     return indexAfterFormat
 
 def setTextWidgetOnLine(textWidget: tk.Text, text: str, lineNumber: int):
-    # # split text
-    # lines = text.splitlines()
-
     # find index of the detected markdown in the text
     detectedMarkdown = findMarkdown(text)
     detectedMarkdownIndex = findIndex(detectedMarkdown, text)
@@ -95,15 +92,12 @@ def setTextWidgetOnLine(textWidget: tk.Text, text: str, lineNumber: int):
     textWidget.tag_config('underline', font=(pFont[0], pFont[1], 'underline'), background=backgroundColor)
     textWidget.tag_config('code', font=(pFont[0], pFont[1], 'bold'), background=codeBackgroundColor, foreground=codeTextColor)
     textWidget.tag_config('default', background=backgroundColor, foreground=textColor)
-    # old bg: '#383e4a'
-    # old code textcolor: '#4794af'
 
     # configure text widget
     for element in ['__', '_', '~', '$']:
         text = text.replace(element, '')
 
     textWidget.insert(tk.INSERT, text)
-
     textWidget.tag_add('default', f'{lineNumber}.0', f'{lineNumber}.end')
 
     # apply custom tags
@@ -140,7 +134,6 @@ def setTextWidget(textWidget: tk.Text, text: str):
     for i in range (len(splitlines)):
         newLineNumber = i + 1
         setTextWidgetOnLine(textWidget, splitlines[i], newLineNumber)
-
         if i != len(splitlines) - 1:
             textWidget.insert(tk.END, '\n')
 
