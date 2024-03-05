@@ -1,4 +1,6 @@
 import re       # Regular expression operations lib
+import tkinter as tk
+
 
 
 def findMarkdown(text: str) -> dict:
@@ -49,7 +51,6 @@ def sortMarkdown(detectedMarkdownIndex: dict) -> list:
     
     return sortedMarkdown
 
-
 def findIndexAfterFormat(detectedMarkdownIndex: dict) -> dict:
     indexAfterFormat = {}
     totalOffset = 0
@@ -72,8 +73,76 @@ def findIndexAfterFormat(detectedMarkdownIndex: dict) -> dict:
 
     return indexAfterFormat
 
+def setTextWidgetOnLine(textWidget: tk.Text, text: str, lineNumber: int):
+    # # split text
+    # lines = text.splitlines()
 
-# todo: 
-# def setTextWidget(textWidget: tk.Text, text: str):
-# this function should do all of the formatting job
-# maybe create a function to detect where the line is located
+    # find index of the detected markdown in the text
+    detectedMarkdown = findMarkdown(text)
+    detectedMarkdownIndex = findIndex(detectedMarkdown, text)
+    indexAfterFormat = findIndexAfterFormat(detectedMarkdownIndex)
+
+    # font
+    pFont = ('Inter', 15)
+    backgroundColor = '#d9d9d9'
+    codeBackgroundColor = '#848484'
+    textColor = '#000000'
+    codeTextColor = '#C94053'
+
+    # configure the custom tags
+    textWidget.tag_config('bold', font=(pFont[0], pFont[1], 'bold'), background=backgroundColor)
+    textWidget.tag_config('italic', font=(pFont[0], pFont[1], 'italic'), background=backgroundColor)
+    textWidget.tag_config('underline', font=(pFont[0], pFont[1], 'underline'), background=backgroundColor)
+    textWidget.tag_config('code', font=(pFont[0], pFont[1], 'bold'), background=codeBackgroundColor, foreground=codeTextColor)
+    textWidget.tag_config('default', background=backgroundColor, foreground=textColor)
+    # old bg: '#383e4a'
+    # old code textcolor: '#4794af'
+
+    # configure text widget
+    for element in ['__', '_', '~', '$']:
+        text = text.replace(element, '')
+
+    textWidget.insert(tk.INSERT, text)
+
+    textWidget.tag_add('default', f'{lineNumber}.0', f'{lineNumber}.end')
+
+    # apply custom tags
+    for markdownTag, markdownIndexArr in indexAfterFormat.items():
+        for currentMarkdownIndex in markdownIndexArr:
+            startIndex = currentMarkdownIndex[0]
+            endIndex = currentMarkdownIndex[1] + 1
+
+            if markdownTag == 'bold':
+                textWidget.tag_add('bold', f'{lineNumber}.{startIndex}', f'{lineNumber}.{endIndex}')
+
+            elif markdownTag == 'italic':
+                textWidget.tag_add('italic', f'{lineNumber}.{startIndex}', f'{lineNumber}.{endIndex}')
+
+            elif markdownTag == 'underline':
+                textWidget.tag_add('underline', f'{lineNumber}.{startIndex}', f'{lineNumber}.{endIndex}')
+            
+            elif markdownTag == 'code':
+                textWidget.tag_remove('default', f'{lineNumber}.{startIndex}', f'{lineNumber}.{endIndex}')
+                textWidget.tag_add('code', f'{lineNumber}.{startIndex}', f'{lineNumber}.{endIndex}')
+
+
+def setTextWidget(textWidget: tk.Text, text: str):
+    splitlines = text.splitlines()
+
+    # font
+    pFont = ('Inter', 15)
+    backgroundColor = '#d9d9d9'
+
+    textWidget['font'] = pFont
+    textWidget['background'] = backgroundColor
+    
+    # itarate the splitlines & set the tags
+    for i in range (len(splitlines)):
+        newLineNumber = i + 1
+        setTextWidgetOnLine(textWidget, splitlines[i], newLineNumber)
+
+        if i != len(splitlines) - 1:
+            textWidget.insert(tk.END, '\n')
+
+    # turn targetTextWidget in read only
+    textWidget['state'] = tk.DISABLED
