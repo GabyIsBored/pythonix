@@ -3,12 +3,23 @@ import tkinter as tk
 
 
 
+class BLabel(object):
+    b = "•"
+    def __init__(self,master):
+        import tkinter as tk
+        self.l = tk.Label(master)
+    def add_option(self,text):
+        if self.l.cget("text") == "":
+            self.l.config(text=self.b+" "+text)
+        else:
+            self.l.config(text=self.l.cget("text") +"\n"+ self.b + " "+text)
+
 def findMarkdown(text: str) -> dict:
     patterns = {
         'bold': r'__(.*?)__',       # __bold text__
         'italic': r'_(.*?)_',       # _italic text_
         'code': r'\$(.*?)\$',       # $constexpr a = {0};$ (code block)
-        'underline': r'~(.*?)~'     # ~underline text~
+        'underline': r'~(.*?)~',    # ~underline text~
     }
     detectedMarkdown = {}
     for key, pattern in patterns.items():
@@ -120,6 +131,37 @@ def setTextWidgetOnLine(textWidget: tk.Text, text: str, lineNumber: int):
                 textWidget.tag_add('code', f'{lineNumber}.{startIndex}', f'{lineNumber}.{endIndex}')
 
 
+def setHeaders(textWidget: tk.Text, text: str, lineNumber: int):
+    # font
+    h1font = ('Inter', 40)
+    h2font = ('Inter', 24)
+    h3font = ('Inter', 20)
+    
+    backgroundColor = '#d9d9d9'
+    h3textColor = '#9d68d3'
+    
+    # configure the custom tags
+    textWidget.tag_config('h1', font=(h1font[0], h1font[1], 'bold'), background=backgroundColor)
+    textWidget.tag_config('h2', font=(h2font[0], h2font[1], 'bold'), background=backgroundColor)
+    textWidget.tag_config('h3', font=(h3font[0], h3font[1], 'bold'), foreground=h3textColor, background=backgroundColor)
+    
+    # set headers
+    if len(text) >= 4:
+        if text[0] == '#' and text[1] == ' ':
+            textWidget.delete(f'{lineNumber}.0', tk.END)
+            textWidget.insert(tk.INSERT, text[2:])
+            textWidget.tag_add('h1', f'{lineNumber}.{0}', f'{lineNumber}.{tk.END}')
+        elif text[0] == '#' and text[1] == '#' and text[2] == ' ':
+            textWidget.delete(f'{lineNumber}.0', tk.END)
+            textWidget.insert(tk.INSERT, text[3:])
+            textWidget.tag_add('h2', f'{lineNumber}.{0}', f'{lineNumber}.{tk.END}')
+        elif text[0] == '#' and text[1] == '#' and text[2] == '#' and text[3] == ' ':
+            textWidget.delete(f'{lineNumber}.0', tk.END)
+            textWidget.insert(tk.INSERT, text[4:])
+            textWidget.tag_add('h3', f'{lineNumber}.{0}', f'{lineNumber}.{tk.END}')
+    
+    
+
 def setTextWidget(textWidget: tk.Text, text: str):
     splitlines = text.splitlines()
 
@@ -134,8 +176,59 @@ def setTextWidget(textWidget: tk.Text, text: str):
     for i in range (len(splitlines)):
         newLineNumber = i + 1
         setTextWidgetOnLine(textWidget, splitlines[i], newLineNumber)
+        setHeaders(textWidget, splitlines[i], newLineNumber)
         if i != len(splitlines) - 1:
             textWidget.insert(tk.END, '\n')
 
     # turn targetTextWidget in read only
     textWidget['state'] = tk.DISABLED
+    
+
+# TEST - TODELETE
+
+root = tk.Tk()
+root.geometry('800x400')
+
+
+unit_content = """
+# Affectation d’une variable
+
+### L’opérateur ‘=’
+
+Le symbole ‘=’ permet d’assigner à une variable une certaine valeur :
+
+`x = 1`
+
+- x étant la variable crée (son ‘nom’)
+- 1 étant sa valeur d’initialisation (sa ‘valeur’)
+
+On appel ce symbole un *opérateur* et fait partie des opérateurs d’assignation. Il existe de nombreux opérateurs, parmis lequels figurent les opérateurs **d’assignations**, les opérateurs **arithmétiques**, les opérateurs **de comparaison** etc… Ils seront donc introduits dans un prochain chapitre.
+
+### Autre propriété d’affectation
+
+Une variable peut également être initialisée à partir de la valeur stockée dans une autre variable.
+
+De cette manière on peut utiliser la valeur d’une variable et lui faire subir des modifications sans modifier la variable dont la valeur a été copié.
+
+### Exemple 1
+
+`defaultValue = 50           # defaultVaue est initialisé avec 50`
+
+`testValue = defaultValue    # testValue est initialisé avec defaultValue (50)`
+
+`testValue = 20              # defaultValue est toujours égale à 50`
+
+TIP: Lors de la déclaration d’une variable, elle doit avoir une valeur d’initialisation ou le programme resultera en une erreur.
+
+- Ligne 1: la variable `defaultValue` est crée, et initialisée avec le nombre entier 50.
+- Ligne 2: la variable `testValue` est crée, et initialisée avec la valeur qui est stockée dans la variable `defaultValue` , 50 dans ce cas.
+- Ligne 3: la variable `testValue` subit une modification, sa valeur précédente se fait ‘écraser’ et se  fait remplacer par 20.
+"""
+
+widget = tk.Text()
+
+setTextWidget(widget, unit_content)
+
+widget.pack()
+
+root.mainloop()
