@@ -162,15 +162,25 @@ def setHeaders(textWidget: tk.Text, text: str, lineNumber: int):
     
     
 
-def setTextWidget(textWidget: tk.Text, text: str):
+def setTextWidget(textWidget: tk.Text, text: str, isCode:bool):
     splitlines = text.splitlines()
 
     # font
     pFont = ('Inter', 15)
     backgroundColor = '#d9d9d9'
 
-    textWidget['font'] = pFont
-    textWidget['background'] = backgroundColor
+    pFont2 = ('Inter', 15)
+    backgroundColor2 = '#191919'
+    foregroundColor = '#FFFFFF'
+
+    if isCode==False:
+        textWidget['font'] = pFont
+        textWidget['background'] = backgroundColor
+    if isCode==True:
+        #new colors
+        textWidget['font'] = pFont2
+        textWidget['background'] = backgroundColor2
+        textWidget['foreground'] = foregroundColor
     
     # itarate the splitlines & set the tags
     for i in range (len(splitlines)):
@@ -227,7 +237,7 @@ TIP: Lors de la déclaration d’une variable, elle doit avoir une valeur d’in
 
 widget = tk.Text()
 
-setTextWidget(widget, unit_content)
+setTextWidget(widget, unit_content, True)
 
 widget.pack()
 
