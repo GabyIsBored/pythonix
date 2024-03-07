@@ -148,7 +148,7 @@ def setHeaders(textWidget: tk.Text, text: str, lineNumber: int):
     # set headers
     if len(text) >= 4:
         if text[0] == '#' and text[1] == ' ':
-            textWidget.delete(f'{lineNumber}.0', tk.END)
+            textWidget.delete(f'{lineNumber}.0', tk.END)  # THE ERROR IS HERE TK.END DELETE EVERYTHING
             textWidget.insert(tk.INSERT, text[2:])
             textWidget.tag_add('h1', f'{lineNumber}.{0}', f'{lineNumber}.{tk.END}')
         elif text[0] == '#' and text[1] == '#' and text[2] == ' ':
