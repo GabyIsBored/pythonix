@@ -1,6 +1,8 @@
 from tkinter import *
 import ttkbootstrap as tb
-from ttkbootstrap.scrolled import ScrolledFrame
+from importlib import import_module
+
+
 root=tb.Window(themename='solar')
 root.title('Dashboard')
 root.geometry('1280x720')
@@ -54,10 +56,18 @@ mainFrame.rowconfigure(0,weight=23)
 mainFrame.rowconfigure(1,weight=70)
 mainFrame.rowconfigure(2,weight=7)
 
+
 def change_page(pageName):
-	frame = getattr(__import__(pageName, fromlist=['mainFrame']), 'mainFrame')
-	frame.pack(expand=True, fill='both')
-	mainFrame.pack_forget() 
+	global mainFrame
+	for widget in mainFrame.winfo_children():
+		widget.destroy()
+	page_module = import_module(pageName)
+	new_mainFrame = getattr(page_module, 'mainFrame', None)
+	if new_mainFrame:
+        # Update mainFrame
+		mainFrame = new_mainFrame(root)
+        # Re-pack the mainFrame with the new content
+		mainFrame.pack()
 # NAVBAR
 
 days = tb.Label(mainFrame,text='0',font=h3Font)
@@ -121,9 +131,9 @@ class Chapter(tb.Frame):
 		
 		chapitreButton=Button(chapitreFrame)
 		if prog==0: 
-			chapitreButton.configure(bg= "white",image=commencerImg,command=lambda:change_page('chap1v2'))
+			chapitreButton.configure(bg= "white",image=commencerImg,command=lambda:change_page('test'))
 		else:
-			chapitreButton.configure(bg= "white",image=continuerImg,command=lambda:change_page('chap1v2'))
+			chapitreButton.configure(bg= "white",image=continuerImg,command=lambda:change_page('test'))
 		chapitreButton.pack(pady = (30, 0))	
 			
 Chapter(mainFrame,1,1,chapitres[0],progressions[0])
