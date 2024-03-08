@@ -16,10 +16,10 @@ class BLabel(object):
 
 def findMarkdown(text: str) -> dict:
     patterns = {
-        'bold': r'__(.*?)__',       # __bold text__
-        'italic': r'_(.*?)_',       # _italic text_
-        'code': r'\$(.*?)\$',       # $constexpr a = {0};$ (code block)
-        'underline': r'~(.*?)~',    # ~underline text~
+    'bold': r'\*\*(.*?)\*\*',             # **bold text**
+    'italic': r'\*(.*?)\*',               # *italic text*
+    'code': r'\`(.*?)\`',              # `code block here\n`
+    'underline': r'~(.*?)~',              # ~underline text~
     }
     detectedMarkdown = {}
     for key, pattern in patterns.items():
@@ -105,7 +105,7 @@ def setTextWidgetOnLine(textWidget: tk.Text, text: str, lineNumber: int):
     textWidget.tag_config('default', background=backgroundColor, foreground=textColor)
 
     # configure text widget
-    for element in ['__', '_', '~', '$']:
+    for element in ['**', '*', '~', '`']:
         text = text.replace(element, '')
 
     textWidget.insert(tk.INSERT, text)
@@ -147,18 +147,19 @@ def setHeaders(textWidget: tk.Text, text: str, lineNumber: int):
     
     # set headers
     if len(text) >= 4:
+        line_end_index = f'{lineNumber}.end'
         if text[0] == '#' and text[1] == ' ':
-            textWidget.delete(f'{lineNumber}.0', tk.END)  # THE ERROR IS HERE TK.END DELETE EVERYTHING
-            textWidget.insert(tk.INSERT, text[2:])
-            textWidget.tag_add('h1', f'{lineNumber}.{0}', f'{lineNumber}.{tk.END}')
+            textWidget.delete(f'{lineNumber}.0', f'{lineNumber}.2')  # THE ERROR IS HERE TK.END DELETES EVERYTHING
+            # textWidget.insert(tk.INSERT, text[2:])
+            textWidget.tag_add('h1', f'{lineNumber}.{0}', line_end_index)
         elif text[0] == '#' and text[1] == '#' and text[2] == ' ':
-            textWidget.delete(f'{lineNumber}.0', tk.END)
-            textWidget.insert(tk.INSERT, text[3:])
-            textWidget.tag_add('h2', f'{lineNumber}.{0}', f'{lineNumber}.{tk.END}')
+            textWidget.delete(f'{lineNumber}.0', f'{lineNumber}.3')
+            # textWidget.insert(tk.INSERT, text[3:])
+            textWidget.tag_add('h2', f'{lineNumber}.{0}', line_end_index)
         elif text[0] == '#' and text[1] == '#' and text[2] == '#' and text[3] == ' ':
-            textWidget.delete(f'{lineNumber}.0', tk.END)
-            textWidget.insert(tk.INSERT, text[4:])
-            textWidget.tag_add('h3', f'{lineNumber}.{0}', f'{lineNumber}.{tk.END}')
+            textWidget.delete(f'{lineNumber}.0', f'{lineNumber}.4')
+            # textWidget.insert(tk.INSERT, text[4:])
+            textWidget.tag_add('h3', f'{lineNumber}.{0}', line_end_index)
     
     
 
@@ -173,10 +174,10 @@ def setTextWidget(textWidget: tk.Text, text: str, isCode:bool):
     backgroundColor2 = '#191919'
     foregroundColor = '#FFFFFF'
 
-    if isCode==False:
+    if isCode == False:
         textWidget['font'] = pFont
         textWidget['background'] = backgroundColor
-    if isCode==True:
+    if isCode == True:
         #new colors
         textWidget['font'] = pFont2
         textWidget['background'] = backgroundColor2
@@ -193,12 +194,15 @@ def setTextWidget(textWidget: tk.Text, text: str, isCode:bool):
     # turn targetTextWidget in read only
     textWidget['state'] = tk.DISABLED
     
+# TODO: Add border thickness to code blocks
+#       Add text entry for the quiz
+    
+# ---- TEST (TODELETE) ----
 
-# TEST - TODELETE
-
-root = tk.Tk()
-root.geometry('800x400')
-
+root=tk.Tk()
+root.title('Dashboard')
+root.geometry('1280x720')
+root.resizable(False,False)
 
 unit_content = """
 # Affectation d’une variable
@@ -220,6 +224,8 @@ Une variable peut également être initialisée à partir de la valeur stockée 
 
 De cette manière on peut utiliser la valeur d’une variable et lui faire subir des modifications sans modifier la variable dont la valeur a été copié.
 
+Here I should prompt 5 chars: xD
+
 ### Exemple 1
 
 `defaultValue = 50           # defaultVaue est initialisé avec 50`
@@ -233,11 +239,13 @@ TIP: Lors de la déclaration d’une variable, elle doit avoir une valeur d’in
 - Ligne 1: la variable `defaultValue` est crée, et initialisée avec le nombre entier 50.
 - Ligne 2: la variable `testValue` est crée, et initialisée avec la valeur qui est stockée dans la variable `defaultValue` , 50 dans ce cas.
 - Ligne 3: la variable `testValue` subit une modification, sa valeur précédente se fait ‘écraser’ et se  fait remplacer par 20.
+
+**c cc c c c testbold**
 """
 
 widget = tk.Text()
 
-setTextWidget(widget, unit_content, True)
+setTextWidget(widget, unit_content, False)
 
 widget.pack()
 
