@@ -47,11 +47,16 @@ Et enfin, on utilise l’operateur `**` afind d’effectuer une **exponentiation
 `>>> 2**3`
 
 `>>> 8`'''
+remarques='''
+
+'''
+rwidget = Text(mainFrame,height='20')
+setTextWidget(rwidget, remarques, 'p')
 title=Label(mainFrame, text='QUIZ',font=h1Font)
 title.configure(bg='#D9D9D9')
 title.pack()
 widget = Text(mainFrame,height='20')
-setTextWidget(widget, unit_content, True)
+setTextWidget(widget, unit_content, 'c')
 widget.pack()
 
 entry1 = Entry(mainFrame, text="Click me!")
@@ -61,7 +66,7 @@ def check():
         print('validated')
     else:
         print('not validated')
-Button(mainFrame,text='yo',command=check).pack()
+Button(mainFrame,text='Valider',command=check).pack()
 
 
 root.mainloop()

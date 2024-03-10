@@ -16,10 +16,10 @@ class BLabel(object):
 
 def findMarkdown(text: str) -> dict:
     patterns = {
-        'bold': r'__(.*?)__',       # __bold text__
-        'italic': r'_(.*?)_',       # _italic text_
-        'code': r'\$(.*?)\$',       # $constexpr a = {0};$ (code block)
-        'underline': r'~(.*?)~',    # ~underline text~
+    'bold': r'\*\*(.*?)\*\*',             # **bold text**
+    'italic': r'\*(.*?)\*',               # *italic text*
+    'code': r'\`(.*?)\`',              # `code block here\n`
+    'underline': r'~(.*?)~',              # ~underline text~
     }
     detectedMarkdown = {}
     for key, pattern in patterns.items():
@@ -84,18 +84,30 @@ def findIndexAfterFormat(detectedMarkdownIndex: dict) -> dict:
 
     return indexAfterFormat
 
-def setTextWidgetOnLine(textWidget: tk.Text, text: str, lineNumber: int):
+def setTextWidgetOnLine(textWidget: tk.Text, text: str, lineNumber: int,tType:str):
     # find index of the detected markdown in the text
     detectedMarkdown = findMarkdown(text)
     detectedMarkdownIndex = findIndex(detectedMarkdown, text)
     indexAfterFormat = findIndexAfterFormat(detectedMarkdownIndex)
 
-    # font
-    pFont = ('Inter', 15)
-    backgroundColor = '#d9d9d9'
-    codeBackgroundColor = '#848484'
-    textColor = '#000000'
-    codeTextColor = '#C94053'
+    if tType=='p':
+        pFont = ('Inter', 15)
+        backgroundColor = '#d9d9d9'
+        codeBackgroundColor = '#848484'
+        textColor = '#000000'
+        codeTextColor = '#C94053'
+    if tType=='c':
+        pFont = ('Inter', 15)
+        backgroundColor = '#d9d9d9'
+        codeBackgroundColor = '#848484'
+        textColor = '#FFFFFF'
+        codeTextColor = '#C94053'
+    if tType=='r':
+        pFont = ('Inter', 15)
+        backgroundColor = '#d9d9d9'
+        codeBackgroundColor = '#848484'
+        textColor = '#C94053'
+        codeTextColor = '#C94053'
 
     # configure the custom tags
     textWidget.tag_config('bold', font=(pFont[0], pFont[1], 'bold'), background=backgroundColor)
@@ -105,7 +117,7 @@ def setTextWidgetOnLine(textWidget: tk.Text, text: str, lineNumber: int):
     textWidget.tag_config('default', background=backgroundColor, foreground=textColor)
 
     # configure text widget
-    for element in ['__', '_', '~', '$']:
+    for element in ['**', '*', '~', '`']:
         text = text.replace(element, '')
 
     textWidget.insert(tk.INSERT, text)
@@ -147,22 +159,23 @@ def setHeaders(textWidget: tk.Text, text: str, lineNumber: int):
     
     # set headers
     if len(text) >= 4:
+        line_end_index = f'{lineNumber}.end'
         if text[0] == '#' and text[1] == ' ':
-            textWidget.delete(f'{lineNumber}.0', tk.END)  # THE ERROR IS HERE TK.END DELETE EVERYTHING
-            textWidget.insert(tk.INSERT, text[2:])
-            textWidget.tag_add('h1', f'{lineNumber}.{0}', f'{lineNumber}.{tk.END}')
+            textWidget.delete(f'{lineNumber}.0', f'{lineNumber}.2')  # THE ERROR IS HERE TK.END DELETES EVERYTHING
+            # textWidget.insert(tk.INSERT, text[2:])
+            textWidget.tag_add('h1', f'{lineNumber}.{0}', line_end_index)
         elif text[0] == '#' and text[1] == '#' and text[2] == ' ':
-            textWidget.delete(f'{lineNumber}.0', tk.END)
-            textWidget.insert(tk.INSERT, text[3:])
-            textWidget.tag_add('h2', f'{lineNumber}.{0}', f'{lineNumber}.{tk.END}')
+            textWidget.delete(f'{lineNumber}.0', f'{lineNumber}.3')
+            # textWidget.insert(tk.INSERT, text[3:])
+            textWidget.tag_add('h2', f'{lineNumber}.{0}', line_end_index)
         elif text[0] == '#' and text[1] == '#' and text[2] == '#' and text[3] == ' ':
-            textWidget.delete(f'{lineNumber}.0', tk.END)
-            textWidget.insert(tk.INSERT, text[4:])
-            textWidget.tag_add('h3', f'{lineNumber}.{0}', f'{lineNumber}.{tk.END}')
+            textWidget.delete(f'{lineNumber}.0', f'{lineNumber}.4')
+            # textWidget.insert(tk.INSERT, text[4:])
+            textWidget.tag_add('h3', f'{lineNumber}.{0}', line_end_index)
     
     
 
-def setTextWidget(textWidget: tk.Text, text: str, isCode:bool):
+def setTextWidget(textWidget: tk.Text, text: str, tType:str):
     splitlines = text.splitlines()
 
     # font
@@ -171,21 +184,26 @@ def setTextWidget(textWidget: tk.Text, text: str, isCode:bool):
 
     pFont2 = ('Inter', 15)
     backgroundColor2 = '#191919'
-    foregroundColor = '#FFFFFF'
 
-    if isCode==False:
+    pFont3 = ('Inter', 15)
+    foregroundColor = '#C94053'
+
+    if tType == 'p':
         textWidget['font'] = pFont
         textWidget['background'] = backgroundColor
-    if isCode==True:
+    elif tType == 'c':
         #new colors
         textWidget['font'] = pFont2
         textWidget['background'] = backgroundColor2
-        textWidget['foreground'] = foregroundColor
+    elif tType == 'r':
+        textWidget['font'] = pFont
+        textWidget['background'] = backgroundColor
+        textWidget.config(highlightbackground = "red", highlightcolor= "red")
     
     # itarate the splitlines & set the tags
     for i in range (len(splitlines)):
         newLineNumber = i + 1
-        setTextWidgetOnLine(textWidget, splitlines[i], newLineNumber)
+        setTextWidgetOnLine(textWidget, splitlines[i], newLineNumber,tType)
         setHeaders(textWidget, splitlines[i], newLineNumber)
         if i != len(splitlines) - 1:
             textWidget.insert(tk.END, '\n')
@@ -193,52 +211,4 @@ def setTextWidget(textWidget: tk.Text, text: str, isCode:bool):
     # turn targetTextWidget in read only
     textWidget['state'] = tk.DISABLED
     
-
-# TEST - TODELETE
-
-root = tk.Tk()
-root.geometry('800x400')
-
-
-unit_content = """
-# Affectation d’une variable
-
-### L’opérateur ‘=’
-
-Le symbole ‘=’ permet d’assigner à une variable une certaine valeur :
-
-`x = 1`
-
-- x étant la variable crée (son ‘nom’)
-- 1 étant sa valeur d’initialisation (sa ‘valeur’)
-
-On appel ce symbole un *opérateur* et fait partie des opérateurs d’assignation. Il existe de nombreux opérateurs, parmis lequels figurent les opérateurs **d’assignations**, les opérateurs **arithmétiques**, les opérateurs **de comparaison** etc… Ils seront donc introduits dans un prochain chapitre.
-
-### Autre propriété d’affectation
-
-Une variable peut également être initialisée à partir de la valeur stockée dans une autre variable.
-
-De cette manière on peut utiliser la valeur d’une variable et lui faire subir des modifications sans modifier la variable dont la valeur a été copié.
-
-### Exemple 1
-
-`defaultValue = 50           # defaultVaue est initialisé avec 50`
-
-`testValue = defaultValue    # testValue est initialisé avec defaultValue (50)`
-
-`testValue = 20              # defaultValue est toujours égale à 50`
-
-TIP: Lors de la déclaration d’une variable, elle doit avoir une valeur d’initialisation ou le programme resultera en une erreur.
-
-- Ligne 1: la variable `defaultValue` est crée, et initialisée avec le nombre entier 50.
-- Ligne 2: la variable `testValue` est crée, et initialisée avec la valeur qui est stockée dans la variable `defaultValue` , 50 dans ce cas.
-- Ligne 3: la variable `testValue` subit une modification, sa valeur précédente se fait ‘écraser’ et se  fait remplacer par 20.
-"""
-
-widget = tk.Text()
-
-setTextWidget(widget, unit_content, True)
-
-widget.pack()
-
-root.mainloop()
+# TODO: Add border thickness to code blocks

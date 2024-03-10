@@ -47,9 +47,16 @@ Et enfin, on utilise l’operateur `**` afind d’effectuer une **exponentiation
 `>>> 2**3`
 
 `>>> 8`'''
-widget = Text(mainFrame,height='20')
-setTextWidget(widget, unit_content, False)
-widget.pack(fill=X)
+remarques='''
 
+'''
+rwidget = Text(mainFrame,height='20')
+setTextWidget(rwidget, remarques, 'p')
+widget = Text(mainFrame,height='20')
+setTextWidget(widget, unit_content, 'r')
+widget.pack(fill=X)
+rwidget.pack(fill=X)
+Button(mainFrame,text='Next Page >',).pack(side=RIGHT)#command=nextPage
+Button(mainFrame,text='Back to dashboard',).pack(side=RIGHT)#command=back
 
 root.mainloop()

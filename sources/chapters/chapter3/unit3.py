@@ -1,51 +1,64 @@
-unit_content='''# Operateurs 2: Variables
+from markdown import setTextWidget
+from tkinter import *
+import ttkbootstrap as tb
+root=tb.Window()
+root.title('Dashboard')
+root.geometry('1280x720')
+root.resizable(False,False)
+mainFrame=Frame(root)
+mainFrame.pack(expand=True, fill='both',padx=10,pady=10)
+h1Font = ('Inter', 34, "bold")
+mainFrame.configure(bg='#D9D9D9')
 
-### Stocker les resultats d’operations aux variables
+unit_content='''# Operateurs 3: Operateurs d’assignation
 
-Les resultats calcules peuvent etres sauvegarder dans l’interprete en leur assignants en nom
+### **Opérations d'affectation**
 
-`>>> a = 1+1`          
+Dans **Operateurs 2** on a vu comment stocker des resultats dans des variables, et comment performer des operations sur celles ci
+Par consequences, on peut stocker les resultats des operations que l’on performe dans une variable **dans la meme variable:**
 
-`>>>`                 
+Dans cette exemple, on obtient 2, car `x = 1`, donc on subsititue x par 1 dans  `x = x + 1` ce qui nous donne `x = 1 + 1 = 2`
 
-Dans ce cas, le resultat de `1+1` est stocke dans la variable `a` .
+Un autre exemple:
 
-(Il est recommande de nommer les variables de maniere intuitive au lieu qu’avec des lettres)
+Le programme affiche 15 car en substituant a pour 3, on obtient `a = 3 * (2 + 3) = 3 * 5 = 15`
 
-On peut acceder a la variable dans la console en utilisant le nom `a`:
+### **Opérateurs d'affectation**
 
-`>>> a`          
+Ce type d’operations est utilise tres frequemment dans Python afin de mettre a jour des variables, au point que Python comporte un operateurs dit **d’assignations** pour chaque une des 7 operations basiques qui permettent **d’effectuer l’operation sur la variable qu’on assigne sans avoir a la referencier 2 fois:**
 
-`>>> 2`          
 
-On peut donc creer un programme qui effectue des calculations graces a ces variables
+Ce programme effectue la meme operation que l’**Exemple 1.**
 
-Les variables ne sont pas seulemtn des facons de stocker des resultats, on peut aussi performer des operations avec elles:
+ ****L’operateur `+=` est l’operateur d’assignation qui permet d’ajouter une valeur a la valeur stockee dans la variable.
 
-`>>> a = 2`             
+Le reste des operateurs d’assignations sont:
 
-`>>> b = a*2`               
+`-=`: **Soustrait** une valeur a la valeur stockee dans la variable.
 
-`>>> b`                
+`*=`: **Multiplie** une valeur par la valeur stockee dans la variable.
 
-`>>> 4`             
+`/=`: **Divise** une valeur par la valeur stockee dans la variable.
 
-Dans cette exmple, on multiplie la valeur de a, qui a ete precedamment assignee par `a = 2`
+`//=`: Obtient le **quotient** de la division une d’valeur par la valeur stockee dans la variable.
 
-donc `b = a*2` est equivalent a `b= 2*2`**. b est donc egal a 4**
+`%=`: Obtient le **reste** de la division d’une valeur par la valeur stockee dans la variable.
 
-### Faire un programme effectuant nos operations
-
-Jusque la nous avons vu les operations d’arithmetique en communiquant directement avec l’interprete python, mais on peut aussi faire un programme qui performe et affiche ces operations directement
-
-### Exemple:
-
-Voici un programme qui mets la variable `x` au cube et affiche le resultat:
+`**=`: Mets la valeur stockee dans la variable **a la puissance** d’une valeur
 
 ## Exercice
 
-faire un programme qui affiche le double de la variable - 5
+x=3. y=10. x est egal a sa valeur + 5. y est egal a sa valeur - x, x est egale au reste de la divison entre lui meme et y'''
+remarques='''
+yo oy yoyoyo oy yo
+'''
+widget = Text(mainFrame,height='20')
+setTextWidget(widget, unit_content, 'p')
+rwidget = Text(mainFrame,height='20')
+setTextWidget(rwidget, remarques, 'r')
+widget.pack(fill=X,side=LEFT)
+rwidget.pack(fill=X,side=RIGHT)
+Button(mainFrame,text='Next Page >',).pack(side=RIGHT)#command=nextPage
+Button(mainFrame,text='Back to dashboard',).pack(side=RIGHT)#command=back
 
-## Exercice
-
-faire un programme affiche le reste de la division euclidienne de x et y +3'''
+root.mainloop()

@@ -1,3 +1,16 @@
+from markdown import setTextWidget
+from tkinter import *
+import ttkbootstrap as tb
+root=tb.Window()
+root.title('Dashboard')
+root.geometry('1280x720')
+root.resizable(False,False)
+mainFrame=Frame(root)
+mainFrame.pack(expand=True, fill='both',padx=10,pady=10)
+h1Font = ('Inter', 34, "bold")
+mainFrame.configure(bg='#D9D9D9')
+
+
 unit_content='''# Operateurs 2: Variables
 
 ### Stocker les resultats d’operations aux variables
@@ -49,3 +62,16 @@ faire un programme qui affiche le double de la variable - 5
 ## Exercice
 
 faire un programme affiche le reste de la division euclidienne de x et y +3'''
+remarques='''
+
+'''
+widget = Text(mainFrame,height='20')
+setTextWidget(widget, unit_content, 'r')
+rwidget = Text(mainFrame,height='20')
+setTextWidget(rwidget, remarques, 'p')
+widget.pack(fill=X)
+rwidget.pack(fill=X)
+Button(mainFrame,text='Next Page >',).pack(side=RIGHT)#command=nextPage
+Button(mainFrame,text='Back to dashboard',).pack(side=RIGHT)#command=back
+
+root.mainloop()
