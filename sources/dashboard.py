@@ -1,6 +1,5 @@
 from tkinter import *
 import ttkbootstrap as tb
-from importlib import import_module
 
 
 root=tb.Window(themename='solar')
