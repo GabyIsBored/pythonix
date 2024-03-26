@@ -50,13 +50,24 @@ Et enfin, on utilise l’operateur `**` afind d’effectuer une **exponentiation
 remarques='''
 
 '''
-rwidget = Text(mainFrame,height='10')
-setTextWidget(rwidget, remarques, 'r')
-widget = Text(mainFrame,height='10')
-setTextWidget(widget, unit_content, 'p')
-widget.pack(fill=X)
-rwidget.pack(fill=X)
-Button(mainFrame,text='Next Page >',).pack(side=RIGHT)#command=nextPage
-Button(mainFrame,text='Back to dashboard',).pack(side=RIGHT)#command=back
+rwidget = Text(mainFrame,height='20')
+setTextWidget(rwidget, remarques, 'p')
+title=Label(mainFrame, text='QUIZ',font=h1Font)
+title.configure(bg='#D9D9D9')
+title.pack()
+widget = Text(mainFrame,height='20')
+setTextWidget(widget, unit_content, 'c')
+widget.pack()
+
+entry1 = Entry(mainFrame, text="Click me!")
+widget.window_create(1.0, window=entry1)
+def check():
+    if "hi" in entry1.get():
+        print('validated')
+    else:
+        print('not validated')
+Button(mainFrame,text='Valider',command=check).pack()
+
 
 root.mainloop()
+

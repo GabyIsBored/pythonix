@@ -52,3 +52,4 @@ CreateToolTip(label, text = 'Hello World\n'
                  'Best part is, it\'s not a menu.\n'
                  'Purely tipbox.')
 root.mainloop()
+#https://stackoverflow.com/questions/3221956/how-do-i-display-tooltips-in-tkinter
