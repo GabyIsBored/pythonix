@@ -98,7 +98,7 @@ def setTextWidgetOnLine(textWidget: tk.Text, text: str, lineNumber: int,tType:st
         codeTextColor = '#C94053'
     if tType=='c':
         pFont = ('Inter', 15)
-        backgroundColor = '#d9d9d9'
+        backgroundColor = '#191919'
         codeBackgroundColor = '#848484'
         textColor = '#FFFFFF'
         codeTextColor = '#C94053'
