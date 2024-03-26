@@ -11,67 +11,91 @@ h1Font = ('Inter', 34, "bold")
 mainFrame.configure(bg='#D9D9D9')
 
 
-unit_content='''# Operateurs 2: Variables
+unit_content1='''# Operateurs 2: Variables
 
-### Stocker les resultats d’operations aux variables
+### Stocker les résultats d'opérations aux variables
 
-Les resultats calcules peuvent etres sauvegarder dans l’interprete en leur assignants en nom
+Les résultats calcules peuvent êtres sauvegarder dans l’interprète en leur assignant en nom
+'''
+code_block1='''
+>>> a = 1+1                     
+'''
+unit_content2='''
+Dans ce cas, le résultat de `1+1` est stocke dans la variable `a` .
 
-`>>> a = 1+1`          
+(Il est recommande de nommer les variables de manière intuitive au lieu qu’avec des lettres)
 
-`>>>`                 
+On peut accéder a la variable dans la console en utilisant le nom `a`:'''
+code_block3='''
+>>> a          
 
-Dans ce cas, le resultat de `1+1` est stocke dans la variable `a` .
+2          
+'''
+unit_content4='''
+On peut donc créer un programme qui effectue des calculs grâces a ces variables
 
-(Il est recommande de nommer les variables de maniere intuitive au lieu qu’avec des lettres)
+Les variables ne sont pas seulement des façons de stocker des résultats, on peut aussi performer des opérations avec elles:'''
+code_block4='''
+>>> a = 2             
 
-On peut acceder a la variable dans la console en utilisant le nom `a`:
+>>> b = a*2               
 
-`>>> a`          
+>>> b                
 
-`>>> 2`          
+4             
+'''
+unit_content5='''
+Dans cette exemple, on multiplie la valeur de a, qui a été précédemment assignée par `a = 2`
 
-On peut donc creer un programme qui effectue des calculations graces a ces variables
+donc `b = a*2` est équivalent a `b= 2*2`**. b est donc égal a 4**
 
-Les variables ne sont pas seulemtn des facons de stocker des resultats, on peut aussi performer des operations avec elles:
+### Faire un programme effectuant nos opérations
 
-`>>> a = 2`             
-
-`>>> b = a*2`               
-
-`>>> b`                
-
-`>>> 4`             
-
-Dans cette exmple, on multiplie la valeur de a, qui a ete precedamment assignee par `a = 2`
-
-donc `b = a*2` est equivalent a `b= 2*2`**. b est donc egal a 4**
-
-### Faire un programme effectuant nos operations
-
-Jusque la nous avons vu les operations d’arithmetique en communiquant directement avec l’interprete python, mais on peut aussi faire un programme qui performe et affiche ces operations directement
+Jusque la nous avons vu les opérations d’arithmétique en communiquant directement avec l’interprète python, mais on peut aussi faire un programme qui performe et affiche ces opérations directement
 
 ### Exemple:
 
-Voici un programme qui mets la variable `x` au cube et affiche le resultat:
+Voici un programme qui mets la variable `x` au cube et affiche le résultat:'''
 
-## Exercice
+code_block5='''
+x = 3
 
-faire un programme qui affiche le double de la variable - 5
+print(x*x*x) # Ce programme affiche 27'''
 
-## Exercice
+unit_content1Text = Text(mainFrame,height='20')
+code_block1Text = Text(mainFrame,height='20')
+unit_content2Text = Text(mainFrame,height='20')
+code_block2Text = Text(mainFrame,height='20')
+unit_content3Text = Text(mainFrame,height='20')
+code_block3Text = Text(mainFrame,height='20')
+unit_content4Text = Text(mainFrame,height='20')
+code_block4Text = Text(mainFrame,height='20')
+unit_content5Text = Text(mainFrame,height='20')
+code_block5Text = Text(mainFrame,height='20')
 
-faire un programme affiche le reste de la division euclidienne de x et y +3'''
-remarques='''
+setTextWidget(unit_content1Text,unit_content1, 'p')
+setTextWidget(code_block1Text,code_block1, 'c')
+setTextWidget(unit_content2Text,unit_content2, 'p')
+setTextWidget(code_block2Text,code_block2, 'c')
+setTextWidget(unit_content3Text,unit_content3, 'p')
+setTextWidget(code_block3Text,code_block3, 'c')
+setTextWidget(unit_content4Text,unit_content4, 'p')
+setTextWidget(code_block4Text,code_block4, 'c')
+setTextWidget(unit_content5Text,unit_content5Text, 'p')
+setTextWidget(code_block5Text,code_block5, 'c')
 
-'''
-widget = Text(mainFrame,height='20')
-setTextWidget(widget, unit_content, 'r')
-rwidget = Text(mainFrame,height='20')
-setTextWidget(rwidget, remarques, 'p')
-widget.pack(fill=X)
-rwidget.pack(fill=X)
+unit_content1Text.pack(fill=X,side=LEFT)
+code_block1Text.pack(fill=X,side=LEFT)
+unit_content2Text.pack(fill=X,side=LEFT)
+code_block2Text.pack(fill=X,side=LEFT)
+unit_content3Text.pack(fill=X,side=LEFT)
+code_block3Text.pack(fill=X,side=LEFT)
+unit_content4Text.pack(fill=X,side=LEFT)
+code_block4Text.pack(fill=X,side=LEFT)
+unit_content5Text.pack(fill=X,side=LEFT)
+code_block5Text.pack(fill=X,side=LEFT)
 Button(mainFrame,text='Next Page >',).pack(side=RIGHT)#command=nextPage
 Button(mainFrame,text='Back to dashboard',).pack(side=RIGHT)#command=back
+
 
 root.mainloop()
