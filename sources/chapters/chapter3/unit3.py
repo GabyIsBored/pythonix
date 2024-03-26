@@ -30,7 +30,7 @@ Ce type d’operations est utilise tres frequemment dans Python afin de mettre a
 
 Ce programme effectue la meme operation que l’**Exemple 1.**
 
- ****L’operateur `+=` est l’operateur d’assignation qui permet d’ajouter une valeur a la valeur stockee dans la variable.
+L’operateur `+=` est l’operateur d’assignation qui permet d’ajouter une valeur a la valeur stockee dans la variable.
 
 Le reste des operateurs d’assignations sont:
 
@@ -49,15 +49,10 @@ Le reste des operateurs d’assignations sont:
 ## Exercice
 
 x=3. y=10. x est egal a sa valeur + 5. y est egal a sa valeur - x, x est egale au reste de la divison entre lui meme et y'''
-remarques='''
-yo oy yoyoyo oy yo
-'''
+
 widget = Text(mainFrame,height='20')
 setTextWidget(widget, unit_content, 'p')
-rwidget = Text(mainFrame,height='20')
-setTextWidget(rwidget, remarques, 'r')
 widget.pack(fill=X,side=LEFT)
-rwidget.pack(fill=X,side=RIGHT)
 Button(mainFrame,text='Next Page >',).pack(side=RIGHT)#command=nextPage
 Button(mainFrame,text='Back to dashboard',).pack(side=RIGHT)#command=back
 
