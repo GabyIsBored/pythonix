@@ -16,7 +16,8 @@ unit_content1='''# Operateurs 3: Operateurs d’assignation
 
 Dans **Operateurs 2** on a vu comment stocker des resultats dans des variables, et comment performer des operations sur celles ci
 Par consequences, on peut stocker les resultats des operations que l’on performe dans une variable **dans la meme variable:**
-'''code_block1='''
+'''
+code_block1='''
 x=1
 
 x=x+1

@@ -1,48 +1,16 @@
-<<<<<<< HEAD
-unit_content='''# Comparaisons
+from markdown import setTextWidget
+from tkinter import *
+import ttkbootstrap as tb
+root=tb.Window()
+root.title('Dashboard')
+root.geometry('1280x720')
+root.resizable(False,False)
+mainFrame=Frame(root)
+mainFrame.pack(expand=True, fill='both',padx=10,pady=10)
+h1Font = ('Inter', 34, "bold")
+mainFrame.configure(bg='#D9D9D9')
 
-Python est capable d'effectuer toute une série de comparaisons entre le contenu de deux variables,
-
-en renvoyant un **booleen** `True` ou `False` si la comparaisons est verifiee ou pas.
-
-### Egalite et inegalites
-
-Pour tester l’égalité de contenu entre deux valeurs, on utilise l’operateur `==` :
-
-`>>> 2 == 3`  
-
-`>>> False` 
-
-`>>> 3 == 3`  
-
-`>>> True`    
-
-Pour tester l’inégalité de contenu entre deux valeurs, on utilise l’operateur `!=` :
-
-`>>> 2 != 3`  
-
-`>>> False` 
-
-### **Infériorité et supériorité, stricts ou larges**
-
-Pour savoir si un objet est:
-
-- **Strictement inférieur/superieur** à un autre, on utilise les operateurs `<` et `>` respectivement
-- **Inférieur ou egal/superieur ou egal** à un autre, on utilise les operateurs `<=` et `>=` respectivement
-
-`>>> 120 > 5` 
-
-`>>> False`      
-
-`>>> 3 <= 3`     
-
-`>>> True`      
-
-### Exercice
-
-x=250, y=120. Faire un programme qui donne `True, True, False` avec les operateurs `==, <, >=`'''
-=======
-unit_content1:'''
+unit_content1='''
 # Boucles: break/continue
 
 Les instructions `break` et `continue` sont utilisées dans les boucles (`for` ou `while`) pour contrôler le flux d'exécution du programme.
@@ -53,7 +21,7 @@ L'instruction `break` est utilisée pour sortir immédiatement d'une boucle, que
 
 ### Exemple avec une boucle `for` :
 '''
-code_block1:'''
+code_block1='''
 ```
 for i in range(5):
     if i == 3:
@@ -61,22 +29,22 @@ for i in range(5):
     print(i)
 ```
 '''
-unit_content2:'''
+unit_content2='''
 Output :
 '''
-code_block2:'''
+code_block2='''
 ```
 0
 1
 2
 ```
 '''
-unit_content3:'''
+unit_content3='''
 Dans cet exemple, la boucle `for` itère de 0 à 4. Lorsque `i` atteint la valeur 3, l'instruction `break` est rencontrée, et la boucle est immédiatement interrompue, sautant les itérations restantes.
 
 ### Exemple avec une boucle `while` :
 '''
-code_block3:'''
+code_block3='''
 ```
 count = 0
 while count < 5:
@@ -87,17 +55,17 @@ while count < 5:
 
 ```
 '''
-unit_content4:'''
+unit_content4='''
 Output :
 '''
-code_block4:'''
+code_block4='''
 ```
 0
 1
 2
 ```
 '''
-unit_content5:'''
+unit_content5='''
 Ici, la boucle `while` s'exécute jusqu'à ce que `count` atteigne 5. Lorsque `count` atteint 2, l'instruction `break` est exécutée, interrompant la boucle prématurément.
 
 ### `continue` :
@@ -106,7 +74,7 @@ L'instruction `continue` est utilisée pour passer à l'itération suivante d'un
 
 ### Exemple avec une boucle `for` :
 '''
-code_block5:'''
+code_block5='''
 ```
 for i in range(5):
     if i == 2:
@@ -114,10 +82,10 @@ for i in range(5):
     print(i)
 ```
 '''
-unit_content6:'''
+unit_content6='''
 Output :
 '''
-code_block6:'''
+code_block6='''
 ```
 0
 1
@@ -126,12 +94,12 @@ code_block6:'''
 
 ```
 '''
-unit_content7:'''
+unit_content7='''
 Ici, lorsque `i` atteint la valeur 2, l'instruction `continue` est exécutée. Cela provoque le saut du reste du bloc de code à l'intérieur de la boucle pour cette itération, passant immédiatement à l'itération suivante.
 
 ### Exemple avec une boucle `while` :
 '''
-code_block7:'''
+code_block7='''
 ```
 count = 0
 while count < 5:
@@ -141,10 +109,10 @@ while count < 5:
     print(count)
 ```
 '''
-unit_content8:'''
+unit_content8='''
 Output :
 '''
-code_block8:'''
+code_block8='''
 ```
 1
 2
@@ -152,7 +120,7 @@ code_block8:'''
 5
 ```
 '''
-unit_content9:'''
+unit_content9='''
 Dans cet exemple, lorsque `count` atteint la valeur 3, l'instruction `continue` est exécutée, sautant l'impression de cette valeur et passant à l'itération suivante de la boucle `while`.
 
 REMARQUE: Il est conseilé de n’utiliser ces fonctions que lorsque necessaire, car elle peuvent rendre le code plus compliqué et moins lisible dans la plupart des cas  simplifier le programme afin de ne plus necessiter leurs utilisation
@@ -217,4 +185,3 @@ unit_content9Text.pack(fill=X,side=LEFT)
 Button(mainFrame,text='Next Page >',).pack(side=RIGHT)#command=nextPage
 Button(mainFrame,text='Back to dashboard',).pack(side=RIGHT)#command=back
 root.mainloop()
->>>>>>> 5e4795ad3db8bd44e219213fe62ebf5e5b4ef899

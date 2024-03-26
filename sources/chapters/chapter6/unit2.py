@@ -11,68 +11,6 @@ h1Font = ('Inter', 34, "bold")
 mainFrame.configure(bg='#D9D9D9')
 
 
-<<<<<<< HEAD
-unit_content='''# Operateurs 2: Variables
-
-### Stocker les resultats d’operations aux variables
-
-Les resultats calcules peuvent etres sauvegarder dans l’interprete en leur assignants en nom
-
-`>>> a = 1+1`          
-
-`>>>`                 
-
-Dans ce cas, le resultat de `1+1` est stocke dans la variable `a` .
-
-(Il est recommande de nommer les variables de maniere intuitive au lieu qu’avec des lettres)
-
-On peut acceder a la variable dans la console en utilisant le nom `a`:
-
-`>>> a`          
-
-`>>> 2`          
-
-On peut donc creer un programme qui effectue des calculations graces a ces variables
-
-Les variables ne sont pas seulemtn des facons de stocker des resultats, on peut aussi performer des operations avec elles:
-
-`>>> a = 2`             
-
-`>>> b = a*2`               
-
-`>>> b`                
-
-`>>> 4`             
-
-Dans cette exmple, on multiplie la valeur de a, qui a ete precedamment assignee par `a = 2`
-
-donc `b = a*2` est equivalent a `b= 2*2`**. b est donc egal a 4**
-
-### Faire un programme effectuant nos operations
-
-Jusque la nous avons vu les operations d’arithmetique en communiquant directement avec l’interprete python, mais on peut aussi faire un programme qui performe et affiche ces operations directement
-
-### Exemple:
-
-Voici un programme qui mets la variable `x` au cube et affiche le resultat:
-
-## Exercice
-
-faire un programme qui affiche le double de la variable - 5
-
-## Exercice
-
-faire un programme affiche le reste de la division euclidienne de x et y +3'''
-remarques='''
-
-'''
-widget = Text(mainFrame,height='20')
-setTextWidget(widget, unit_content, 'r')
-rwidget = Text(mainFrame,height='20')
-setTextWidget(rwidget, remarques, 'p')
-widget.pack(fill=X)
-rwidget.pack(fill=X)
-=======
 unit_content1='''
 # Boucles: range()
 
@@ -80,14 +18,14 @@ La fonction `range()` en Python est utilisée pour générer une séquence d'ent
 
 ### Syntaxe :
 '''
-code_block1:'''
+code_block1='''
 ```
 range(stop)
 range(start, stop)
 range(start, stop, step)
 ```
 '''
-unit_content2:'''
+unit_content2='''
 - **`start` (optionnel)** : La valeur de départ de la séquence. Si elle n'est pas spécifiée, elle est par défaut à 0.
 - **`stop`** : La valeur de fin de la séquence. Elle est exclusive, ce qui signifie que la séquence s'arrête avant d'atteindre cette valeur.
 - **`step` (optionnel)** : L'incrément (pas) entre les valeurs de la séquence. Si non spécifié, il est par défaut à 1.
@@ -96,16 +34,16 @@ unit_content2:'''
 
 1. Utilisation de `range()` avec un seul argument (stop) :
 '''
-code_block2:'''
+code_block2='''
 ```
 for i in range(5):
     print(i)
 ```
 '''
-unit_content3:'''
+unit_content3='''
 Output :
 '''
-code_block3:'''
+code_block3='''
 ```
 0
 1
@@ -114,19 +52,19 @@ code_block3:'''
 4
 ```
 '''
-unit_content4:'''
+unit_content4='''
 - Utilisation de `range()` avec deux arguments (start, stop) :
 '''
-code_block4:'''
+code_block4='''
 ```
 for i in range(2, 8):
     print(i)
 ```
 '''
-unit_content5:'''
+unit_content5='''
 Output :
 '''
-code_block5:'''
+code_block5='''
 ```
 2
 3
@@ -136,19 +74,19 @@ code_block5:'''
 7
 ```
 '''
-unit_content6:'''
+unit_content6='''
 - Utilisation de `range()` avec trois arguments (start, stop, step) :
 '''
-code_block6:'''
+code_block6='''
 ```
 for i in range(1, 10, 2):
     print(i)
 ```
 '''
-unit_content7:'''
+unit_content7='''
 Output :
 '''
-code_block7:'''
+code_block7='''
 ```
 1
 3
@@ -157,7 +95,7 @@ code_block7:'''
 9
 ```
 '''
-unit_content8:'''
+unit_content8='''
 ### Points clés :
 
 - La fonction `range()` génère une séquence d'entiers, mais ne crée pas réellement une liste. Elle génère les valeurs au fur et à mesure des besoins, ce qui la rend plus efficace en termes de mémoire pour de grandes séquences.
@@ -171,17 +109,17 @@ La fonction `range()` est fréquemment utilisée avec les boucles `for` pour cr�
 
 1. **Itération sur une séquence de 0 à n-1 :**
 '''
-code_block8:'''
+code_block8='''
 ```
 n = 5
 for i in range(n):
     print(i)
 ```
 '''
-unit_content9:'''
+unit_content9='''
 Output :
 '''
-code_block9:'''
+code_block9='''
 ```
 0
 1
@@ -190,12 +128,12 @@ code_block9:'''
 4
 ```
 '''
-unit_content10:'''
+unit_content10='''
 Dans cet exemple, la boucle `for` itère sur une séquence générée par `range(n)`, qui va de 0 à n-1. À chaque itération, la variable `i` prend la valeur de l'élément actuel de la séquence.
 
 - **Itération avec une valeur de départ personnalisée :**
 '''
-code_block10:'''
+code_block10='''
 ```
 start = 2
 stop = 8
@@ -203,10 +141,10 @@ for i in range(start, stop):
     print(i)
 ```
 '''
-unit_content11:'''
+unit_content11='''
 Output :
 '''
-code_block11:'''
+code_block11='''
 ```
 2
 3
@@ -216,12 +154,12 @@ code_block11:'''
 7
 ```
 '''
-unit_content12:'''
+unit_content12='''
 En spécifiant une valeur de départ (`start`) et une valeur de fin (`stop`), la boucle `for` itère sur la séquence générée par `range(start, stop)`.
 
 - **Itération avec un pas personnalisé :**
 '''
-code_block12:'''
+code_block12='''
 ```
 start = 1
 stop = 10
@@ -232,10 +170,10 @@ for i in range(start, stop, step):
 
 ```
 '''
-unit_content13:'''
+unit_content13='''
 Output :
 '''
-code_block13:'''
+code_block13='''
 1
 3
 5
@@ -243,7 +181,7 @@ code_block13:'''
 9
 ```
 '''
-unit_content14:'''
+unit_content14='''
 En ajoutant un troisième argument, `step`, on peut spécifier un pas personnalisé entre les valeurs de la séquence. Cela permet de sauter certaines valeurs pendant l'itération.
 
 L'utilisation de `range()` avec les boucles `for` simplifie le processus d'itération sur une séquence d'entiers, ce qui est couramment utilisé dans de nombreux scénarios de programmation.
@@ -336,7 +274,6 @@ unit_content14Text.pack(fill=X,side=LEFT)
 
 
 
->>>>>>> 5e4795ad3db8bd44e219213fe62ebf5e5b4ef899
 Button(mainFrame,text='Next Page >',).pack(side=RIGHT)#command=nextPage
 Button(mainFrame,text='Back to dashboard',).pack(side=RIGHT)#command=back
 

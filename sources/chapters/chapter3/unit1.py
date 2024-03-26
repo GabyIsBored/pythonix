@@ -48,31 +48,7 @@ Afin d’obtenir le reste, on utilise: `%`
 
 Et enfin, on utilise l’operateur `**` afin d’effectuer une **exponentiation**
 '''
-<<<<<<< HEAD
-<<<<<<< HEAD
-rwidget = Text(mainFrame,height='10')
-setTextWidget(rwidget, remarques, 'r')
-widget = Text(mainFrame,height='10')
-setTextWidget(widget, unit_content, 'p')
-widget.pack(fill=X)
-rwidget.pack(fill=X)
-Button(mainFrame,text='Next Page >',).pack(side=RIGHT)#command=nextPage
-Button(mainFrame,text='Back to dashboard',).pack(side=RIGHT)#command=back
-=======
-class UnitContent(Frame):
-    def __init__(self, master: Tk):
-        super().__init__()
-        self.rwidget = Text(master, height='20')
-        setTextWidget(self.rwidget, remarques, 'p')
-        self.widget = Text(master, height='20')
-        setTextWidget(self.widget, unit_content_text, 'r')
-        self.widget.pack(fill=X)
-        self.rwidget.pack(fill=X)
-        Button(master, text='Next Page >').pack(side=RIGHT)  # command=nextPage
-        Button(master, text='Back to dashboard').pack(side=RIGHT)  # command=back
-        
->>>>>>> 39902c5e36bec554f3cef693d4febeb3e264594f
-=======
+
 unit_content1Text = Text(mainFrame,height='20')
 code_block1Text = Text(mainFrame,height='20')
 unit_content2Text = Text(mainFrame,height='20')
@@ -84,6 +60,5 @@ code_block1Text.pack(fill=X,side=LEFT)
 unit_content2Text.pack(fill=X,side=LEFT)
 Button(mainFrame,text='Next Page >',).pack(side=RIGHT)#command=nextPage
 Button(mainFrame,text='Back to dashboard',).pack(side=RIGHT)#command=back
->>>>>>> 5e4795ad3db8bd44e219213fe62ebf5e5b4ef899
 
 root.mainloop()

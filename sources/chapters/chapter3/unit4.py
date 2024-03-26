@@ -73,10 +73,4 @@ code_block3Text.pack(fill=X,side=LEFT)
 Button(mainFrame,text='Next Page >',).pack(side=RIGHT)#command=nextPage
 Button(mainFrame,text='Back to dashboard',).pack(side=RIGHT)#command=back
 
-<<<<<<< HEAD
-### Exercice
-
-x=250, y=120. Faire un programme qui donne `True, True, False` avec les operateurs `==, <, >=`'''
-=======
 root.mainloop()
->>>>>>> 5e4795ad3db8bd44e219213fe62ebf5e5b4ef899
