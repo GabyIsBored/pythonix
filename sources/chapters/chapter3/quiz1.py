@@ -47,11 +47,7 @@ Et enfin, on utilise l’operateur `**` afind d’effectuer une **exponentiation
 `>>> 2**3`
 
 `>>> 8`'''
-remarques='''
 
-'''
-rwidget = Text(mainFrame,height='20')
-setTextWidget(rwidget, remarques, 'p')
 title=Label(mainFrame, text='QUIZ',font=h1Font)
 title.configure(bg='#D9D9D9')
 title.pack()
