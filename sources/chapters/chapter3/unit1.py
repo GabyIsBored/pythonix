@@ -1,18 +1,14 @@
 from markdown import setTextWidget
 from tkinter import *
 import ttkbootstrap as tb
-root=tb.Window()
-root.title('Dashboard')
-root.geometry('1280x720')
-root.resizable(False,False)
-mainFrame=Frame(root)
-mainFrame.pack(expand=True, fill='both',padx=10,pady=10)
-h1Font = ('Inter', 34, "bold")
-mainFrame.configure(bg='#D9D9D9')
+
+# mainFrame=Frame(root)
+# mainFrame.pack(expand=True, fill='both',padx=10,pady=10)
+# h1Font = ('Inter', 34, "bold")
+# mainFrame.configure(bg='#D9D9D9')
 
 
-
-unit_content='''# Operateurs 1 (elementaires)
+unit_content_text='''# Operateurs 1 (elementaires)
 
 ### Effectuer des operations avec Python
 
@@ -50,6 +46,7 @@ Et enfin, on utilise l’operateur `**` afind d’effectuer une **exponentiation
 remarques='''
 
 '''
+<<<<<<< HEAD
 rwidget = Text(mainFrame,height='10')
 setTextWidget(rwidget, remarques, 'r')
 widget = Text(mainFrame,height='10')
@@ -58,5 +55,28 @@ widget.pack(fill=X)
 rwidget.pack(fill=X)
 Button(mainFrame,text='Next Page >',).pack(side=RIGHT)#command=nextPage
 Button(mainFrame,text='Back to dashboard',).pack(side=RIGHT)#command=back
+=======
+class UnitContent(Frame):
+    def __init__(self, master: Tk):
+        super().__init__()
+        self.rwidget = Text(master, height='20')
+        setTextWidget(self.rwidget, remarques, 'p')
+        self.widget = Text(master, height='20')
+        setTextWidget(self.widget, unit_content_text, 'r')
+        self.widget.pack(fill=X)
+        self.rwidget.pack(fill=X)
+        Button(master, text='Next Page >').pack(side=RIGHT)  # command=nextPage
+        Button(master, text='Back to dashboard').pack(side=RIGHT)  # command=back
+        
+>>>>>>> 39902c5e36bec554f3cef693d4febeb3e264594f
 
-root.mainloop()
+if __name__ == '__main__':
+    root=tb.Window()
+    root.title('Dashboard')
+    root.geometry('1280x720')
+    root.resizable(False,False)
+
+    unit = UnitContent(root)
+    unit.pack(expand=True, fill='both')
+
+    root.mainloop()
