@@ -10,7 +10,8 @@ mainFrame.pack(expand=True, fill='both',padx=10,pady=10)
 h1Font = ('Inter', 54, "bold")
 h2Font = ('Inter', 20, "bold")
 mainFrame.configure(bg='#D9D9D9')
-
+def nextPage():
+    print('y')
 
 
 unit_content='''nom = 'Gabriel'
@@ -18,7 +19,7 @@ age = '16'
 classe = '1ere'
 print(nom)
 
-Qu'affiche cette fonction? 
+Qu'affiche ce programme? 
 '''
 
 title=Label(mainFrame, text='QUIZ',font=h1Font)
@@ -34,6 +35,7 @@ def check():
     if "Gabriel" in entry1.get():
         completionStatus.set("Correct!")
         message.configure(fg='#00FF00')
+        prochainButton.pack(padx=15)
     else:
         completionStatus.set("Faux")
         message.configure(fg='#ff0000')
@@ -47,7 +49,7 @@ message.configure(bg="#D9D9D9")
 message.pack(side=LEFT)
 validerButton=Button(bottomFrame,image=valider,command=check)
 validerButton.configure(bg="#D9D9D9")
-validerButton.pack(side=RIGHT,padx=20)
-prochainButton=Button(bottomFrame,image=valider,command=check)
+validerButton.pack(side=LEFT,padx=15)
+prochainButton=Button(bottomFrame,image=valider,command=nextPage)
 
 root.mainloop()
