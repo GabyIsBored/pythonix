@@ -1,42 +1,115 @@
-unit_content='''# Comparaisons
+unit_content1:'''
+# Boucles: break/continue
 
-Python est capable d'effectuer toute une série de comparaisons entre le contenu de deux variables,
+Les instructions `break` et `continue` sont utilisées dans les boucles (`for` ou `while`) pour contrôler le flux d'exécution du programme.
 
-en renvoyant un **booleen** `True` ou `False` si la comparaisons est verifiee ou pas.
+### `break` :
 
-### Egalite et inegalites
+L'instruction `break` est utilisée pour sortir immédiatement d'une boucle, quel que soit l'état de la condition de la boucle. Cela permet de terminer prématurément l'exécution de la boucle.
 
-Pour tester l’égalité de contenu entre deux valeurs, on utilise l’operateur `==` :
+### Exemple avec une boucle `for` :
+'''
+code_block1:'''
+```
+for i in range(5):
+    if i == 3:
+        break
+    print(i)
+```
+'''
+unit_content2:'''
+Output :
+'''
+code_block2:'''
+```
+0
+1
+2
+```
+'''
+unit_content3:'''
+Dans cet exemple, la boucle `for` itère de 0 à 4. Lorsque `i` atteint la valeur 3, l'instruction `break` est rencontrée, et la boucle est immédiatement interrompue, sautant les itérations restantes.
 
-`>>> 2 == 3`  
+### Exemple avec une boucle `while` :
+'''
+code_block3:'''
+```
+count = 0
+while count < 5:
+    print(count)
+    if count == 2:
+        break
+    count += 1
 
-`>>> False` 
+```
+'''
+unit_content4:'''
+Output :
+'''
+code_block4:'''
+```
+0
+1
+2
+```
+'''
+unit_content5:'''
+Ici, la boucle `while` s'exécute jusqu'à ce que `count` atteigne 5. Lorsque `count` atteint 2, l'instruction `break` est exécutée, interrompant la boucle prématurément.
 
-`>>> 3 == 3`  
+### `continue` :
 
-`>>> True`    
+L'instruction `continue` est utilisée pour passer à l'itération suivante d'une boucle immédiatement, sautant le reste du bloc de code à l'intérieur de la boucle pour cette itération.
 
-Pour tester l’inégalité de contenu entre deux valeurs, on utilise l’operateur `!=` :
+### Exemple avec une boucle `for` :
+'''
+code_block5:'''
+```
+for i in range(5):
+    if i == 2:
+        continue
+    print(i)
+```
+'''
+unit_content6:'''
+Output :
+'''
+code_block6:'''
+```
+0
+1
+3
+4
 
-`>>> 2 != 3`  
+```
+'''
+unit_content7:'''
+Ici, lorsque `i` atteint la valeur 2, l'instruction `continue` est exécutée. Cela provoque le saut du reste du bloc de code à l'intérieur de la boucle pour cette itération, passant immédiatement à l'itération suivante.
 
-`>>> False` 
+### Exemple avec une boucle `while` :
+'''
+code_block7:'''
+```
+count = 0
+while count < 5:
+    count += 1
+    if count == 3:
+        continue
+    print(count)
+```
+'''
+unit_content8:'''
+Output :
+'''
+code_block8:'''
+```
+1
+2
+4
+5
+```
+'''
+unit_content9:'''
+Dans cet exemple, lorsque `count` atteint la valeur 3, l'instruction `continue` est exécutée, sautant l'impression de cette valeur et passant à l'itération suivante de la boucle `while`.
 
-### **Infériorité et supériorité, stricts ou larges**
-
-Pour savoir si un objet est:
-
-- **Strictement inférieur/superieur** à un autre, on utilise les operateurs `<` et `>` respectivement
-- **Inférieur ou egal/superieur ou egal** à un autre, on utilise les operateurs `<=` et `>=` respectivement
-
-`>>> 120 > 5` 
-
-`>>> False`      
-
-`>>> 3 <= 3`     
-
-`>>> True`      
-
-### Exercice
-
-x=250, y=120. Faire un programme qui donne `True, True, False` avec les operateurs `==, <, >=`'''
+REMARQUE: Il est conseilé de n’utiliser ces fonctions que lorsque necessaire, car elle peuvent rendre le code plus compliqué et moins lisible dans la plupart des cas  simplifier le programme afin de ne plus necessiter leurs utilisation
+'''

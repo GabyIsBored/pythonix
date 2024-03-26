@@ -1,111 +1,67 @@
-unit_content='''
-# Variables
+unit_content1:'''
+# Declarer un dictionnaire
 
-### Introduction aux variables
+Un dictionnaire Python est une collection d'éléments non ordonnés. Chaque élément est une paire clé-valeur, où chaque valeur a une clé unique qui nous permet de l’acceder.
 
-En programmation, une variable est un espace de stockage qui porte **un nom**, et a **une valeur.** 
+Syntaxe : défini avec des accolades **`{}`**, les paires clé-valeur sont séparées par des virgules et les clés et les valeurs par **`:`**:
+'''
+code_block1:'''
+```
+mon_dictionnaire = {'clé1': valeur1, 'clé2': valeur2, ...}
+```
+'''
+unit_content2:'''
+### **Accès aux Valeurs**
 
-Une variable peut être représentée comme un tiroir portant une étiquette dans lequel on peut ranger des données. Les variables permettent de conserver et de manipuler des données au cours de l’exécution d’un programme.
+Les valeurs dans un dictionnaire sont accessibles en utilisant la notation d'indexation avec la clé correspondante.
+'''
+code_block2:'''
+```
+eleves = {'premier': 'Jean', 'second': 'Paul', 'troisieme': 'Lea'}
+secondEleve= eleves['second']
+print(secondEleve) # Affiche 'Lea'
+```
+'''
+unit_content3:'''
+### **Modification des Valeurs**
 
-### Exemple 1
+Les valeurs dans un dictionnaire peuvent être modifiées en accédant à la clé et en lui attribuant une nouvelle valeur.
+'''
+code_block3:'''
+```
+eleves = {'premier': 'Jean', 'second': 'Paul', 'troisieme': 'Lea'}
+eleves['second'] = 'Elias'
+print(secondEleve) # Affiche 'Elias'
+```
+'''
+unit_content4:'''
+### **Ajout et Suppression d'Éléments**
 
-1`nom = “John”`
+Vous pouvez ajouter de nouvelles paires clé-valeur à un dictionnaire en assignant une valeur à une nouvelle clé. De même, vous pouvez supprimer des éléments en utilisant l'instruction **`del`** ou la méthode **`pop()`**.
+'''
+code_block4:'''
+```
+eleves = {'premier': Jean, 'second': Paul, 'troisieme': 'Lea'}
+del mon_dictionnaire["troisieme"]
+valeur_supprimée = eleves.pop("second")
+print(eleves) # Affiche {'premier': 'Jean'}
+print(valeur_supprimée) # Affiche 'Lea'
+```
+'''
+unit_content5:'''
+### **Parcours**
 
-2`age = 32`
+Vous pouvez parcourir un dictionnaire à l'aide de boucles **`for`**, généralement en itérant sur les clés, les valeurs ou les items (paires clé-valeur).
+'''
+code_block5:'''
+```
+for clé in mon_dictionnaire:
+    print(clé, "->", mon_dictionnaire[clé])
 
-Dans ce block de code, le tiroir **nom** a pour valeur “John” et le tiroir **âge** a pour valeur 32.
+for valeur in mon_dictionnaire.values():
+    print(valeur)
 
-Dans cet exemple, on utilise des guillemets pour indiquer que **John** n’est pas une variable mais bien du texte, aussi appelé chaîne de caractères en programmation.
-
-### Exemple 2
-
-1`John = “Wick”`
-
-2`nom = John`
-
-D’après vous, quelle est la valeur stockée dans la variable **nom ?**
-
-_____  <vérifier>
-
-### Exemple 3
-
-Maintenant qu’on a nos variables, on peut les afficher à l’aide de la fonction **print()**
-
-- **print** est le nom de la fonction que l’on va *appeler*
-- **print** est une fonction *native* qui permet d’afficher dans la console les *arguments* qui ont été passés
-- ce qu’il y a à l’intérieur des () correspond aux *paramètres* (ou *arguments*) de la fonction **print**.
-
-1`age = 32`
-
-2`John = “Wick”`
-
-3`nom = “John”`
-
-4`nom = John`
-
-5`print(nom)`
-
-Lorsque on exécute ce programme, on reçois une erreur.
-
-D’après vous, quelle ligne de code (le nombre à gauche) à causé cette erreur ?
-
-_____  <vérifier> (quand la bonne réponse est trouvée, ca ouvre ce qui suis)
-
-Maintenant que vous avez trouvé l’erreur, le code devrai ressembler à ça :
-
-1`age = 32`
-
-2`John = “Wick”`
-
-3`nom = “John”`
-
-4`print(nom)`
-
-Après l’exécution de ce programme, on voit dans la console le contenu (les données) stockées dans la variable **nom.**
-
->>>python [programme.py](http://programme.py)    <i>
-
-John
-
-### Nommer des variables
-
-- Quand on crée une variable, il est important que son nom corresponde à son usage ou à sa fonction dans le programme    <i>
-- Le nom d’une variable ne peut pas contenir d’espace    <i>
-- Le nom d’une variable ne peut pas être un nombre    <i>
-- Crée deux variables ayant le même nom résultera en une erreur    <i>
-- Pour des raisons de compréhension, il est préférable de favoriser des noms en anglais    <i>
-- Il est préférable d’éviter les noms de variables trop long    <i>
-- Il est préférable de ne pas utiliser d’accent dans le nom d’une variable    <i>
-- L’utilisation de la “casse significative” :
-
-### La casse significative
-
-La notion de "casse significative" se réfère à l'utilisation intentionnelle de majuscules ou de minuscules dans les noms de variables pour transmettre des informations sur leur rôle ou leur nature. En spécifiant une seule casse significative vous améliorez la lisibilité de votre code et facilitez la compréhension des variables par d'autres développeurs.
-
-**La casse significative contribue ainsi à rendre le code plus clair et cohérent.**
-
-Vous pouvez retenir ces deux conventions courantes :
-
-- La **camelCase**
-    
-    Les mots commencent par des majuscules, sauf le premier.
-    
-    Exemple : nomDeVariable
-    
-
-- La **snake_case**
-    
-    Les mots sont séparés par des underscores (tirets du 8) et sont généralement en minuscules.
-    
-    Exemple : nom_de_variable
-    
-
-### Exercice n°1
-
-Consigne : 
-
-### Exercice n°2
-
-Consigne :
-
+for clé, valeur in mon_dictionnaire.items():
+    print(clé, "->", valeur)
+```
 '''
