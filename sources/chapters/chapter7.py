@@ -3,6 +3,14 @@ import ttkbootstrap as tb
 from ttkbootstrap.scrolled import ScrolledFrame
 from PIL import Image, ImageTk
 
+from chapter7.unit1 import mainFrame as frame_unit1
+from chapter7.unit2 import mainFrame as frame_unit2
+from chapter7.unit3 import mainFrame as frame_unit3
+from chapter7.quiz1 import mainFrame as frame_quiz1
+from chapter7.quiz2 import mainFrame as frame_quiz2
+from chapter7.quiz3 import mainFrame as frame_quiz3
+from chapter7.megaquiz import mainFrame as frame_megaquiz
+
 root=tb.Window(themename='solar')
 root.title('el1')
 root.geometry('1280x720')
