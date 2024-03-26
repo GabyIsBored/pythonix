@@ -44,12 +44,25 @@ Dans cet exemple, la boucle `while` continue d'exécuter le bloc de code tant qu
 Il est important de faire attention à éviter les boucles infinies, où la condition reste toujours vraie, car cela peut entraîner un programme qui ne se termine jamais. Pour éviter cela, assurez-vous que la condition de la boucle `while` finit par devenir `False` à un moment donné.
 '''
 
-widget = Text(mainFrame,height='20')
-setTextWidget(widget, unit_content, 'p')
-rwidget = Text(mainFrame,height='20')
-setTextWidget(rwidget, remarques, 'r')
-widget.pack(fill=X,side=LEFT)
-rwidget.pack(fill=X,side=RIGHT)
+unit_content1Text = Text(mainFrame,height='20')
+code_block1Text = Text(mainFrame,height='20')
+unit_content2Text = Text(mainFrame,height='20')
+code_block2Text = Text(mainFrame,height='20')
+unit_content3Text = Text(mainFrame,height='20')
+
+
+setTextWidget(unit_content1Text,unit_content1, 'p')
+setTextWidget(code_block1Text,code_block1, 'c')
+setTextWidget(unit_content2Text,unit_content2, 'p')
+setTextWidget(code_block2Text,code_block2, 'c')
+setTextWidget(unit_content3Text,unit_content3, 'p')
+
+
+unit_content1Text.pack(fill=X,side=LEFT)
+code_block1Text.pack(fill=X,side=LEFT)
+unit_content2Text.pack(fill=X,side=LEFT)
+code_block2Text.pack(fill=X,side=LEFT)
+unit_content3Text.pack(fill=X,side=LEFT)
 Button(mainFrame,text='Next Page >',).pack(side=RIGHT)#command=nextPage
 Button(mainFrame,text='Back to dashboard',).pack(side=RIGHT)#command=back
 

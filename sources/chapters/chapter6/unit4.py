@@ -113,3 +113,63 @@ Dans cet exemple, lorsque `count` atteint la valeur 3, l'instruction `continue` 
 
 REMARQUE: Il est conseilé de n’utiliser ces fonctions que lorsque necessaire, car elle peuvent rendre le code plus compliqué et moins lisible dans la plupart des cas  simplifier le programme afin de ne plus necessiter leurs utilisation
 '''
+unit_content1Text = Text(mainFrame,height='20')
+code_block1Text = Text(mainFrame,height='20')
+unit_content2Text = Text(mainFrame,height='20')
+code_block2Text = Text(mainFrame,height='20')
+unit_content3Text = Text(mainFrame,height='20')
+code_block3Text = Text(mainFrame,height='20')
+unit_content4Text = Text(mainFrame,height='20')
+code_block4Text = Text(mainFrame,height='20')
+unit_content5Text = Text(mainFrame,height='20')
+code_block5Text = Text(mainFrame,height='20')
+unit_content6Text = Text(mainFrame,height='20')
+code_block6Text = Text(mainFrame,height='20')
+unit_content7Text = Text(mainFrame,height='20')
+code_block7Text = Text(mainFrame,height='20')
+unit_content8Text = Text(mainFrame,height='20')
+code_block8Text = Text(mainFrame,height='20')
+unit_content9Text = Text(mainFrame,height='20')
+
+
+
+setTextWidget(unit_content1Text,unit_content1, 'p')
+setTextWidget(code_block1Text,code_block1, 'c')
+setTextWidget(unit_content2Text,unit_content2, 'p')
+setTextWidget(code_block2Text,code_block2, 'c')
+setTextWidget(unit_content3Text,unit_content3, 'p')
+setTextWidget(code_block3Text,code_block3, 'c')
+setTextWidget(unit_content4Text,unit_content4, 'p')
+setTextWidget(code_block4Text,code_block4, 'c')
+setTextWidget(unit_content5Text,unit_content5, 'p')
+setTextWidget(code_block5Text,code_block5, 'c')
+setTextWidget(unit_content6Text,unit_content6, 'p')
+setTextWidget(code_block6Text,code_block6, 'c')
+setTextWidget(unit_content7Text,unit_content7, 'p')
+setTextWidget(code_block7Text,code_block7, 'c')
+setTextWidget(unit_content8Text,unit_content8, 'p')
+setTextWidget(code_block8Text,code_block8, 'c')
+setTextWidget(unit_content9Text,unit_content9, 'p')
+
+
+
+unit_content1Text.pack(fill=X,side=LEFT)
+code_block1Text.pack(fill=X,side=LEFT)
+unit_content2Text.pack(fill=X,side=LEFT)
+code_block2Text.pack(fill=X,side=LEFT)
+unit_content3Text.pack(fill=X,side=LEFT)
+code_block3Text.pack(fill=X,side=LEFT)
+unit_content4Text.pack(fill=X,side=LEFT)
+code_block4Text.pack(fill=X,side=LEFT)
+unit_content5Text.pack(fill=X,side=LEFT)
+code_block5Text.pack(fill=X,side=LEFT)
+unit_content6Text.pack(fill=X,side=LEFT)
+code_block6Text.pack(fill=X,side=LEFT)
+unit_content7Text.pack(fill=X,side=LEFT)
+code_block7Text.pack(fill=X,side=LEFT)
+unit_content8Text.pack(fill=X,side=LEFT)
+code_block8Text.pack(fill=X,side=LEFT)
+unit_content9Text.pack(fill=X,side=LEFT)
+Button(mainFrame,text='Next Page >',).pack(side=RIGHT)#command=nextPage
+Button(mainFrame,text='Back to dashboard',).pack(side=RIGHT)#command=back
+root.mainloop()
