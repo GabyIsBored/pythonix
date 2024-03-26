@@ -1,7 +1,9 @@
+# [DISCONTINUED]
 from tkinter import *
 import ttkbootstrap as tb
 from ttkbootstrap.scrolled import ScrolledFrame
 from PIL import Image, ImageTk
+
 
 root=tb.Window(themename='solar')
 root.title('el1')

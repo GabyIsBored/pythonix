@@ -1,14 +1,14 @@
 from markdown import setTextWidget
 from tkinter import *
 import ttkbootstrap as tb
+from ttkbootstrap.scrolled import ScrolledFrame
 root=tb.Window()
 root.title('Dashboard')
 root.geometry('1280x720')
 root.resizable(False,False)
-mainFrame=Frame(root)
+mainFrame=ScrolledFrame(root)
 mainFrame.pack(expand=True, fill='both',padx=10,pady=10)
 h1Font = ('Inter', 34, "bold")
-mainFrame.configure(bg='#D9D9D9')
 
 unit_content1='''# Variables
 
@@ -21,10 +21,9 @@ Une variable peut être représentée comme un tiroir portant une étiquette dan
 ### Exemple 1
 '''
 code_block1='''
-```python
+python
 nom = “John”
 age = 32
-```
 '''
 unit_content2='''
 
@@ -41,43 +40,35 @@ Maintenant qu’on a nos variables, on peut les afficher à l’aide de la fonct
 - ce qu’il y a à l’intérieur des () correspond aux *paramètres* (ou *arguments*) de la fonction **print**.
 '''
 code_block2='''
-```python
+python
 nom = “John”
 print(nom)
-```
 '''
 unit_content3='''
-Après l’exécution de ce programme, on voit dans la console le contenu (les données) stockées dans la variable **nom.**
+Après l’exécution de ce programme, on voit dans la console le contenu (les données) stockées dans la variable nom.
 
-### Nommer des variables
+Nommer des variables
+Quand on crée une variable, il est important que son nom corresponde à son usage ou à sa fonction dans le programme
+Le nom d’une variable ne peut pas contenir d’espace
+Le nom d’une variable ne peut pas être un nombre
+Crée deux variables ayant le même nom résultera en une erreur
+Il est préférable d’éviter les noms de variables trop long
+Il est préférable de ne pas utiliser d’accent dans le nom d’une variable
 
-- Quand on crée une variable, il est important que son nom corresponde à son usage ou à sa fonction dans le programme
-- Le nom d’une variable ne peut pas contenir d’espace
-- Le nom d’une variable ne peut pas être un nombre
-- Crée deux variables ayant le même nom résultera en une erreur
-- Il est préférable d’éviter les noms de variables trop long
-- Il est préférable de ne pas utiliser d’accent dans le nom d’une variable
-
-### La casse significative
-
+La casse significative
 La notion de "casse significative" se réfère à l'utilisation intentionnelle de majuscules ou de minuscules dans les noms de variables pour transmettre des informations sur leur rôle ou leur nature. En spécifiant une seule casse significative vous améliorez la lisibilité de votre code et facilitez la compréhension des variables par d'autres développeurs.
 
-**La casse significative contribue ainsi à rendre le code plus clair et cohérent.**
+La casse significative contribue ainsi à rendre le code plus clair et cohérent.
 
 Vous pouvez retenir ces deux conventions courantes :
 
-- La **camelCase**
-    
-    Les mots commencent par des majuscules, sauf le premier.
-    
-    **Exemple** : `nomDeVariable`
-    
+La camelCase
+  Les mots commencent par des majuscules, sauf le premier.
+  Exemple : nomDeVariable
 
-- La **snake_case**
-    
-    Les mots sont séparés par des underscores (tirets du 8) et sont généralement en minuscules.
-    
-    **Exemple : `nom_de_variable`**'''
+La snake_case
+  Les mots sont séparés par des underscores (tirets du 8) et sont généralement en minuscules.
+Exemple : nom_de_variable'''
 unit_content1Text = Text(mainFrame,height='20')
 code_block1Text = Text(mainFrame,height='20')
 unit_content2Text = Text(mainFrame,height='20')
@@ -88,11 +79,11 @@ setTextWidget(code_block1Text,code_block1, 'c')
 setTextWidget(unit_content2Text,unit_content2, 'p')
 setTextWidget(code_block1Text,code_block2, 'c')
 setTextWidget(unit_content2Text,unit_content3, 'p')
-unit_content1Text.pack(fill=X,side=LEFT)
-code_block1Text.pack(fill=X,side=LEFT)
-unit_content2Text.pack(fill=X,side=LEFT)
-code_block2Text.pack(fill=X,side=LEFT)
-unit_content3Text.pack(fill=X,side=LEFT)
+unit_content1Text.pack(fill=X)
+code_block1Text.pack(fill=X)
+unit_content2Text.pack(fill=X)
+code_block2Text.pack(fill=X)
+unit_content3Text.pack(fill=X)
 Button(mainFrame,text='Next Page >',).pack(side=RIGHT)#command=nextPage
 Button(mainFrame,text='Back to dashboard',).pack(side=RIGHT)#command=back
 
