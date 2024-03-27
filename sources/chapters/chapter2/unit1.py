@@ -1,8 +1,7 @@
 from markdown import setTextWidget
-from tkinter import *
-import ttkbootstrap as tb
+import tkinter as tk
 from ttkbootstrap.scrolled import ScrolledFrame
-root=tb.Window()
+root=tk.Tk()
 root.title('Dashboard')
 root.geometry('1280x720')
 root.resizable(False,False)
@@ -69,22 +68,22 @@ La camelCase
 La snake_case
   Les mots sont séparés par des underscores (tirets du 8) et sont généralement en minuscules.
 Exemple : nom_de_variable'''
-unit_content1Text = Text(mainFrame,height='20')
-code_block1Text = Text(mainFrame,height='20')
-unit_content2Text = Text(mainFrame,height='20')
-code_block2Text = Text(mainFrame,height='20')
-unit_content3Text = Text(mainFrame,height='20')
+unit_content1Text = tk.Text(mainFrame,height='20')
+code_block1Text = tk.Text(mainFrame,height='20')
+unit_content2Text = tk.Text(mainFrame,height='20')
+code_block2Text = tk.Text(mainFrame,height='20')
+unit_content3Text = tk.Text(mainFrame,height='20')
 setTextWidget(unit_content1Text,unit_content1, 'p')
 setTextWidget(code_block1Text,code_block1, 'c')
 setTextWidget(unit_content2Text,unit_content2, 'p')
 setTextWidget(code_block1Text,code_block2, 'c')
 setTextWidget(unit_content2Text,unit_content3, 'p')
-unit_content1Text.pack(fill=X)
-code_block1Text.pack(fill=X)
-unit_content2Text.pack(fill=X)
-code_block2Text.pack(fill=X)
-unit_content3Text.pack(fill=X)
-Button(mainFrame,text='Next Page >',).pack(side=RIGHT)#command=nextPage
-Button(mainFrame,text='Back to dashboard',).pack(side=RIGHT)#command=back
+unit_content1Text.pack(fill=tk.X)
+code_block1Text.pack(fill=tk.X)
+unit_content2Text.pack(fill=tk.X)
+code_block2Text.pack(fill=tk.X)
+unit_content3Text.pack(fill=tk.X)
+tk.Button(mainFrame,text='Next Page >',).pack(side=tk.RIGHT)#command=nextPage
+tk.Button(mainFrame,text='Back to dashboard',).pack(side=tk.RIGHT)#command=back
 
 root.mainloop()

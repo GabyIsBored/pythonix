@@ -1,22 +1,21 @@
-from tkinter import *
-import ttkbootstrap as tb
+import tkinter as tk
 from ttkbootstrap.scrolled import ScrolledFrame
 from PIL import Image, ImageTk
 
 from chapter7.unit1 import mainFrame as frame_unit1
 from chapter7.unit2 import mainFrame as frame_unit2
 from chapter7.unit3 import mainFrame as frame_unit3
-from chapter7.quiz1 import mainFrame as frame_quiz1
-from chapter7.quiz2 import mainFrame as frame_quiz2
-from chapter7.quiz3 import mainFrame as frame_quiz3
-from chapter7.megaquiz import mainFrame as frame_megaquiz
+# from chapter7.quiz1 import mainFrame as frame_quiz1
+# from chapter7.quiz2 import mainFrame as frame_quiz2
+# from chapter7.quiz3 import mainFrame as frame_quiz3
+# from chapter7.megaquiz import mainFrame as frame_megaquiz
 
-root=tb.Window(themename='solar')
-root.title('el1')
-root.geometry('1280x720')
-root.resizable(False,False)
+App=tk.Tk()
+App.title('el1')
+App.geometry('1280x720')
+App.resizable(False,False)
 
-mainFrame=ScrolledFrame(root)
+mainFrame=ScrolledFrame(App)
 mainFrame.autohide_scrollbar()
 mainFrame.pack(expand=True, fill='both')
 
@@ -36,11 +35,11 @@ backgroundImage.paste(n1, (20, 40), n1)
 backgroundImage.paste(n2, (40, 80), n2)
 
 tkimage = ImageTk.PhotoImage(backgroundImage)
-background = tb.Label(mainFrame,image=tkimage)
+background = tk.Label(mainFrame,image=tkimage)
 background.pack()
 
 
-el1=Button(mainFrame,command=lambda:enter('unit1'))
+el1=tk.Button(mainFrame,command=lambda:enter('unit1'))
 el1.place(x=20,y=40)
 
 
@@ -50,6 +49,6 @@ backgroundImage.paste(n1, (20, 40), n1)
 
 
 
-root.mainloop()
+App.mainloop()
 
 #https://stackoverflow.com/questions/23876447/tkinter-overlay-foreground-image-on-top-of-a-background-image-with-transparency
