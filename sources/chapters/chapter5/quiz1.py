@@ -14,11 +14,13 @@ def nextPage():
     print('y')
 
 
-unit_content='''**Trouvez si le joueur1 a plus de points que le joueur 2, et si ce total est egal au maximum**
-**par 7:**
+unit_content='''**Ajouter 'souris' entre 'chien' et 'chat', enlever le 4eme element, puis afficher les 3 premiers **
+**elements**
 
-liste=[]
-
+zoo=['chien','chat','perroquet','lapin']
+zoo.(,'souris)
+zoo.('souris')
+print( zoo , zoo , zoo )
 '''
 
 title=Label(mainFrame, text='QUIZ',font=h1Font)
@@ -29,18 +31,24 @@ setTextWidget(widget, unit_content, 'c')
 widget.pack()
 
 entry1 = Entry(mainFrame)
-widget.window_create(7.14, window=entry1)
+widget.window_create(4.4, window=entry1)
 entry2 = Entry(mainFrame)
-widget.window_create(8.6, window=entry2)
+widget.window_create(4.6, window=entry2)
 entry3 = Entry(mainFrame)
-widget.window_create(8.11, window=entry3)
+widget.window_create(5.4, window=entry3)
 entry4 = Entry(mainFrame)
-widget.window_create(8.15, window=entry4)
+widget.window_create(6.11, window=entry4)
+entry5 = Entry(mainFrame)
+widget.window_create(6.17, window=entry5)
+entry6 = Entry(mainFrame)
+widget.window_create(6.24, window=entry6)
+
+
 
 
 
 def check():
-    if ">" in entry1.get() and "max" in entry2.get() and "joueur1" or 'joueur2' in entry3.get() and "joueur1" or 'joueur2' in entry3.get() :
+    if "insert" in entry1.get() and "1" in entry2.get() and "remove" in entry3.get() and "1" in entry4.get() and "2" in entry5.get() and "3" in entry6.get() :
         completionStatus.set("Correct!")
         message.configure(fg='#00FF00')
         prochainButton.pack(padx=15)
