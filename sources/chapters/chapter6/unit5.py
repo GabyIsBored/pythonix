@@ -1,11 +1,10 @@
 from markdown import setTextWidget
-from tkinter import *
-import ttkbootstrap as tb
-root=tb.Window()
+import tkinter as tk
+root=tk.Tk()
 root.title('Dashboard')
 root.geometry('1280x720')
 root.resizable(False,False)
-mainFrame=Frame(root)
+mainFrame=tk.Frame(root)
 mainFrame.pack(expand=True, fill='both',padx=10,pady=10)
 h1Font = ('Inter', 34, "bold")
 mainFrame.configure(bg='#D9D9D9')
@@ -58,14 +57,14 @@ code_block3='''
 unit_content4='''
 Chaque ligne contient trois étoiles, et cela est généré en utilisant des boucles imbriquées pour itérer sur les lignes et les colonnes du motif.
 '''
-unit_content1Text = Text(mainFrame,height='20')
-code_block1Text = Text(mainFrame,height='20')
-unit_content2Text = Text(mainFrame,height='20')
-code_block2Text = Text(mainFrame,height='20')
-unit_content3Text = Text(mainFrame,height='20')
-code_block3Text = Text(mainFrame,height='20')
-unit_content4Text = Text(mainFrame,height='20')
-code_block4Text = Text(mainFrame,height='20')
+unit_content1Text = tk.Text(mainFrame,height='20')
+code_block1Text = tk.Text(mainFrame,height='20')
+unit_content2Text = tk.Text(mainFrame,height='20')
+code_block2Text = tk.Text(mainFrame,height='20')
+unit_content3Text = tk.Text(mainFrame,height='20')
+code_block3Text = tk.Text(mainFrame,height='20')
+unit_content4Text = tk.Text(mainFrame,height='20')
+code_block4Text = tk.Text(mainFrame,height='20')
 
 setTextWidget(unit_content1Text,unit_content1, 'p')
 setTextWidget(code_block1Text,code_block1, 'c')
@@ -76,14 +75,14 @@ setTextWidget(code_block3Text,code_block2, 'c')
 setTextWidget(unit_content4Text,unit_content3, 'p')
 
 
-unit_content1Text.pack(fill=X,side=LEFT)
-code_block1Text.pack(fill=X,side=LEFT)
-unit_content2Text.pack(fill=X,side=LEFT)
-code_block2Text.pack(fill=X,side=LEFT)
-unit_content3Text.pack(fill=X,side=LEFT)
-code_block4Text.pack(fill=X,side=LEFT)
-unit_content4Text.pack(fill=X,side=LEFT)
+unit_content1Text.pack(fill=tk.X,side=tk.LEFT)
+code_block1Text.pack(fill=tk.X,side=tk.LEFT)
+unit_content2Text.pack(fill=tk.X,side=tk.LEFT)
+code_block2Text.pack(fill=tk.X,side=tk.LEFT)
+unit_content3Text.pack(fill=tk.X,side=tk.LEFT)
+code_block4Text.pack(fill=tk.X,side=tk.LEFT)
+unit_content4Text.pack(fill=tk.X,side=tk.LEFT)
 
-Button(mainFrame,text='Next Page >',).pack(side=RIGHT)#command=nextPage
-Button(mainFrame,text='Back to dashboard',).pack(side=RIGHT)#command=back
+tk.Button(mainFrame,text='Next Page >',).pack(side=tk.RIGHT)#command=nextPage
+tk.Button(mainFrame,text='Back to dashboard',).pack(side=tk.RIGHT)#command=back
 root.mainloop()

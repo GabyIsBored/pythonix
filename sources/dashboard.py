@@ -1,39 +1,38 @@
-from tkinter import *
-import ttkbootstrap as tb
+import tkinter as tk
 
 
-root=tb.Window(themename='solar')
-root.title('Dashboard')
-root.geometry('1280x720')
-root.resizable(False,False)
+App = tk.Tk()
+App.title('Dashboard')
+App.geometry('1280x720')
+App.resizable(False,False)
 
-mainFrame=tb.Frame(root)
+mainFrame = tk.Frame(App, background='#002b36')
 mainFrame.pack(expand=True, fill='both')
 
 # Assets
-menuIcon=PhotoImage(file='sources/icons/menu-burger.png').subsample(12, 12)
-rocketIcon=PhotoImage(file='sources/icons/rocket-lunch.png').subsample(11, 11)
+menuIcon = tk.PhotoImage(file='sources/icons/menu-burger.png').subsample(12, 12)
+rocketIcon = tk.PhotoImage(file='sources/icons/rocket-lunch.png').subsample(11, 11)
 
-commencerImg=PhotoImage(file='sources/assets/Dashboard/commencer.png')
-continuerImg=PhotoImage(file='sources/assets/Dashboard/continuer.png')
-dashboardImg=PhotoImage(file='sources/assets/Dashboard/dashboard.png')
-fleche_dImg=PhotoImage(file='sources/assets/Dashboard/fleche_d.png')
-fleche_gImg=PhotoImage(file='sources/assets/Dashboard/fleche_g.png')
-fondImg=PhotoImage(file='sources/assets/Dashboard/fond.png')
-pourcentageImg=PhotoImage(file='sources/assets/Dashboard/pourcentage.png')
-pourcentage_reverseImg=PhotoImage(file='sources/assets/Dashboard/pourcentage_reverse.png')
-rectangle_chapitreImg=PhotoImage(file='sources/assets/Dashboard/rectangle_chapitre.png')
-serpent_haut_gImg=PhotoImage(file='sources/assets/Dashboard/serpent_haut_g.png')
+commencerImg = tk.PhotoImage(file='sources/assets/Dashboard/commencer.png')
+continuerImg = tk.PhotoImage(file='sources/assets/Dashboard/continuer.png')
+dashboardImg = tk.PhotoImage(file='sources/assets/Dashboard/dashboard.png')
+fleche_dImg = tk.PhotoImage(file='sources/assets/Dashboard/fleche_d.png')
+fleche_gImg = tk.PhotoImage(file='sources/assets/Dashboard/fleche_g.png')
+fondImg = tk.PhotoImage(file='sources/assets/Dashboard/fond.png')
+pourcentageImg= tk.PhotoImage(file='sources/assets/Dashboard/pourcentage.png')
+pourcentage_reverseImg = tk.PhotoImage(file='sources/assets/Dashboard/pourcentage_reverse.png')
+rectangle_chapitreImg = tk.PhotoImage(file='sources/assets/Dashboard/rectangle_chapitre.png')
+serpent_haut_gImg = tk.PhotoImage(file='sources/assets/Dashboard/serpent_haut_g.png')
 
 font = ('Yu Gothic Ui Light', 12)
 h1Font = ('Inter', 34, "bold")
 h3Font = ('Inter', 20, "bold")
 pFont = ('Inter', 9, "bold")
 
-s = tb.Style()
-s.configure('My.TFrame', background='white')
+# s = tb.Style()
+# s.configure('My.TFrame', background='white')
 
-i=0
+i = 0
 chapitres=['Introduction\n','Variables \net affectations','Arithmetique \net comparaisons','Conditions\n','Boucles\n',
 		   'Boucles avancees\n','Fonctions\n','Tableaux\n','Dictionnaires \net Tuples','‘Import’ \net Modules']
 progressions=[0,0,0,0,0,0,0,0,0,0]
@@ -64,22 +63,22 @@ def change_page(pageName):
 	new_mainFrame = getattr(page_module, 'mainFrame', None)
 	if new_mainFrame:
         # Update mainFrame
-		mainFrame = new_mainFrame(root)
+		mainFrame = new_mainFrame(App)
         # Re-pack the mainFrame with the new content
 		mainFrame.pack()
 # NAVBAR
 
-days = tb.Label(mainFrame,text='0',font=h3Font)
+days = tk.Label(mainFrame,text='0',font=h3Font)
 days.place(x=1170,y=15)
 
-rocket = tb.Label(mainFrame, image=rocketIcon)
+rocket = tk.Label(mainFrame, image=rocketIcon)
 rocket.place(x=1200,y=15)
 
 
 # CONTENT
 
-dashboard = tb.Canvas(mainFrame, width=dashboardImg.width(), height=dashboardImg.height())
-dashboard.create_image(0, 0, anchor=NW, image=dashboardImg)
+dashboard = tk.Canvas(mainFrame, width=dashboardImg.width(), height=dashboardImg.height())
+dashboard.create_image(0, 0, anchor=tk.NW, image=dashboardImg)
 dashboard.grid(row=0,column=0,columnspan=7,sticky='ns',pady=(50,0))  
 
 # LOGIQUE FLECHE 
@@ -95,40 +94,40 @@ def move(n):
 		i-=n
 
 # FLECHE GAUCHE
-fleche_g=Button(mainFrame,bg="#002b36",image=fleche_gImg,command=lambda:move(-1))
+fleche_g=tk.Button(mainFrame, relief='flat', activebackground='#002b36', background='#002b36', image=fleche_gImg,command=lambda:move(-1))
 fleche_g.configure(bg= "#002b36")
 fleche_g.grid(row=1,column=0) 
 
 # FLECHE DROITE
 
-fleche_d=Button(mainFrame,bg="#002b36",image=fleche_dImg,command=lambda:move(1))
+fleche_d=tk.Button(mainFrame, relief='flat', activebackground='#002b36', background='#002b36', image=fleche_dImg,command=lambda:move(1))
 fleche_d.configure(bg= "#002b36")
 fleche_d.grid(row=1,column=6) 
 
 # CHAPITRE
-class Chapter(tb.Frame):
+class Chapter(tk.Frame):
 	def __init__(self, parent,columnNum,rowNum,chapName,prog):
 		super().__init__(master = parent)
-		rectangle_chapitre = tb.Canvas(mainFrame, width=rectangle_chapitreImg.width(), height=rectangle_chapitreImg.height())
-		rectangle_chapitre.create_image(0, 0, anchor=NW, image=rectangle_chapitreImg)
+		rectangle_chapitre = tk.Canvas(mainFrame, width=rectangle_chapitreImg.width(), height=rectangle_chapitreImg.height())
+		rectangle_chapitre.create_image(0, 0, anchor=tk.NW, image=rectangle_chapitreImg)
 		rectangle_chapitre.grid(row=rowNum,column=columnNum) 
 		
-		chapitreFrame=tb.Frame(mainFrame, width=rectangle_chapitreImg.width(), height=rectangle_chapitreImg.height(),style='My.TFrame')
+		chapitreFrame=tk.Frame(mainFrame, width=rectangle_chapitreImg.width(), height=rectangle_chapitreImg.height())
 		chapitreFrame.grid(row=rowNum,column=columnNum)
 		
-		tb.Label(chapitreFrame,text=chapName,font=h3Font,background ='white',foreground='#002b36',justify="center").pack(pady = (0, 30))
+		tk.Label(chapitreFrame,text=chapName,font=h3Font,background ='white',foreground='#002b36',justify="center").pack(pady = (0, 30))
 		
-		pourcentage = tb.Canvas(chapitreFrame, width=pourcentageImg.width(), height=pourcentageImg.height())
+		pourcentage = tk.Canvas(chapitreFrame, width=pourcentageImg.width(), height=pourcentageImg.height())
 		pourcentage.configure(bg= "white")
-		pourcentage.create_image(0, 0, anchor=NW, image=pourcentageImg)
-		pourcentage.create_image(0, 220-(prog*2.2), anchor=NW, image=pourcentage_reverseImg)
+		pourcentage.create_image(0, 0, anchor=tk.NW, image=pourcentageImg)
+		pourcentage.create_image(0, 220-(prog*2.2), anchor=tk.NW, image=pourcentage_reverseImg)
 		pourcentage.pack(fill='y')
 	
 
 
-		tb.Label(chapitreFrame,text=str(prog)+'%',font=h3Font,background ='white',foreground='#002b36',justify="center").pack()
+		tk.Label(chapitreFrame,text=str(prog)+'%',font=h3Font,background ='white',foreground='#002b36',justify="center").pack()
 		
-		chapitreButton=Button(chapitreFrame)
+		chapitreButton=tk.Button(chapitreFrame)
 		if prog==0: 
 			chapitreButton.configure(bg= "white",image=commencerImg,command=lambda:change_page('test'))
 		else:
@@ -140,4 +139,4 @@ Chapter(mainFrame,3,1,chapitres[1],progressions[1])
 Chapter(mainFrame,5,1,chapitres[2],progressions[2])
 
 
-root.mainloop()
+App.mainloop()
