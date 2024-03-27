@@ -15,6 +15,8 @@ unit_content1='''# Variables
 
 En programmation, une variable est un espace de stockage qui porte **un nom**, et a **une valeur.** 
 
+Cette valeur peut etre un nombre fit un int, ou une chaine de caractere dite une string, qu’on mets entre guillemets 
+
 Une variable peut être représentée comme un tiroir portant une étiquette dans lequel on peut ranger des données. Les variables permettent de conserver et de manipuler des données au cours de l’exécution d’un programme.
 
 ### Exemple 1
