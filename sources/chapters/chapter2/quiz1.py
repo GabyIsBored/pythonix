@@ -14,10 +14,11 @@ def nextPage():
     print('y')
 
 
-unit_content='''nom = 'Gabriel'
-age = '16'
-classe = '1ere'
-print(nom)
+unit_content='''nombreEleves = 15
+participants = nombreEleves
+nombreEleves = 16
+nombreEleves = participants
+print(nombreEleves)
 
 Qu'affiche ce programme? 
 '''
@@ -32,14 +33,15 @@ widget.pack()
 entry1 = Entry(mainFrame)
 widget.window_create(6.33, window=entry1)
 def check():
-    if "Gabriel" in entry1.get():
+    if "15" in entry1.get():
         completionStatus.set("Correct!")
         message.configure(fg='#00FF00')
         prochainButton.pack(padx=15)
     else:
         completionStatus.set("Faux")
         message.configure(fg='#ff0000')
-valider=PhotoImage(file='sources/assets/ElementDivers/Valider.png').subsample(2,2)
+valider=PhotoImage(file='sources/assets/ElementDivers/valider.png').subsample(2,2)
+continuer=PhotoImage(file='sources/assets/ElementDivers/continuer.png').subsample(2,2)
 bottomFrame=Frame(mainFrame)
 bottomFrame.configure(bg="#D9D9D9")
 bottomFrame.pack(pady=15)
@@ -50,6 +52,7 @@ message.pack(side=LEFT)
 validerButton=Button(bottomFrame,image=valider,command=check)
 validerButton.configure(bg="#D9D9D9")
 validerButton.pack(side=LEFT,padx=15)
-prochainButton=Button(bottomFrame,image=valider,command=nextPage)
+prochainButton=Button(bottomFrame,image=continuer,command=nextPage)
+prochainButton.configure(bg="#D9D9D9")
 
 root.mainloop()
