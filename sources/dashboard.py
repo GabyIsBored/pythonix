@@ -96,12 +96,12 @@ class Chapter(tk.Frame):
 	def __init__(self, parent,columnNum,rowNum,chapName,prog,fileName):
 		super().__init__(master = parent)
 		rectangle_chapitre = tk.Canvas(mainFrame, width=rectangle_chapitreImg.width(), height=rectangle_chapitreImg.height(),highlightthickness=0)
-		rectangle_chapitre.configure(bg="#D9D9D9")
+		rectangle_chapitre.configure(bg="#002b36")
 		rectangle_chapitre.create_image(0, 0, anchor=tk.NW, image=rectangle_chapitreImg)
 		rectangle_chapitre.grid(row=rowNum,column=columnNum) 
 		
 		chapitreFrame=tk.Frame(mainFrame, width=rectangle_chapitreImg.width(), height=rectangle_chapitreImg.height(),highlightthickness=0)
-		chapitreFrame.configure(bg="#D9D9D9")
+		chapitreFrame.configure(bg="white")
 		chapitreFrame.grid(row=rowNum,column=columnNum)
 		
 		tk.Label(chapitreFrame,text=chapName,font=h3Font,background ='white',foreground='#002b36',justify="center",highlightthickness=0).pack(pady = (0, 30))
@@ -118,7 +118,7 @@ class Chapter(tk.Frame):
 		
 		chapitreButton=tk.Button(chapitreFrame)
 		if prog==0: 
-			chapitreButton.configure(bg= "white",image=commencerImg,command=lambda:change_page(fileName))
+			chapitreButton.configure(bg= "white",bd=0,image=commencerImg,command=lambda:change_page(fileName))
 		else:
 			chapitreButton.configure(bg= "white",image=continuerImg,command=lambda:change_page(fileName))
 		chapitreButton.pack(pady = (30, 0))	

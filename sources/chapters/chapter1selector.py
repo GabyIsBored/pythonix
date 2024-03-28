@@ -36,7 +36,6 @@ class ChapterFrame(tk.Frame):
         self.canvas.pack()
 
     def loadSummary(self,event,unitName):
-        print(event)
         self.coordonnees=[]
         if unitName=='unit1':
             self.coordonnees=[(500-70, 500+60),(500, 560+120),(330, 500)]
@@ -52,7 +51,7 @@ class ChapterFrame(tk.Frame):
         self.canvas.create_image(self.coordonnees[2][0],self.coordonnees[2][1], image=self.fond, anchor="nw")
         self.canvas.tag_raise(titleText)
         self.canvas.tag_raise(commencerBtn)
-        self.canvas.tag_bind(commencerBtn, "<Button-1>", lambda event: self.loadSummary(event, self.unitFile))
+        self.canvas.tag_bind(commencerBtn, "<Button-1>", lambda event: self.loadUnit(event, self.unitFile))
 
     def loadAssets(self):
         self.background=tk.PhotoImage(file='sources/assets/ChapterSelectionBackgrounds/Introduction.png')
@@ -66,7 +65,7 @@ class ChapterFrame(tk.Frame):
         self.commencer=tk.PhotoImage(file='sources/assets/Dashboard/commencer.png')
         self.fond=tk.PhotoImage(file='sources/assets/Lecon_exemple/fond_exemple.png')
 
-    def loadUnit(self, unitName):
+    def loadUnit(self,event, unitName):
         print('x')
         self.mainFrame.pack_forget()
         unitName.Content(self.root)

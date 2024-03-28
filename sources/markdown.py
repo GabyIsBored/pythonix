@@ -188,10 +188,10 @@ def setTextWidget(textWidget, text: str, tType:str):
     pFont3 = ('Inter', 15)
     foregroundColor = '#C94053'
 
-    if tType == 'text':
+    if tType == 'p':
         textWidget['font'] = pFont
         textWidget['background'] = backgroundColor
-    elif tType == 'code':
+    elif tType == 'c':
         #new colors
         textWidget['font'] = pFont2
         textWidget['background'] = backgroundColor2
