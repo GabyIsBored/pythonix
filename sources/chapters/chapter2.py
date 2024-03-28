@@ -1,7 +1,11 @@
 import tkinter as tk
+import importlib
+import sys
 from ttkbootstrap.scrolled import ScrolledFrame
 
-# from chapter2.unit1 import unit1_contentD
+import chapter2.unit1 as unit1
+
+# from chapter2.unit1 import unit1_content
 
 class SubchapterSelection_2(tk.Frame):
     """Before making a new instance of this class, make sure to unpack previous frame"""
@@ -9,8 +13,8 @@ class SubchapterSelection_2(tk.Frame):
         super().__init__()
         
         # main frame initialization
-        self.root2 = master
-        self.mainFrame = ScrolledFrame(master=master)
+        self.root = master
+        self.mainFrame = ScrolledFrame(master=self.root)
         self.mainFrame.autohide_scrollbar()
         self.mainFrame.pack(expand=True, fill='both')
 
@@ -25,7 +29,7 @@ class SubchapterSelection_2(tk.Frame):
         mImg = self.canvas.create_image(640, 1715, image=self.megaQuiz, anchor="nw")
 
         # add bindings
-        self.canvas.tag_bind(n1Img, "<Button-1>", lambda event: print('BUTTON CLICKED'))
+        self.canvas.tag_bind(n1Img, "<Button-1>", lambda event: self.loadSummary('unit1'))
         self.canvas.tag_bind(q1Img, "<Button-1>", lambda event: print('BUTTON CLICKED'))
         self.canvas.tag_bind(n2Img, "<Button-1>", lambda event: print('BUTTON CLICKED'))
         self.canvas.tag_bind(q2Img, "<Button-1>", lambda event: print('BUTTON CLICKED'))
@@ -41,6 +45,18 @@ class SubchapterSelection_2(tk.Frame):
         self.n5=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Niveau5.png')
         self.quiz=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/quiz.png')
         self.megaQuiz=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Mega quiz.png')
+
+    def loadUnit(self, unitName):
+        print()
+
+    def loadSummary(self, unitName):
+        unit_title = unitName.unit_title
+        summaryFrame = tk.Frame(master = self.root, width=300, height=75)
+        summaryFrame.pack()
+
+
+
+    
         
 #https://stackoverflow.com/questions/23876447/tkinter-overlay-foreground-image-on-top-of-a-background-image-with-transparency'''
 #https://stackoverflow.com/questions/62929953/how-to-import-the-another-tkinter-python-class-code-to-open-the-new-tkinter-wind

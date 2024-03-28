@@ -1,14 +1,3 @@
-from markdown import setTextWidget
-import tkinter as tk
-from ttkbootstrap.scrolled import ScrolledFrame
-root=tk.Tk()
-root.title('Dashboard')
-root.geometry('1280x720')
-root.resizable(False,False)
-mainFrame=ScrolledFrame(root)
-mainFrame.pack(expand=True, fill='both',padx=10,pady=10)
-h1Font = ('Inter', 34, "bold")
-
 unit_content1='''# Variables
 
 ### Introduction aux variables
@@ -70,22 +59,6 @@ La camelCase
 La snake_case
   Les mots sont séparés par des underscores (tirets du 8) et sont généralement en minuscules.
 Exemple : nom_de_variable'''
-unit_content1Text = tk.Text(mainFrame,height='20')
-code_block1Text = tk.Text(mainFrame,height='20')
-unit_content2Text = tk.Text(mainFrame,height='20')
-code_block2Text = tk.Text(mainFrame,height='20')
-unit_content3Text = tk.Text(mainFrame,height='20')
-setTextWidget(unit_content1Text,unit_content1, 'p')
-setTextWidget(code_block1Text,code_block1, 'c')
-setTextWidget(unit_content2Text,unit_content2, 'p')
-setTextWidget(code_block1Text,code_block2, 'c')
-setTextWidget(unit_content2Text,unit_content3, 'p')
-unit_content1Text.pack(fill=tk.X)
-code_block1Text.pack(fill=tk.X)
-unit_content2Text.pack(fill=tk.X)
-code_block2Text.pack(fill=tk.X)
-unit_content3Text.pack(fill=tk.X)
-tk.Button(mainFrame,text='Next Page >',).pack(side=tk.RIGHT)#command=nextPage
-tk.Button(mainFrame,text='Back to dashboard',).pack(side=tk.RIGHT)#command=back
 
-root.mainloop()
+unit_content = [(unit_content1, 'text'), (code_block1, 'code'), (unit_content2, 'text'), (code_block2, 'code'), (unit_content3, 'text')]
+unit_title = 'Introduction aux variables'
