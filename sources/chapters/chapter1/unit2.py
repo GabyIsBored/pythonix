@@ -31,3 +31,18 @@ Pour montrer que la commande **`**print(End of program)` s’active indépendamm
 unit_content = [(unit_content1, 'text'), (code_block1, 'code'),
                  (unit_content2, 'text')]
 unit_title = 'Intendation'
+import chapters.chapter1.unit3 as nextFrame
+from markdown import setTextWidget
+import tkinter as tk
+class Content(tk.Frame):
+    def __init__(self, master: tk.Tk):
+        super().__init__()
+        self.root = master
+        for block in unit_content:
+            self.widget=tk.Text(master)
+            setTextWidget(self.widget,block[0],block[1]) 
+            self.widget.pack()   
+        continuerImg=tk.PhotoImage(file='sources\assets\ElementDivers\continuer.png')
+        self.nextButton = tk.Button(master,image=continuerImg,command=nextPage)
+        def nextPage():
+            nextFrame.Content(master)

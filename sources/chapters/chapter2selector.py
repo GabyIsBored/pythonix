@@ -38,11 +38,11 @@ class ChapterFrame(tk.Frame):
         mImg = self.canvas.create_image(640, 1715, image=self.megaQuiz, anchor="nw")
 
         # add bindings
-        self.canvas.tag_bind(n1Img, "<Button-1>", lambda event: self.loadSummary('unit1'))
-        self.canvas.tag_bind(q1Img, "<Button-1>", lambda event: self.loadSummary('unit1'))
-        self.canvas.tag_bind(n2Img, "<Button-1>", lambda event: self.loadSummary('unit1'))
-        self.canvas.tag_bind(q2Img, "<Button-1>", lambda event: self.loadSummary('unit1'))
-        self.canvas.tag_bind(mImg, "<Button-1>", lambda event: self.loadSummary('megaquiz'))
+        self.canvas.tag_bind(n1Img, "<Button-1>", self.loadSummary('unit1'))
+        self.canvas.tag_bind(q1Img, "<Button-1>", self.loadSummary('quiz1'))
+        self.canvas.tag_bind(n2Img, "<Button-1>", self.loadSummary('unit2'))
+        self.canvas.tag_bind(q2Img, "<Button-1>", self.loadSummary('unit2'))
+        self.canvas.tag_bind(mImg, "<Button-1>", self.loadSummary('megaquiz'))
         self.canvas.pack()
 
     def loadAssets(self):
@@ -56,11 +56,12 @@ class ChapterFrame(tk.Frame):
         self.megaQuiz=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Mega quiz.png')
 
     def loadUnit(self, unitName):
-        print()
+        unitName.Content(self.root)
     
     def loadSummary(self, unitName):
         unitFile=files[unitName]
-        summaryFrame = tk.Frame(master = self.root, width=300, height=75)
-        summaryFrame.pack()
+        summaryFrame = tk.Frame(self.canvas, width=300, height=75)
+        summaryFrame.place(x=733, y=378)
         importedUnit_title = unitFile.unit_title
         tk.Label(summaryFrame,text=importedUnit_title).pack()
+        tk.Button(summaryFrame,text='Demarrer',command=lambda: self.loadUnit(unitFile)).pack()

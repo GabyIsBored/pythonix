@@ -66,3 +66,18 @@ unit_content = [(unit_content1, 'text'), (code_block1, 'code'),
                  (unit_content3, 'text'), (code_block3, 'code'),
                  (unit_content4, 'text'), (code_block4, 'code')]
 unit_title = 'Operateur 2 (variables)'
+import chapters.chapter3.quiz2 as nextFrame
+from markdown import setTextWidget
+import tkinter as tk
+class Content(tk.Frame):
+    def __init__(self, master: tk.Tk):
+        super().__init__()
+        self.root = master
+        for block in unit_content:
+            self.widget=tk.Text(master)
+            setTextWidget(self.widget,block[0],block[1]) 
+            self.widget.pack()   
+        continuerImg=tk.PhotoImage(file='sources\assets\ElementDivers\continuer.png')
+        self.nextButton = tk.Button(master,image=continuerImg,command=nextPage)
+        def nextPage():
+            nextFrame.Content(master)
