@@ -1,52 +1,44 @@
 import tkinter as tk
 from ttkbootstrap.scrolled import ScrolledFrame
-from PIL import Image, ImageTk
 
-from chapter2.unit1 import mainFrame as frame_unit1
-from chapter2.unit2 import mainFrame as frame_unit2
-from chapter2.quiz1 import mainFrame as frame_quiz1
-# from chapter2.quiz2 import mainFrame as frame_quiz2
-# from chapter2.megaquiz import mainFrame as frame_megaquiz
+# from chapter2.unit1 import unit1_contentD
 
-App=tk.Window(themename='solar')
-App.title('el1')
-App.geometry('1280x720')
-App.resizable(False,False)
+class SubchapterSelection_2(tk.Frame):
+    """Before making a new instance of this class, make sure to unpack previous frame"""
+    def __init__(self, master: tk.Tk):
+        super().__init__()
+        
+        # main frame initialization
+        self.mainFrame = ScrolledFrame(master=master)
+        self.mainFrame.autohide_scrollbar()
+        self.mainFrame.pack(expand=True, fill='both')
 
-mainFrame=ScrolledFrame(App)
-mainFrame.autohide_scrollbar()
-mainFrame.pack(expand=True, fill='both')
+        # set images
+        self.loadAssets()
+        self.canvas = tk.Canvas(master=self.mainFrame, width=self.background.width(), height=self.background.height(), highlightthickness=0, bd=0)
+        backgroundImg = self.canvas.create_image(0, 0, image=self.background, anchor="nw")
+        n1Img = self.canvas.create_image(233, 378, image=self.n1, anchor="nw")
+        q1Img = self.canvas.create_image(141, 720, image=self.quiz, anchor="nw")
+        n2Img = self.canvas.create_image(415, 871, image=self.n2, anchor="nw")
+        q2Img = self.canvas.create_image(497, 1099, image=self.quiz, anchor="nw")
+        mImg = self.canvas.create_image(640, 1715, image=self.megaQuiz, anchor="nw")
 
-backgroundImage=Image.open('sources/assets/ChapterSelectionBackgrounds/Variables et affectations.png')
-n1=Image.open('sources/assets/ChapterSelectionIcons/Niveau1.png')
-n2=Image.open('sources/assets/ChapterSelectionIcons/Niveau2.png')
-n3=Image.open('sources/assets/ChapterSelectionIcons/Niveau3.png')
-n4=Image.open('sources/assets/ChapterSelectionIcons/Niveau4.png')
-n5=Image.open('sources/assets/ChapterSelectionIcons/Niveau5.png')
-quiz=Image.open('sources/assets/ChapterSelectionIcons/quiz.png')
-megaQuiz=Image.open('sources/assets/ChapterSelectionIcons/Mega quiz.png')
+        # add bindings
+        self.canvas.tag_bind(n1Img, "<Button-1>", lambda event: print('BUTTON CLICKED'))
+        self.canvas.tag_bind(q1Img, "<Button-1>", lambda event: print('BUTTON CLICKED'))
+        self.canvas.tag_bind(n2Img, "<Button-1>", lambda event: print('BUTTON CLICKED'))
+        self.canvas.tag_bind(q2Img, "<Button-1>", lambda event: print('BUTTON CLICKED'))
+        self.canvas.tag_bind(mImg, "<Button-1>", lambda event: print('BUTTON CLICKED'))
+        self.canvas.pack()
 
-def enter(pageName):
-    print('yo')
-
-backgroundImage.paste(n1, (20, 40), n1)
-backgroundImage.paste(n2, (40, 80), n2)
-
-tkimage = ImageTk.PhotoImage(backgroundImage)
-background = tk.Label(mainFrame,image=tkimage)
-background.pack()
-
-
-el1=tk.Button(mainFrame,command=lambda:enter('unit1'))
-el1.place(x=20,y=40)
-
-
-backgroundImage.paste(n1, (20, 40), n1)
-backgroundImage.paste(n1, (20, 40), n1)
-backgroundImage.paste(n1, (20, 40), n1)
-
-
-
-App.mainloop()
-
-#https://stackoverflow.com/questions/23876447/tkinter-overlay-foreground-image-on-top-of-a-background-image-with-transparency
+    def loadAssets(self):
+        self.background=tk.PhotoImage(file='sources/assets/ChapterSelectionBackgrounds/Variables et Affectations.png')
+        self.n1=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Niveau1.png')
+        self.n2=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Niveau2.png')
+        self.n3=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Niveau3.png')
+        self.n4=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Niveau4.png')
+        self.n5=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Niveau5.png')
+        self.quiz=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/quiz.png')
+        self.megaQuiz=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Mega quiz.png')
+        
+#https://stackoverflow.com/questions/23876447/tkinter-overlay-foreground-image-on-top-of-a-background-image-with-transparency'''
