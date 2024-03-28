@@ -1,7 +1,6 @@
 from markdown import setTextWidget
 from tkinter import tk
-import ttkbootstrap as tb
-root=tb.Window()
+root=tk.Tk()
 root.title('Dashboard')
 root.geometry('1280x720')
 root.resizable(False,False)
@@ -22,18 +21,18 @@ joueursDeBasket = 75
 print(( +  2) // + 1)
 '''
 
-title=Label(mainFrame, text='QUIZ',font=h1Font)
+title=tk.Label(mainFrame, text='QUIZ',font=h1Font)
 title.configure(bg='#D9D9D9')
 title.pack(pady=10)
-widget = Text(mainFrame,height='20')
+widget = tk.Text(mainFrame,height='20')
 setTextWidget(widget, unit_content, 'c')
 widget.pack()
 
-entry1 = Entry(mainFrame)
+entry1 = tk.Entry(mainFrame)
 widget.window_create(6.7, window=entry1)
-entry2 = Entry(mainFrame)
+entry2 = tk.Entry(mainFrame)
 widget.window_create(6.11, window=entry2)
-entry3 = Entry(mainFrame)
+entry3 = tk.Entry(mainFrame)
 widget.window_create(6.15, window=entry3)
 
 
@@ -45,19 +44,19 @@ def check():
     else:
         completionStatus.set("Faux")
         message.configure(fg='#ff0000')
-valider=PhotoImage(file='sources/assets/ElementDivers/valider.png').subsample(2,2)
-continuer=PhotoImage(file='sources/assets/ElementDivers/continuer.png')
-bottomFrame=Frame(mainFrame)
+valider=tk.PhotoImage(file='sources/assets/ElementDivers/valider.png').subsample(2,2)
+continuer=tk.PhotoImage(file='sources/assets/ElementDivers/continuer.png')
+bottomFrame=tk.Frame(mainFrame)
 bottomFrame.configure(bg="#D9D9D9")
 bottomFrame.pack(pady=15)
-completionStatus = StringVar(bottomFrame)
-message=Label(bottomFrame,textvariable=completionStatus,font=h2Font)
+completionStatus = tk.StringVar(bottomFrame)
+message=tk.Label(bottomFrame,textvariable=completionStatus,font=h2Font)
 message.configure(bg="#D9D9D9")
 message.pack(side=tk.LEFT)
-validerButton=Button(bottomFrame,image=valider,command=check)
+validerButton=tk.Button(bottomFrame,image=valider,command=check)
 validerButton.configure(bg="#D9D9D9")
 validerButton.pack(side=tk.LEFT,padx=15)
-prochainButton=Button(bottomFrame,image=continuer,command=nextPage)
+prochainButton=tk.Button(bottomFrame,image=continuer,command=nextPage)
 prochainButton.configure(bg="#D9D9D9")
 
 root.mainloop()

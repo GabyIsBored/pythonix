@@ -1,22 +1,22 @@
 import tkinter as tk
 from ttkbootstrap.scrolled import ScrolledFrame
-
-from chapter2 import unit1 
-from chapter2 import quiz1 
-from chapter2 import unit2 
-from chapter2 import quiz2 
-from chapter2 import unit3 
+from chapters.chapter2 import unit1 
+from chapters.chapter2 import quiz1 
+from chapters.chapter2 import unit2 
+from chapters.chapter2 import quiz2 
+'''from chapter2 import unit3 
 from chapter2 import quiz3 
 from chapter2 import unit4 
 from chapter2 import quiz4 
 from chapter2 import unit5 
-from chapter2 import quiz5 
-from chapter2 import megaquiz
+from chapter2 import quiz5 '''
+from chapters.chapter2 import megaquiz
 
 
-files={'unit1':unit1,'quiz1':quiz1,'unit2':unit2,'quiz2':quiz2,'unit3':unit3,'quiz3':quiz3,
-       'unit4':unit4,'quiz4':quiz4,'unit5':unit5,'quiz5':quiz5,'megaquiz':megaquiz}
-class SubchapterSelection_2(tk.Frame):
+files={'unit1':unit1,'quiz1':quiz1,'unit2':unit2,'quiz2':quiz2,'megaquiz':megaquiz}
+
+
+class ChapterFrame(tk.Frame):
     """Before making a new instance of this class, make sure to unpack previous frame"""
     def __init__(self, master: tk.Tk):
         super().__init__()
@@ -57,7 +57,7 @@ class SubchapterSelection_2(tk.Frame):
 
     def loadUnit(self, unitName):
         print()
-
+    
     def loadSummary(self, unitName):
         unitFile=files[unitName]
         summaryFrame = tk.Frame(master = self.root, width=300, height=75)

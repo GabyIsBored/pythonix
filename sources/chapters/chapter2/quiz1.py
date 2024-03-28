@@ -1,4 +1,4 @@
-from markdown import setTextWidget
+#from markdown import setTextWidget
 import tkinter as tk
 root=tk.Tk()
 root.title('Dashboard')
@@ -26,7 +26,7 @@ title=tk.Label(mainFrame, text='QUIZ',font=h1Font)
 title.configure(bg='#D9D9D9')
 title.pack(pady=10)
 widget = tk.Text(mainFrame,height='20')
-setTextWidget(widget, unit_content, 'c')
+#setTextWidget(widget, unit_content, 'c')
 widget.pack()
 
 entry1 = tk.Entry(mainFrame)
@@ -51,10 +51,10 @@ bottomFrame.pack(pady=15)
 completionStatus = tk.StringVar(bottomFrame)
 message=tk.Label(bottomFrame,textvariable=completionStatus,font=h2Font)
 message.configure(bg="#D9D9D9")
-message.pack(side=LEFT)
+message.pack(side=tk.LEFT)
 validerButton=tk.Button(bottomFrame,image=valider,command=check)
 validerButton.configure(bg="#D9D9D9")
-validerButton.pack(side=LEFT,padx=15)
+validerButton.pack(side=tk.LEFT,padx=15)
 
 prochainButton=tk.Button(bottomFrame,image=continuer,command=nextPage)
 prochainButton.configure(bg="#D9D9D9")

@@ -56,7 +56,7 @@ mainFrame.rowconfigure(2,weight=7)
 def change_page(pageName):
 	mainFrame.pack_forget()
 	chapter=chapitresFilesTransform[pageName]
-	chapter.SubchapterSelection_2(root)
+	chapter.ChapterFrame(root)
 
 
 # CONTENT
