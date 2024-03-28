@@ -59,7 +59,7 @@ class Content(tk.Frame):
         titleWidget.pack()
 
         # ------- CONTENT HERE -------
-        textBlock1 = tk.Text(master=self.mainFrame, relief='flat', height=17, width=100)
+        textBlock1 = tk.Text(master=self.mainFrame, relief='flat', height=self.getHeight(unit_content1), width=100)
         codeBlock1 = tk.Text(master=self.mainFrame, relief='flat', height=6, width=50)
         textBlock2 = tk.Text(master=self.mainFrame, relief='flat', height=17, width=100)
         
@@ -83,4 +83,7 @@ class Content(tk.Frame):
     def nextPage(self):
         nextFrame.Content(self.root)
         self.mainFrame.pack_forget()
-        
+    def getHeight(self, targetText: str):
+        coef = 1.37
+        newlines = len(targetText.splitlines())
+        return round(coef * newlines)

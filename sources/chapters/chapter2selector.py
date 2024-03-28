@@ -1,13 +1,15 @@
 
+
 import tkinter as tk
 from ttkbootstrap.scrolled import ScrolledFrame
 from chapters.chapter1 import unit1 
+from chapters.chapter1 import quiz1 
 from chapters.chapter1 import unit2 
-from chapters.chapter1 import unit3
+from chapters.chapter1 import quiz2
 
+from chapters.chapter1 import megaquiz
+files={'unit1':unit1,'quiz1':quiz1,'unit2':unit2,'quiz2':quiz2,'megaquiz':megaquiz}
 
-
-files={'unit1':unit1,'unit2':unit2,'unit3':unit3}
 font = ('Yu Gothic Ui Light', 12)
 h1Font = ('Inter', 50, "bold")
 h3Font = ('Inter', 20, "bold")
@@ -32,7 +34,7 @@ class ChapterFrame(tk.Frame):
         n1Img = self.canvas.create_image(233, 378, image=self.n1, anchor="nw")
         q1Img = self.canvas.create_image(141, 720, image=self.quiz, anchor="nw")
         n2Img = self.canvas.create_image(415, 871, image=self.n2, anchor="nw")
-        q2Img = self.canvas.create_image(597, 1099, image=self.quiz, anchor="nw")
+        q2Img = self.canvas.create_image(497, 1099, image=self.quiz, anchor="nw")
         mImg = self.canvas.create_image(640, 1715, image=self.megaQuiz, anchor="nw")
 
         # add bindings
@@ -62,7 +64,7 @@ class ChapterFrame(tk.Frame):
         self.canvas.tag_bind(commencerBtn, "<Button-1>", lambda event: self.loadUnit(event, self.unitFile))
 
     def loadAssets(self):
-        self.background=tk.PhotoImage(file='sources/assets/ChapterSelectionBackgrounds/Introduction.png')
+        self.background=tk.PhotoImage(file='sources/assets/ChapterSelectionBackgrounds/Variables et affectations.png')
         self.n1=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Niveau1.png')
         self.n2=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Niveau2.png')
         self.n3=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Niveau3.png')
