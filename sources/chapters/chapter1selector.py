@@ -7,7 +7,10 @@ from chapters.chapter1 import unit3
 
 
 files={'unit1':unit1,'unit2':unit2,'unit3':unit3}
-
+font = ('Yu Gothic Ui Light', 12)
+h1Font = ('Inter', 50, "bold")
+h3Font = ('Inter', 20, "bold")
+pFont = ('Inter', 9, "bold")
 
 class ChapterFrame(tk.Frame):
     """Before making a new instance of this class, make sure to unpack previous frame"""
@@ -27,10 +30,29 @@ class ChapterFrame(tk.Frame):
         n1Img = self.canvas.create_image(981, 536, image=self.n1, anchor="nw")
         n2Img = self.canvas.create_image(390, 974, image=self.n2, anchor="nw")
         n3Img = self.canvas.create_image(778, 1475, image=self.n3, anchor="nw")
-        self.canvas.tag_bind(n1Img, "<Button-1>", self.loadSummary('unit1'))
-        self.canvas.tag_bind(n2Img, "<Button-1>", self.loadSummary('unit2'))
-        self.canvas.tag_bind(n3Img, "<Button-1>", self.loadSummary('unit3'))
+        self.canvas.tag_bind(n1Img, "<Button-1>", lambda event: self.loadSummary(event, "unit1"))
+        self.canvas.tag_bind(n2Img, "<Button-1>", lambda event: self.loadSummary(event, "unit2"))
+        self.canvas.tag_bind(n3Img, "<Button-1>", lambda event: self.loadSummary(event, "unit3"))
         self.canvas.pack()
+
+    def loadSummary(self,event,unitName):
+        print(event)
+        self.coordonnees=[]
+        if unitName=='unit1':
+            self.coordonnees=[(500-70, 500+60),(500, 560+120),(330, 500)]
+        elif unitName=='unit2':
+            self.coordonnees=[(810-65, 974+60),(800, 1034+120),(630, 974)]
+        elif unitName=='unit3':
+            self.coordonnees=[(290-75, 1475+60),(300, 1525+120),(130, 1475)]
+        
+        self.unitFile=files[unitName]
+        self.importedUnit_title = self.unitFile.unit_title
+        titleText=self.canvas.create_text(self.coordonnees[0][0],self.coordonnees[0][1], text=self.importedUnit_title, anchor="nw",font=h1Font)
+        commencerBtn=self.canvas.create_image(self.coordonnees[1][0],self.coordonnees[1][1], image=self.commencer, anchor="nw")
+        self.canvas.create_image(self.coordonnees[2][0],self.coordonnees[2][1], image=self.fond, anchor="nw")
+        self.canvas.tag_raise(titleText)
+        self.canvas.tag_raise(commencerBtn)
+        self.canvas.tag_bind(commencerBtn, "<Button-1>", lambda event: self.loadSummary(event, self.unitFile))
 
     def loadAssets(self):
         self.background=tk.PhotoImage(file='sources/assets/ChapterSelectionBackgrounds/Introduction.png')
@@ -41,11 +63,13 @@ class ChapterFrame(tk.Frame):
         self.n5=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Niveau5.png')
         self.quiz=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/quiz.png')
         self.megaQuiz=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Mega quiz.png')
+        self.commencer=tk.PhotoImage(file='sources/assets/Dashboard/commencer.png')
+        self.fond=tk.PhotoImage(file='sources/assets/Lecon_exemple/fond_exemple.png')
 
     def loadUnit(self, unitName):
+        print('x')
         self.mainFrame.pack_forget()
         unitName.Content(self.root)
     
-    def loadSummary(self, unitName):
-        self.unitFile=files[unitName]
-        self.importedUnit_title = self.unitFile.unit_title
+    
+        

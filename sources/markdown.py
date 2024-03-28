@@ -175,7 +175,7 @@ def setHeaders(textWidget: tk.Text, text: str, lineNumber: int):
     
     
 
-def setTextWidget(textWidget: tk.Text, text: str, tType:str):
+def setTextWidget(textWidget, text: str, tType:str):
     splitlines = text.splitlines()
 
     # font
@@ -188,10 +188,10 @@ def setTextWidget(textWidget: tk.Text, text: str, tType:str):
     pFont3 = ('Inter', 15)
     foregroundColor = '#C94053'
 
-    if tType == 'p':
+    if tType == 'text':
         textWidget['font'] = pFont
         textWidget['background'] = backgroundColor
-    elif tType == 'c':
+    elif tType == 'code':
         #new colors
         textWidget['font'] = pFont2
         textWidget['background'] = backgroundColor2

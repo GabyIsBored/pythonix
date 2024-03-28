@@ -1,0 +1,1 @@
+Afin d'utiliser Pythonix, il faut executer le fichier dashboard.py a partir d'un IDLE Python

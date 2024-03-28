@@ -63,9 +63,9 @@ def change_page(pageName):
 
 # CONTENT
 
-dashboard = tk.Canvas(mainFrame, width=dashboardImg.width(), height=dashboardImg.height())
-
+dashboard = tk.Canvas(mainFrame, width=dashboardImg.width(), height=dashboardImg.height(),highlightthickness=0)
 dashboard.create_image(0, 0, anchor=tk.NW, image=dashboardImg)
+dashboard.configure(bg="#002b36")
 dashboard.grid(row=0,column=0,columnspan=7,sticky='ns',pady=(50,0))  
 
 # LOGIQUE FLECHE 
@@ -82,7 +82,7 @@ def move(n):
 
 # FLECHE GAUCHE
 fleche_g=tk.Button(mainFrame, relief='flat', activebackground='#002b36', background='#002b36', image=fleche_gImg,command=lambda:move(-1))
-fleche_g.configure(bg= "#002b36")
+fleche_g.configure(bg="#002b36")
 fleche_g.grid(row=1,column=0) 
 
 # FLECHE DROITE
@@ -95,16 +95,18 @@ fleche_d.grid(row=1,column=6)
 class Chapter(tk.Frame):
 	def __init__(self, parent,columnNum,rowNum,chapName,prog,fileName):
 		super().__init__(master = parent)
-		rectangle_chapitre = tk.Canvas(mainFrame, width=rectangle_chapitreImg.width(), height=rectangle_chapitreImg.height())
+		rectangle_chapitre = tk.Canvas(mainFrame, width=rectangle_chapitreImg.width(), height=rectangle_chapitreImg.height(),highlightthickness=0)
+		rectangle_chapitre.configure(bg="#D9D9D9")
 		rectangle_chapitre.create_image(0, 0, anchor=tk.NW, image=rectangle_chapitreImg)
 		rectangle_chapitre.grid(row=rowNum,column=columnNum) 
 		
-		chapitreFrame=tk.Frame(mainFrame, width=rectangle_chapitreImg.width(), height=rectangle_chapitreImg.height())
+		chapitreFrame=tk.Frame(mainFrame, width=rectangle_chapitreImg.width(), height=rectangle_chapitreImg.height(),highlightthickness=0)
+		chapitreFrame.configure(bg="#D9D9D9")
 		chapitreFrame.grid(row=rowNum,column=columnNum)
 		
-		tk.Label(chapitreFrame,text=chapName,font=h3Font,background ='white',foreground='#002b36',justify="center").pack(pady = (0, 30))
+		tk.Label(chapitreFrame,text=chapName,font=h3Font,background ='white',foreground='#002b36',justify="center",highlightthickness=0).pack(pady = (0, 30))
 		
-		pourcentage = tk.Canvas(chapitreFrame, width=pourcentageImg.width(), height=pourcentageImg.height())
+		pourcentage = tk.Canvas(chapitreFrame, width=pourcentageImg.width(), height=pourcentageImg.height(),highlightthickness=0)
 		pourcentage.configure(bg= "white")
 		pourcentage.create_image(0, 0, anchor=tk.NW, image=pourcentageImg)
 		pourcentage.create_image(0, 220-(prog*2.2), anchor=tk.NW, image=pourcentage_reverseImg)

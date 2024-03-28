@@ -1,0 +1,4 @@
+Pre-requis de l'application:
+- Windows 10 minimum
+- Python 3 v3.12.2 minimum
+- Les librairies tkinter, ttkboostrap et customTkinter
