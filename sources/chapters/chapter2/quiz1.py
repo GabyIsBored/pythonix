@@ -4,6 +4,7 @@ h2Font = ('Inter', 20, "bold")
 from markdown import setTextWidget
 import tkinter as tk
 import chapters.chapter2.unit2 as nextFrame
+unit_title = 'Quiz 1'
 class Content(tk.Frame):
     def __init__(self, master: tk.Tk):
         super().__init__()
