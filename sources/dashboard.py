@@ -1,5 +1,5 @@
 import tkinter as tk
-from chapters import chapter1,chapter2,chapter3,chapter4,chapter5,chapter6,chapter7
+from chapters import chapter1,chapter2F,chapter3,chapter4,chapter5,chapter6,chapter7
 
 root = tk.Tk()
 root.title('Dashboard')
@@ -32,7 +32,7 @@ pFont = ('Inter', 9, "bold")
 i = 0
 chapitres=['Introduction\n','Variables \net affectations','Arithmetique \net comparaisons','Conditions\n','Boucles\n','Fonctions\n','Listes et Dictionnaires']
 chapitresFiles=['chapter1','chapter2','chapter3','chapter4','chapter5','chapter6','chapter7']
-chapitresFilesTransform={'chapter1':chapter1,'chapter2':chapter2,'chapter3':chapter3,'chapter4':chapter4,'chapter5':chapter5,'chapter6':chapter6,'chapter7':chapter7}
+chapitresFilesTransform={'chapter1':chapter1,'chapter2':chapter2F,'chapter3':chapter3,'chapter4':chapter4,'chapter5':chapter5,'chapter6':chapter6,'chapter7':chapter7}
 progressions=[0,0,0,0,0,0,0,0,0,0]
 
 
