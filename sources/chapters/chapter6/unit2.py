@@ -185,95 +185,18 @@ En ajoutant un troisième argument, `step`, on peut spécifier un pas personnali
 
 L'utilisation de `range()` avec les boucles `for` simplifie le processus d'itération sur une séquence d'entiers, ce qui est couramment utilisé dans de nombreux scénarios de programmation.
 '''
-unit_content1Text = tk.Text(mainFrame,height='20')
-code_block1Text = tk.Text(mainFrame,height='20')
-unit_content2Text = tk.Text(mainFrame,height='20')
-code_block2Text = tk.Text(mainFrame,height='20')
-unit_content3Text = tk.Text(mainFrame,height='20')
-code_block3Text = tk.Text(mainFrame,height='20')
-unit_content4Text = tk.Text(mainFrame,height='20')
-code_block4Text = tk.Text(mainFrame,height='20')
-unit_content5Text = tk.Text(mainFrame,height='20')
-code_block5Text = tk.Text(mainFrame,height='20')
-unit_content6Text = tk.Text(mainFrame,height='20')
-code_block6Text = tk.Text(mainFrame,height='20')
-unit_content7Text = tk.Text(mainFrame,height='20')
-code_block7Text = tk.Text(mainFrame,height='20')
-unit_content8Text = tk.Text(mainFrame,height='20')
-code_block8Text = tk.Text(mainFrame,height='20')
-unit_content9Text = tk.Text(mainFrame,height='20')
-code_block9Text = tk.Text(mainFrame,height='20')
-unit_content10Text = tk.Text(mainFrame,height='20')
-code_block10Text = tk.Text(mainFrame,height='20')
-unit_content11Text = tk.Text(mainFrame,height='20')
-code_block11Text = tk.Text(mainFrame,height='20')
-unit_content12Text = tk.Text(mainFrame,height='20')
-code_block12Text = tk.Text(mainFrame,height='20')
-unit_content13Text = tk.Text(mainFrame,height='20')
-code_block13Text = tk.Text(mainFrame,height='20')
-unit_content14Text = tk.Text(mainFrame,height='20')
-
-
-setTextWidget(unit_content1Text,unit_content1, 'p')
-setTextWidget(code_block1Text,code_block1, 'c')
-setTextWidget(unit_content2Text,unit_content2, 'p')
-setTextWidget(code_block2Text,code_block2, 'c')
-setTextWidget(unit_content3Text,unit_content3, 'p')
-setTextWidget(code_block3Text,code_block3, 'c')
-setTextWidget(unit_content4Text,unit_content4, 'p')
-setTextWidget(code_block4Text,code_block4, 'c')
-setTextWidget(unit_content5Text,unit_content5, 'p')
-setTextWidget(code_block5Text,code_block5, 'c')
-setTextWidget(unit_content6Text,unit_content6, 'p')
-setTextWidget(code_block6Text,code_block6, 'c')
-setTextWidget(unit_content7Text,unit_content7, 'p')
-setTextWidget(code_block7Text,code_block7, 'c')
-setTextWidget(unit_content8Text,unit_content8, 'p')
-setTextWidget(code_block8Text,code_block8, 'c')
-setTextWidget(unit_content9Text,unit_content9, 'p')
-setTextWidget(code_block9Text,code_block9, 'c')
-setTextWidget(unit_content10Text,unit_content10, 'p')
-setTextWidget(code_block10Text,code_block10, 'c')
-setTextWidget(unit_content11Text,unit_content11, 'p')
-setTextWidget(code_block11Text,code_block11, 'c')
-setTextWidget(unit_content12Text,unit_content12, 'p')
-setTextWidget(code_block12Text,code_block12, 'c')
-setTextWidget(unit_content13Text,unit_content13, 'p')
-setTextWidget(code_block13Text,code_block13, 'c')
-setTextWidget(unit_content14Text,unit_content14, 'p')
-
-
-unit_content1Text.pack(fill=tk.X,side=tk.LEFT)
-code_block1Text.pack(fill=tk.X,side=tk.LEFT)
-unit_content2Text.pack(fill=tk.X,side=tk.LEFT)
-code_block2Text.pack(fill=tk.X,side=tk.LEFT)
-unit_content3Text.pack(fill=tk.X,side=tk.LEFT)
-code_block3Text.pack(fill=tk.X,side=tk.LEFT)
-unit_content4Text.pack(fill=tk.X,side=tk.LEFT)
-code_block4Text.pack(fill=tk.X,side=tk.LEFT)
-unit_content5Text.pack(fill=tk.X,side=tk.LEFT)
-code_block5Text.pack(fill=tk.X,side=tk.LEFT)
-unit_content6Text.pack(fill=tk.X,side=tk.LEFT)
-code_block6Text.pack(fill=tk.X,side=tk.LEFT)
-unit_content7Text.pack(fill=tk.X,side=tk.LEFT)
-code_block7Text.pack(fill=tk.X,side=tk.LEFT)
-unit_content8Text.pack(fill=tk.X,side=tk.LEFT)
-code_block8Text.pack(fill=tk.X,side=tk.LEFT)
-unit_content9Text.pack(fill=tk.X,side=tk.LEFT)
-code_block9Text.pack(fill=tk.X,side=tk.LEFT)
-unit_content10Text.pack(fill=tk.X,side=tk.LEFT)
-code_block10Text.pack(fill=tk.X,side=tk.LEFT)
-unit_content11Text.pack(fill=tk.X,side=tk.LEFT)
-code_block11Text.pack(fill=tk.X,side=tk.LEFT)
-unit_content12Text.pack(fill=tk.X,side=tk.LEFT)
-code_block12Text.pack(fill=tk.X,side=tk.LEFT)
-unit_content13Text.pack(fill=tk.X,side=tk.LEFT)
-code_block13Text.pack(fill=tk.X,side=tk.LEFT)
-unit_content14Text.pack(fill=tk.X,side=tk.LEFT)
-
-
-
-tk.Button(mainFrame,text='Next Page >',).pack(side=tk.RIGHT)#command=nextPage
-tk.Button(mainFrame,text='Back to dashboard',).pack(side=tk.RIGHT)#command=back
-
-root.mainloop()
+unit_content = [(unit_content1, 'text'), (code_block1, 'code'),
+                 (unit_content2, 'text'), (code_block2, 'code'),
+                 (unit_content3, 'text'), (code_block3, 'code'),
+                 (unit_content4, 'text'), (code_block4, 'code'),
+                 (unit_content5, 'text'), (code_block5, 'code')
+                (unit_content6, 'text'), (code_block6, 'code'),
+                 (unit_content7, 'text'), (code_block7, 'code'),
+                 (unit_content8, 'text'), (code_block8, 'code'),
+                 (unit_content9, 'text'), (code_block9, 'code'),
+                (unit_content10, 'text'), (code_block10, 'code'),
+                (unit_content11, 'text'), (code_block11, 'code'),
+                 (unit_content12, 'text'), (code_block12, 'code'),
+                 (unit_content13, 'text'), (code_block13, 'code'),
+                 (unit_content14, 'text')]
+unit_title = 'Boucles: range()'

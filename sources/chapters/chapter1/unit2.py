@@ -28,14 +28,6 @@ Pour différencier entre les commandes qui sont sous cette condition on avance l
 Cet espace doit correspondre au autres commandes qui sont aussi sous la condition **x>0**
 
 Pour montrer que la commande **`**print(End of program)` s’active indépendamment de cette condition, elle est située au même niveau d’indentation que le `if` statetment'''
-unit_content1Text = tk.Text(mainFrame,height='20')
-code_block1Text = tk.Text(mainFrame,height='20')
-unit_content2Text = tk.Text(mainFrame,height='20')
-setTextWidget(unit_content1Text,unit_content1, 'p')
-setTextWidget(code_block1Text,code_block1, 'c')
-setTextWidget(unit_content2Text,unit_content2, 'p')
-unit_content1Text.pack(fill=tk.X,side=tk.LEFT)
-code_block1Text.pack(fill=tk.X,side=tk.LEFT)
-unit_content2Text.pack(fill=tk.X,side=tk.LEFT)
-tk.Button(mainFrame,text='Next Page >',).pack(side=tk.RIGHT)#command=nextPage
-tk.Button(mainFrame,text='Back to dashboard',).pack(side=tk.RIGHT)#command=back
+unit_content = [(unit_content1, 'text'), (code_block1, 'code'),
+                 (unit_content2, 'text')]
+unit_title = 'Intendation'

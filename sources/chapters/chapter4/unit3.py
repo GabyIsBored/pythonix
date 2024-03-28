@@ -70,23 +70,9 @@ unit_content3='''
 Dans cet exemple, la condition est vraie car 'banane' est effectivement un élément de la liste `fruits`. Par conséquent, le message "La banane est dans la liste de fruits." sera affiché lors de l'exécution du programme.
 '''
 
-unit_content1Text = tk.Text(mainFrame,height='20')
-code_block1Text = tk.Text(mainFrame,height='20')
-unit_content2Text = tk.Text(mainFrame,height='20')
-code_block2Text = tk.Text(mainFrame,height='20')
-unit_content3Text = tk.Text(mainFrame,height='20')
-setTextWidget(unit_content1Text,unit_content1, 'p')
-setTextWidget(code_block1Text,code_block1, 'c')
-setTextWidget(unit_content2Text,unit_content2, 'p')
-setTextWidget(code_block2Text,code_block2, 'c')
-setTextWidget(unit_content3Text,unit_content3, 'p')
-unit_content1Text.pack(fill=tk.X,side=tk.LEFT)
-code_block1Text.pack(fill=tk.X,side=tk.LEFT)
-unit_content2Text.pack(fill=tk.X,side=tk.LEFT)
-code_block2Text.pack(fill=tk.X,side=tk.LEFT)
-unit_content3Text.pack(fill=tk.X,side=tk.LEFT)
-
-tk.Button(mainFrame,text='Next Page >',).pack(side=tk.RIGHT)#command=nextPage
-tk.Button(mainFrame,text='Back to dashboard',).pack(side=tk.RIGHT)#command=back
+unit_content = [(unit_content1, 'text'), (code_block1, 'code'),
+                 (unit_content2, 'text'), (code_block2, 'code'),
+                 (unit_content3, 'text')]
+unit_title = 'Operateurs Logiques'
 
 root.mainloop()

@@ -33,16 +33,6 @@ Python est considéré comme un langage interprété donc les commandes sont ex�
 
 La fonction activée en premier et affichée avant la fonction activée après (cela veut dire qu’on ne peut pas utiliser une variable  ou une fonction avant de l’avoir déclarée
 '''
-unit_content1Text = tk.Text(mainFrame,height='20')
-code_block1Text = tk.Text(mainFrame,height='20')
-unit_content2Text = tk.Text(mainFrame,height='20')
-setTextWidget(unit_content1Text,unit_content1, 'p')
-setTextWidget(code_block1Text,code_block1, 'c')
-setTextWidget(unit_content2Text,unit_content2, 'p')
-unit_content1Text.pack(fill=tk.X,side=tk.LEFT)
-code_block1Text.pack(fill=tk.X,side=tk.LEFT)
-unit_content2Text.pack(fill=tk.X,side=tk.LEFT)
-tk.Button(mainFrame,text='Next Page >',).pack(side=tk.RIGHT)#command=nextPage
-tk.Button(mainFrame,text='Back to dashboard',).pack(side=tk.RIGHT)#command=back
-
-root.mainloop()
+unit_content = [(unit_content1, 'text'), (code_block1, 'code'),
+                 (unit_content2, 'text')]
+unit_title = 'Premiers Pas'

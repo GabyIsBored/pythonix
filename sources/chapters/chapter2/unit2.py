@@ -41,16 +41,7 @@ REMARQUE : Lors de la déclaration d’une variable, elle doit avoir une valeur 
 - Ligne 1: la variable `defaultValue` est crée, et initialisée avec le nombre entier 50.
 - Ligne 2: la variable `testValue` est crée, et initialisée avec la valeur qui est stockée dans la variable `defaultValue` , 50 dans ce cas.
 - Ligne 3: la variable `testValue` subit une modification, sa valeur précédente se fait ‘écraser’ et se  fait remplacer par 20.'''
-unit_content1Text = tk.Text(mainFrame,height='20')
-code_block1Text = tk.Text(mainFrame,height='20')
-unit_content2Text = tk.Text(mainFrame,height='20')
-setTextWidget(unit_content1Text,unit_content1, 'p')
-setTextWidget(code_block1Text,code_block1, 'c')
-setTextWidget(unit_content2Text,unit_content2, 'p')
-unit_content1Text.pack(fill=tk.X,side=tk.LEFT)
-code_block1Text.pack(fill=tk.X,side=tk.LEFT)
-unit_content2Text.pack(fill=tk.X,side=tk.LEFT)
-tk.Button(mainFrame,text='Next Page >',).pack(side=tk.RIGHT)#command=nextPage
-tk.Button(mainFrame,text='Back to dashboard',).pack(side=tk.RIGHT)#command=back
-
-root.mainloop()
+unit_content = [(unit_content1, 'text'),
+                (code_block1, 'code'),
+                 (unit_content2, 'text')]
+unit_title = 'Affectation d’une variable'

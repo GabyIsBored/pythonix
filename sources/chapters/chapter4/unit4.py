@@ -42,16 +42,8 @@ Explications :
     - Si la condition est fausse, le bloc de code indenté sous le `else` de la deuxième `if` est exécuté, affichant "Bienvenue, Madame!".
 3. Si la première condition (`if age >= 18:`) est fausse, le bloc de code indenté sous le `else` de la première `if` est exécuté, affichant "Vous êtes mineur.".'''
 
-unit_content1Text = tk.Text(mainFrame,height='20')
-code_block1Text = tk.Text(mainFrame,height='20')
-unit_content2Text = tk.Text(mainFrame,height='20')
-setTextWidget(unit_content1Text,unit_content1, 'p')
-setTextWidget(code_block1Text,code_block1, 'c')
-setTextWidget(unit_content2Text,unit_content2, 'p')
-unit_content1Text.pack(fill=tk.X,side=tk.LEFT)
-code_block1Text.pack(fill=tk.X,side=tk.LEFT)
-unit_content2Text.pack(fill=tk.X,side=tk.LEFT)
-tk.Button(mainFrame,text='Next Page >',).pack(side=tk.RIGHT)#command=nextPage
-tk.Button(mainFrame,text='Back to dashboard',).pack(side=tk.RIGHT)#command=back
+unit_content = [(unit_content1, 'text'), (code_block1, 'code'),
+                 (unit_content2, 'text')]
+unit_title = 'Conditions imbriquees'
 
 root.mainloop()

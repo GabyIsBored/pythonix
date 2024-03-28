@@ -2,7 +2,7 @@ import tkinter as tk
 from ttkbootstrap.scrolled import ScrolledFrame
 
 # from chapter2.unit1 import unit1_contentD
-
+import chapter2.unit1 as unit1
 class SubchapterSelection_2(tk.Frame):
     """Before making a new instance of this class, make sure to unpack previous frame"""
     def __init__(self, master: tk.Tk):

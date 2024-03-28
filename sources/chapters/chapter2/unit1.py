@@ -60,4 +60,7 @@ La snake_case
   Les mots sont séparés par des underscores (tirets du 8) et sont généralement en minuscules.
 Exemple : nom_de_variable'''
 
-unit1_content = [(unit_content1, 'text'), (code_block1, 'code'), (unit_content2, 'text'), (code_block2, 'code'), (unit_content3, 'text')]
+unit_content = [(unit_content1, 'text'), (code_block1, 'code'),
+                 (unit_content2, 'text'), (code_block2, 'code'),
+                   (unit_content3, 'text')]
+unit_title = 'Variables'
