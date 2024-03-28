@@ -1,11 +1,11 @@
 from markdown import setTextWidget
-from tkinter import *
+from tkinter import tk
 import ttkbootstrap as tb
 root=tb.Window()
 root.title('Dashboard')
 root.geometry('1280x720')
 root.resizable(False,False)
-mainFrame=Frame(root)
+mainFrame=tk.Frame(root)
 mainFrame.pack(expand=True, fill='both',padx=10,pady=10)
 h1Font = ('Inter', 54, "bold")
 h2Font = ('Inter', 20, "bold")
@@ -53,10 +53,10 @@ bottomFrame.pack(pady=15)
 completionStatus = StringVar(bottomFrame)
 message=Label(bottomFrame,textvariable=completionStatus,font=h2Font)
 message.configure(bg="#D9D9D9")
-message.pack(side=LEFT)
+message.pack(side=tk.LEFT)
 validerButton=Button(bottomFrame,image=valider,command=check)
 validerButton.configure(bg="#D9D9D9")
-validerButton.pack(side=LEFT,padx=15)
+validerButton.pack(side=tk.LEFT,padx=15)
 prochainButton=Button(bottomFrame,image=continuer,command=nextPage)
 prochainButton.configure(bg="#D9D9D9")
 

@@ -1,17 +1,16 @@
 import tkinter as tk
+from chapters import chapter1,chapter2,chapter3,chapter4,chapter5,chapter6,chapter7
 
+root = tk.Tk()
+root.title('Dashboard')
+root.geometry('1280x720')
+root.resizable(False,False)
 
-App = tk.Tk()
-App.title('Dashboard')
-App.geometry('1280x720')
-App.resizable(False,False)
-
-mainFrame = tk.Frame(App, background='#002b36')
+mainFrame = tk.Frame(root)
+mainFrame.configure(bg='#002b36')
 mainFrame.pack(expand=True, fill='both')
 
-# Assets
-menuIcon = tk.PhotoImage(file='sources/icons/menu-burger.png').subsample(12, 12)
-rocketIcon = tk.PhotoImage(file='sources/icons/rocket-lunch.png').subsample(11, 11)
+
 
 commencerImg = tk.PhotoImage(file='sources/assets/Dashboard/commencer.png')
 continuerImg = tk.PhotoImage(file='sources/assets/Dashboard/continuer.png')
@@ -29,12 +28,11 @@ h1Font = ('Inter', 34, "bold")
 h3Font = ('Inter', 20, "bold")
 pFont = ('Inter', 9, "bold")
 
-# s = tb.Style()
-# s.configure('My.TFrame', background='white')
 
 i = 0
-chapitres=['Introduction\n','Variables \net affectations','Arithmetique \net comparaisons','Conditions\n','Boucles\n',
-		   'Boucles avancees\n','Fonctions\n','Tableaux\n','Dictionnaires \net Tuples','‘Import’ \net Modules']
+chapitres=['Introduction\n','Variables \net affectations','Arithmetique \net comparaisons','Conditions\n','Boucles\n','Fonctions\n','Listes et Dictionnaires']
+chapitresFiles=['chapter1','chapter2','chapter3','chapter4','chapter5','chapter6','chapter7']
+chapitresFilesTransform={'chapter1':chapter1,'chapter2':chapter2,'chapter3':chapter3,'chapter4':chapter4,'chapter5':chapter5,'chapter6':chapter6,'chapter7':chapter7}
 progressions=[0,0,0,0,0,0,0,0,0,0]
 
 
@@ -56,23 +54,9 @@ mainFrame.rowconfigure(2,weight=7)
 
 
 def change_page(pageName):
-	global mainFrame
-	for widget in mainFrame.winfo_children():
-		widget.destroy()
-	page_module = import_module(pageName)
-	new_mainFrame = getattr(page_module, 'mainFrame', None)
-	if new_mainFrame:
-        # Update mainFrame
-		mainFrame = new_mainFrame(App)
-        # Re-pack the mainFrame with the new content
-		mainFrame.pack()
-# NAVBAR
-
-days = tk.Label(mainFrame,text='0',font=h3Font)
-days.place(x=1170,y=15)
-
-rocket = tk.Label(mainFrame, image=rocketIcon)
-rocket.place(x=1200,y=15)
+	mainFrame.pack_forget()
+	chapter=chapitresFilesTransform[pageName]
+	chapter.SubchapterSelection_2(root)
 
 
 # CONTENT
@@ -87,9 +71,9 @@ def move(n):
 	global i
 	i+=n
 	if i<=len(chapitres)-3 and i>=0:
-		Chapter(mainFrame,1,1,chapitres[i],progressions[i])
-		Chapter(mainFrame,3,1,chapitres[i+1],progressions[i+1])
-		Chapter(mainFrame,5,1,chapitres[i+2],progressions[i+2])
+		Chapter(mainFrame,1,1,chapitres[i],progressions[i],chapitresFiles[i])
+		Chapter(mainFrame,3,1,chapitres[i+1],progressions[i+1],chapitresFiles[i+1])
+		Chapter(mainFrame,5,1,chapitres[i+2],progressions[i+2],chapitresFiles[i+2])
 	else:
 		i-=n
 
@@ -106,7 +90,7 @@ fleche_d.grid(row=1,column=6)
 
 # CHAPITRE
 class Chapter(tk.Frame):
-	def __init__(self, parent,columnNum,rowNum,chapName,prog):
+	def __init__(self, parent,columnNum,rowNum,chapName,prog,fileName):
 		super().__init__(master = parent)
 		rectangle_chapitre = tk.Canvas(mainFrame, width=rectangle_chapitreImg.width(), height=rectangle_chapitreImg.height())
 		rectangle_chapitre.create_image(0, 0, anchor=tk.NW, image=rectangle_chapitreImg)
@@ -129,14 +113,14 @@ class Chapter(tk.Frame):
 		
 		chapitreButton=tk.Button(chapitreFrame)
 		if prog==0: 
-			chapitreButton.configure(bg= "white",image=commencerImg,command=lambda:change_page('test'))
+			chapitreButton.configure(bg= "white",image=commencerImg,command=lambda:change_page(fileName))
 		else:
-			chapitreButton.configure(bg= "white",image=continuerImg,command=lambda:change_page('test'))
+			chapitreButton.configure(bg= "white",image=continuerImg,command=lambda:change_page(fileName))
 		chapitreButton.pack(pady = (30, 0))	
 			
-Chapter(mainFrame,1,1,chapitres[0],progressions[0])
-Chapter(mainFrame,3,1,chapitres[1],progressions[1])
-Chapter(mainFrame,5,1,chapitres[2],progressions[2])
+Chapter(mainFrame,1,1,chapitres[0],progressions[0],chapitresFiles[0])
+Chapter(mainFrame,3,1,chapitres[1],progressions[1],chapitresFiles[1])
+Chapter(mainFrame,5,1,chapitres[2],progressions[2],chapitresFiles[2])
 
 
-App.mainloop()
+root.mainloop()

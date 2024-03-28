@@ -1,16 +1,29 @@
 import tkinter as tk
 from ttkbootstrap.scrolled import ScrolledFrame
 
-# from chapter2.unit1 import unit1_contentD
-import chapter2.unit1 as unit1
+from chapter2 import unit1 
+from chapter2 import quiz1 
+from chapter2 import unit2 
+from chapter2 import quiz2 
+from chapter2 import unit3 
+from chapter2 import quiz3 
+from chapter2 import unit4 
+from chapter2 import quiz4 
+from chapter2 import unit5 
+from chapter2 import quiz5 
+from chapter2 import megaquiz
+
+
+files={'unit1':unit1,'quiz1':quiz1,'unit2':unit2,'quiz2':quiz2,'unit3':unit3,'quiz3':quiz3,
+       'unit4':unit4,'quiz4':quiz4,'unit5':unit5,'quiz5':quiz5,'megaquiz':megaquiz}
 class SubchapterSelection_2(tk.Frame):
     """Before making a new instance of this class, make sure to unpack previous frame"""
     def __init__(self, master: tk.Tk):
         super().__init__()
         
         # main frame initialization
-        self.root2 = master
-        self.mainFrame = ScrolledFrame(master=master)
+        self.root = master
+        self.mainFrame = ScrolledFrame(master=self.root)
         self.mainFrame.autohide_scrollbar()
         self.mainFrame.pack(expand=True, fill='both')
 
@@ -25,7 +38,7 @@ class SubchapterSelection_2(tk.Frame):
         mImg = self.canvas.create_image(640, 1715, image=self.megaQuiz, anchor="nw")
 
         # add bindings
-        self.canvas.tag_bind(n1Img, "<Button-1>", lambda event: print('BUTTON CLICKED'))
+        self.canvas.tag_bind(n1Img, "<Button-1>", lambda event: self.loadSummary('unit1'))
         self.canvas.tag_bind(q1Img, "<Button-1>", lambda event: print('BUTTON CLICKED'))
         self.canvas.tag_bind(n2Img, "<Button-1>", lambda event: print('BUTTON CLICKED'))
         self.canvas.tag_bind(q2Img, "<Button-1>", lambda event: print('BUTTON CLICKED'))
@@ -41,6 +54,13 @@ class SubchapterSelection_2(tk.Frame):
         self.n5=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Niveau5.png')
         self.quiz=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/quiz.png')
         self.megaQuiz=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Mega quiz.png')
-        
-#https://stackoverflow.com/questions/23876447/tkinter-overlay-foreground-image-on-top-of-a-background-image-with-transparency'''
-#https://stackoverflow.com/questions/62929953/how-to-import-the-another-tkinter-python-class-code-to-open-the-new-tkinter-wind
+
+    def loadUnit(self, unitName):
+        print()
+
+    def loadSummary(self, unitName):
+        unitFile=files[unitName]
+        summaryFrame = tk.Frame(master = self.root, width=300, height=75)
+        summaryFrame.pack()
+        importedUnit_title = unitFile.unit_title
+        tk.Label(summaryFrame,text=importedUnit_title).pack()

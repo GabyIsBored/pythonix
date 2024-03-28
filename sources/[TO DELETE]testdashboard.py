@@ -1,4 +1,4 @@
-import tkinter as tkinter
+import tkinter as tk
 from chapters import chapter2
 
 root=tk.Tk()
