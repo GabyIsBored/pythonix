@@ -1,13 +1,4 @@
-from markdown import setTextWidget
-import tkinter as tk
-root=tk.Tk()
-root.title('Dashboard')
-root.geometry('1280x720')
-root.resizable(False,False)
-mainFrame=tk.Frame(root)
-mainFrame.pack(expand=True, fill='both',padx=10,pady=10)
-h1Font = ('Inter', 34, "bold")
-mainFrame.configure(bg='#D9D9D9')
+
 
 unit_content1='''# Operateurs 3: Operateurs d’assignation
 
@@ -70,7 +61,7 @@ Le reste des operateurs d’assignations sont:
 unit_content = [(unit_content1, 'text'), (code_block1, 'code'),
                  (unit_content2, 'text'), (code_block2, 'code'),
                  (unit_content3, 'text'), (code_block3, 'code'),
-                 (unit_content4, 'text'), (code_block4, 'code')]
+                 (unit_content4, 'text')]
 unit_title = "Operateurs 3 (operateurs d'assignations)"
 import chapters.chapter3.quiz3 as nextFrame
 from markdown import setTextWidget

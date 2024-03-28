@@ -32,9 +32,9 @@ pFont = ('Inter', 9, "bold")
 i = 0
 chapitres=['Introduction\n','Variables \net affectations','Arithmetique \net comparaisons','Conditions\n','Boucles\n','Fonctions\n','Listes et Dictionnaires']
 chapitresFiles=['chapter1','chapter2','chapter3','chapter4','chapter5','chapter6','chapter7']
-chapitresFilesTransform={'chapter1':chapter1selector,'chapter2':chapter2selector,'chapter3':chapter3selector
-						 #,'chapter4':chapter4selector,'chapter5':chapter5selector,'chapter6':chapter6selector,'chapter7':chapter7selector
-						 }
+chapitresFilesTransform={'chapter1':chapter1selector,
+						 'chapter2':chapter2selector,'chapter3':chapter3selector#,'chapter4':chapter4selector,'chapter5':chapter5selector,'chapter6':chapter6selector,'chapter7':chapter7selector
+                         }
 progressions=[0,0,0,0,0,0,0,0,0,0]
 
 
@@ -64,6 +64,7 @@ def change_page(pageName):
 # CONTENT
 
 dashboard = tk.Canvas(mainFrame, width=dashboardImg.width(), height=dashboardImg.height())
+
 dashboard.create_image(0, 0, anchor=tk.NW, image=dashboardImg)
 dashboard.grid(row=0,column=0,columnspan=7,sticky='ns',pady=(50,0))  
 

@@ -31,7 +31,7 @@ class ChapterFrame(tk.Frame):
         # set images
         self.loadAssets()
         self.canvas = tk.Canvas(master=self.mainFrame, width=self.background.width(), height=self.background.height(), highlightthickness=0, bd=0)
-        self.canvas.create_image(0, 0, image=self.background, anchor="nw")
+        backgroundImg = self.canvas.create_image(0, 0, image=self.background, anchor="nw")
         n1Img = self.canvas.create_image(374, 227, image=self.n1, anchor="nw")
         q1Img = self.canvas.create_image(242, 536, image=self.quiz, anchor="nw")
         n2Img = self.canvas.create_image(428, 908, image=self.n2, anchor="nw")
@@ -41,7 +41,7 @@ class ChapterFrame(tk.Frame):
         q3Img = self.canvas.create_image(69, 1793, image=self.quiz, anchor="nw")
         n4Img = self.canvas.create_image(209, 2169, image=self.n4, anchor="nw")
         q4Img = self.canvas.create_image(487, 2064, image=self.quiz, anchor="nw")
-        mImg = self.canvas.create_image(639, 2411, image=self.megaQuiz, anchor="nw")
+        mImg = self.canvas.create_image(640, 1715, image=self.megaQuiz, anchor="nw")
 
         # add bindings
         self.canvas.tag_bind(n1Img, "<Button-1>", self.loadSummary('unit1'))
@@ -72,7 +72,6 @@ class ChapterFrame(tk.Frame):
     def loadSummary(self, unitName):
         self.unitFile=files[unitName]
         self.importedUnit_title = self.unitFile.unit_title
-        
-        self.canvas.create_image()
+
 
 #https://stackoverflow.com/questions/23876447/tkinter-overlay-foreground-image-on-top-of-a-background-image-with-transparency

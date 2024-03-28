@@ -23,7 +23,7 @@ class ChapterFrame(tk.Frame):
         # set images
         self.loadAssets()
         self.canvas = tk.Canvas(master=self.mainFrame, width=self.background.width(), height=self.background.height(), highlightthickness=0, bd=0)
-        self.canvas.create_image(0, 0, image=self.background, anchor="nw")
+        backgroundImg = self.canvas.create_image(0, 0, image=self.background, anchor="nw")
         n1Img = self.canvas.create_image(981, 536, image=self.n1, anchor="nw")
         n2Img = self.canvas.create_image(390, 974, image=self.n2, anchor="nw")
         n3Img = self.canvas.create_image(778, 1475, image=self.n3, anchor="nw")
@@ -49,5 +49,3 @@ class ChapterFrame(tk.Frame):
     def loadSummary(self, unitName):
         self.unitFile=files[unitName]
         self.importedUnit_title = self.unitFile.unit_title
-        
-        self.canvas.create_image()

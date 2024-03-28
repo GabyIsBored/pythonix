@@ -54,5 +54,3 @@ class Content(tk.Frame):
                 self.message.configure(fg='#ff0000')
         def nextPage():
             nextFrame.Content(master)
-
-root.mainloop()
