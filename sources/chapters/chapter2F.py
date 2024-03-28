@@ -39,10 +39,10 @@ class ChapterFrame(tk.Frame):
 
         # add bindings
         self.canvas.tag_bind(n1Img, "<Button-1>", lambda event: self.loadSummary('unit1'))
-        self.canvas.tag_bind(q1Img, "<Button-1>", lambda event: print('BUTTON CLICKED'))
-        self.canvas.tag_bind(n2Img, "<Button-1>", lambda event: print('BUTTON CLICKED'))
-        self.canvas.tag_bind(q2Img, "<Button-1>", lambda event: print('BUTTON CLICKED'))
-        self.canvas.tag_bind(mImg, "<Button-1>", lambda event: print('BUTTON CLICKED'))
+        self.canvas.tag_bind(q1Img, "<Button-1>", lambda event: self.loadSummary('unit1'))
+        self.canvas.tag_bind(n2Img, "<Button-1>", lambda event: self.loadSummary('unit1'))
+        self.canvas.tag_bind(q2Img, "<Button-1>", lambda event: self.loadSummary('unit1'))
+        self.canvas.tag_bind(mImg, "<Button-1>", lambda event: self.loadSummary('megaquiz'))
         self.canvas.pack()
 
     def loadAssets(self):
