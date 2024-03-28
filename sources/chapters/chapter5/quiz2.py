@@ -17,10 +17,7 @@ def nextPage():
 unit_content='''**Ajouter 'souris' entre 'chien' et 'chat', enlever le 4eme element, puis afficher les 3 premiers **
 **elements**
 
-zoo=['chien','chat','perroquet','lapin']
-zoo.(,'souris)
-zoo.('souris')
-print( zoo , zoo , zoo )
+
 '''
 
 title=Label(mainFrame, text='QUIZ',font=h1Font)

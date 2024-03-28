@@ -9,6 +9,7 @@ class SubchapterSelection_2(tk.Frame):
         super().__init__()
         
         # main frame initialization
+        self.root2 = master
         self.mainFrame = ScrolledFrame(master=master)
         self.mainFrame.autohide_scrollbar()
         self.mainFrame.pack(expand=True, fill='both')
@@ -42,3 +43,4 @@ class SubchapterSelection_2(tk.Frame):
         self.megaQuiz=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Mega quiz.png')
         
 #https://stackoverflow.com/questions/23876447/tkinter-overlay-foreground-image-on-top-of-a-background-image-with-transparency'''
+#https://stackoverflow.com/questions/62929953/how-to-import-the-another-tkinter-python-class-code-to-open-the-new-tkinter-wind
