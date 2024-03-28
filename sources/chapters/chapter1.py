@@ -1,79 +1,86 @@
 import tkinter as tk
-import customtkinter as ctk
 from ttkbootstrap.scrolled import ScrolledFrame
 from PIL import Image, ImageTk
 
-# from chapter1.unit1 import mainFrame as frame_unit1
-# from chapter1.unit2 import mainFrame as frame_unit2 -> not working
-# from chapter1.unit3 import mainFrame as frame_unit3 -> not working
+root=tk.Tk()
+root.title('el1')
+root.geometry('1280x720')
+root.resizable(False,False)
 
-
-App=tk.Tk()
-App.title('el1')
-App.geometry('1280x720')
-App.resizable(False,False)
-
-mainFrame=ScrolledFrame(App)
+mainFrame=ScrolledFrame(root)
 mainFrame.autohide_scrollbar()
 mainFrame.pack(expand=True, fill='both')
 
-backgroundImage=Image.open('sources/assets/ChapterSelectionBackgrounds/Variables et affectations.png')
-n1=Image.open('sources/assets/ChapterSelectionIcons/Niveau1.png')
-n2=Image.open('sources/assets/ChapterSelectionIcons/Niveau2.png')
-n3=Image.open('sources/assets/ChapterSelectionIcons/Niveau3.png')
-n4=Image.open('sources/assets/ChapterSelectionIcons/Niveau4.png')
-n5=Image.open('sources/assets/ChapterSelectionIcons/Niveau5.png')
-quiz=Image.open('sources/assets/ChapterSelectionIcons/quiz.png')
-megaQuiz=Image.open('sources/assets/ChapterSelectionIcons/Mega quiz.png')
-
-
-backgroundImage.paste(n1, (20, 40), n1)
-# backgroundImage.paste(n2, (40, 80), n2)
-
-tkimage = ImageTk.PhotoImage(backgroundImage)
-background = tk.Label(mainFrame,image=tkimage)
-background.pack()
-
-# BUTTONS
-class snake_button(ctk.CTkButton):
-    def __init__(self, master: tk.Tk, button_text = '-1', button_color = '#d9d9d9'):
-        self.button = ctk.CTkButton(
-            master = master, 
-            text = button_text, 
-            width = 150, 
-            height = 160, 
-            corner_radius = 100, 
-            border_width = 2.5, 
-            fg_color = button_color, 
-            text_color = 'black', 
-            border_color = 'black', 
-            font = ('Calibri', 80, 'bold'), 
-            hover = False,
-            command=self.enter)
-        
-    def place(self, x: int, y: int):
-        self.button.place(x=x, y=y)
-
-    def enter(self):
-        print('entering!')
-
-
-button_unit1 = snake_button(mainFrame)
-button_unit1.place(281, 536)
-
-button_unit1 = snake_button(mainFrame)
-button_unit1.place(390, 974)
-
-button_unit1 = snake_button(mainFrame)
-button_unit1.place(478, 1475)
-
-
-backgroundImage.paste(n1, (20, 40), n1)
-backgroundImage.paste(n1, (20, 40), n1)
-backgroundImage.paste(n1, (20, 40), n1)
+background=tk.PhotoImage(file='sources/assets/ChapterSelectionBackgrounds/Introduction.png')
+n1=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Niveau1.png')
+n2=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Niveau2.png')
+n3=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Niveau3.png')
+n4=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Niveau4.png')
+n5=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Niveau5.png')
 
 
 
-App.mainloop()
+def enter(event):
+    print('yo')
+
+canvas = tk.Canvas(mainFrame,width=background.width(),height=background.height(), highlightthickness=0, bd=0)
+backgroundImg = canvas.create_image(0, 0, image=background, anchor="nw")
+n1Img = canvas.create_image(981, 536, image=n1, anchor="nw")
+n2Img = canvas.create_image(390, 974, image=n2, anchor="nw")
+n3Img = canvas.create_image(778, 1475, image=n3, anchor="nw")
+canvas.tag_bind(n1Img, "<Button-1>", enter)
+canvas.tag_bind(n2Img, "<Button-1>", enter)
+canvas.tag_bind(n3Img, "<Button-1>", enter)
+canvas.pack()
+
+
+root.mainloop()
 
 #https://stackoverflow.com/questions/23876447/tkinter-overlay-foreground-image-on-top-of-a-background-image-with-transparency
+
+'''import tkinter as tk
+from ttkbootstrap.scrolled import ScrolledFrame
+from PIL import Image, ImageTk
+
+root=tk.Tk()
+root.title('el1')
+root.geometry('1280x720')
+root.resizable(False,False)
+
+mainFrame=ScrolledFrame(root)
+mainFrame.autohide_scrollbar()
+mainFrame.pack(expand=True, fill='both')
+
+background=tk.PhotoImage(file='sources/assets/ChapterSelectionBackgrounds/Variables et Affectations.png')
+n1=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Niveau1.png')
+n2=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Niveau2.png')
+n3=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Niveau3.png')
+n4=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Niveau4.png')
+n5=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Niveau5.png')
+quiz=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/quiz.png')
+megaQuiz=tk.PhotoImage(file='sources/assets/ChapterSelectionIcons/Mega quiz.png')
+
+
+
+def enter(event):
+    print('yo')
+
+canvas = tk.Canvas(mainFrame,width=background.width(),height=background.height(), highlightthickness=0, bd=0)
+backgroundImg = canvas.create_image(0, 0, image=background, anchor="nw")
+n1Img = canvas.create_image(233, 378, image=n1, anchor="nw")
+q1Img = canvas.create_image(141, 720, image=quiz, anchor="nw")
+n2Img = canvas.create_image(415, 871, image=n2, anchor="nw")
+q2Img = canvas.create_image(497, 1099, image=quiz, anchor="nw")
+mImg = canvas.create_image(640, 1715, image=megaQuiz, anchor="nw")
+canvas.tag_bind(n1Img, "<Button-1>", enter)
+canvas.tag_bind(q1Img, "<Button-1>", enter)
+canvas.tag_bind(n2Img, "<Button-1>", enter)
+canvas.tag_bind(q2Img, "<Button-1>", enter)
+
+canvas.tag_bind(mImg, "<Button-1>", enter)
+canvas.pack()
+
+
+root.mainloop()
+
+#https://stackoverflow.com/questions/23876447/tkinter-overlay-foreground-image-on-top-of-a-background-image-with-transparency'''
