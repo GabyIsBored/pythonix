@@ -28,6 +28,7 @@ unit_content = [(unit_content1, 'text'), (code_block1, 'code'),
 unit_title = 'Premiers Pas'
 
 import chapters.chapter1.unit2 as nextFrame
+import chapters.chapter1selector as previousFrame
 import customtkinter as ctk
 from markdown import setTextWidget
 import tkinter as tk
@@ -80,10 +81,19 @@ class Content(tk.Frame):
         self.prochainButton.configure(bg="#D9D9D9", activebackground="#D9D9D9")
         self.prochainButton.pack(pady=20)
 
+        self.retour=tk.PhotoImage(file='sources/assets/ElementDivers/retour.png')
+        self.retourButton=tk.Button(self.mainFrame, image=self.retour, bd=0,command=self.back)
+        self.retourButton.configure(bg="#D9D9D9", activebackground="#D9D9D9")
+        self.retourButton.pack(pady=20)
+    def back(self):
+        previousFrame.ChapterFrame(self.root)
+        self.mainFrame.pack_forget()
+        
     def nextPage(self):
         nextFrame.Content(self.root)
         self.mainFrame.pack_forget()
-        
+
+
     def getHeight(self, targetText: str):
         coef = 1.37
         newlines = len(targetText.splitlines())

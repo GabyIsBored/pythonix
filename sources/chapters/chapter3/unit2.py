@@ -58,6 +58,7 @@ unit_content = [(unit_content1, 'text'), (code_block1, 'code'),
                  (unit_content4, 'text'), (code_block4, 'code')]
 unit_title = 'Operateur 2 (variables)'
 import chapters.chapter3.quiz2 as nextFrame
+import chapters.chapter3selector as previousFrame
 import customtkinter as ctk
 from markdown import setTextWidget
 import tkinter as tk
@@ -127,7 +128,13 @@ class Content(tk.Frame):
         self.prochainButton=tk.Button(self.mainFrame, image=self.continuer, bd=0,command=self.nextPage)
         self.prochainButton.configure(bg="#D9D9D9", activebackground="#D9D9D9")
         self.prochainButton.pack(pady=20)
-
+        self.retour=tk.PhotoImage(file='sources/assets/ElementDivers/retour.png')
+        self.retourButton=tk.Button(self.mainFrame, image=self.retour, bd=0,command=self.back)
+        self.retourButton.configure(bg="#D9D9D9", activebackground="#D9D9D9")
+        self.retourButton.pack(pady=20)
+    def back(self):
+        previousFrame.ChapterFrame(self.root)
+        self.mainFrame.pack_forget()
     def nextPage(self):
         nextFrame.Content(self.root)
         self.mainFrame.pack_forget()

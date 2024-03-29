@@ -51,6 +51,7 @@ unit_content = [(unit_content1, 'text'), (code_block1, 'code'),
                  (unit_content4, 'text')]
 unit_title = 'Conditions if'
 import chapters.chapter1.unit2 as nextFrame
+import chapters.chapter4selector as previousFrame
 import customtkinter as ctk
 from markdown import setTextWidget
 import tkinter as tk
@@ -117,11 +118,24 @@ class Content(tk.Frame):
         self.prochainButton=tk.Button(self.mainFrame, image=self.continuer, bd=0,command=self.nextPage)
         self.prochainButton.configure(bg="#D9D9D9", activebackground="#D9D9D9")
         self.prochainButton.pack(pady=20)
-
-    def nextPage(self):
-        nextFrame.Content(self.root)
+        self.retour=tk.PhotoImage(file='sources/assets/ElementDivers/retour.png')
+        self.retourButton=tk.Button(self.mainFrame, image=self.retour, bd=0,command=self.back)
+        self.retourButton.configure(bg="#D9D9D9", activebackground="#D9D9D9")
+        self.retourButton.pack(pady=20)
+    def back(self):
+        previousFrame.ChapterFrame(self.root)
         self.mainFrame.pack_forget()
-    def getHeight(self, targetText: str):
-        coef = 1.37
-        newlines = len(targetText.splitlines())
-        return round(coef * newlines)
+
+    def check(self):
+            if "15" in self.entry1.get():
+                self.completionStatus.set("Correct!")
+                self.message.configure(fg='#00FF00')
+                self.retourButton.pack(padx=15)
+                self.prochainButton.pack(padx=15)
+                
+            else:
+                self.completionStatus.set("Faux")
+                self.message.configure(fg='#ff0000')
+    def nextPage(self):
+            self.mainFrame.pack_forget()
+            nextFrame.Content(self.root)

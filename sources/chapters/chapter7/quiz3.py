@@ -2,6 +2,8 @@
 from markdown import setTextWidget
 import tkinter as tk
 import chapters.chapter3.unit2 as nextFrame
+import chapters.chapter7selector as previousFrame
+
 h1Font = ('Inter', 54, "bold")
 h2Font = ('Inter', 20, "bold")
 
@@ -35,6 +37,7 @@ resultat = lambda:
         
         self.valider=tk.PhotoImage(file='sources/assets/ElementDivers/valider.png').subsample(2,2)
         self.continuer=tk.PhotoImage(file='sources/assets/ElementDivers/continuer.png')
+        self.retour=tk.PhotoImage(file='sources/assets/ElementDivers/retour.png')
         self.bottomFrame=tk.Frame(self.mainFrame)
         self.bottomFrame.configure(bg="#D9D9D9")
         self.bottomFrame.pack(pady=15)
@@ -47,17 +50,24 @@ resultat = lambda:
         self.validerButton.pack(side=tk.LEFT,padx=15)
         self.prochainButton=tk.Button(self.bottomFrame,image=self.continuer,command=self.nextPage,bd=0)
         self.prochainButton.configure(bg="#D9D9D9")
-        
-    def check(self):
-        if "nombre" in self.entry1.get() and "nombre)" in self.entry2.get() :
-            self.completionStatus.set("Correct!")
-            self.message.configure(fg='#00FF00')
-            self.prochainButton.pack(padx=15)
-        else:
-            self.completionStatus.set("Faux")
-            self.message.configure(fg='#FF0000')
-    def nextPage(self):
+        self.retourButton=tk.Button(self.bottomFrame,image=self.retour,command=self.back)
+        self.retourButton.configure(bg="#D9D9D9")
+    def back(self):
+        previousFrame.ChapterFrame(self.root)
         self.mainFrame.pack_forget()
-        nextFrame.Content(self.root)
+    def check(self):
+            if "15" in self.entry1.get():
+                self.completionStatus.set("Correct!")
+                self.message.configure(fg='#00FF00')
+                self.retourButton.pack(padx=15)
+                self.prochainButton.pack(padx=15)
+                
+            else:
+                self.completionStatus.set("Faux")
+                self.message.configure(fg='#ff0000')
+    def nextPage(self):
+            self.mainFrame.pack_forget()
+            nextFrame.Content(self.root)
+    
         
 
