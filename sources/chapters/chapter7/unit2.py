@@ -102,7 +102,7 @@ class Content(tk.Frame):
         self.mainFrame.pack(expand=True, fill='both')
 
         # set title
-        titleText = 'Affectation d’une variable'
+        titleText = 'Fonctions'
         titleWidget = ctk.CTkButton(
             master=self.mainFrame, 
             text=titleText, 

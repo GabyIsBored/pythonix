@@ -1,13 +1,3 @@
-from markdown import setTextWidget
-import tkinter as tk
-root=tk.Tk()
-root.title('Dashboard')
-root.geometry('1280x720')
-root.resizable(False,False)
-mainFrame=tk.Frame(root)
-mainFrame.pack(expand=True, fill='both',padx=10,pady=10)
-h1Font = ('Inter', 34, "bold")
-mainFrame.configure(bg='#D9D9D9')
 
 unit_content1='''
 # Dictionnaires
@@ -98,7 +88,7 @@ class Content(tk.Frame):
         self.mainFrame.pack(expand=True, fill='both')
 
         # set title
-        titleText = 'Affectation d’une variable'
+        titleText = 'Listes et Dicitionnaires'
         titleWidget = ctk.CTkButton(
             master=self.mainFrame, 
             text=titleText, 

@@ -26,7 +26,7 @@ class Content(tk.Frame):
         self.mainFrame.pack(expand=True, fill='both')
 
         # set title
-        titleText = 'Affectation d’une variable'
+        titleText = 'Introduction'
         titleWidget = ctk.CTkButton(
             master=self.mainFrame, 
             text=titleText, 
@@ -60,7 +60,7 @@ class Content(tk.Frame):
         self.prochainButton=tk.Button(self.mainFrame, image=self.continuer, bd=0,command=self.nextPage)
         self.prochainButton.configure(bg="#D9D9D9", activebackground="#D9D9D9")
         self.prochainButton.pack(pady=20)
-
+        
     def nextPage(self):
         nextFrame.Content(self.root)
         self.mainFrame.pack_forget()

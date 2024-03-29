@@ -16,13 +16,16 @@ class Content(tk.Frame):
         self.mainFrame.configure(bg='#D9D9D9')
         self.mainFrame.pack(expand=True, fill='both')
 
-        self.unit_content='''**Ajouter 'souris' entre 'chien' et 'chat', enlever le 4eme element, puis afficher les 3 premiers **
-**elements**
+        self.unit_content='''**Le proprietaire de cette voiture a achete une nouvelles voiture. Mettre la jour le modele a etre une 'F150' dans 'model'**
+        **Ajouter la date d'acquisition 2024, enlever le 4eme element, puis afficher si le propeietaire est aller en prison ou pas**
 
-zoo=['chien','chat','perroquet','lapin']
-zoo.(,'souris)
-zoo.('souris')
-print( zoo , zoo , zoo )
+car =	{
+  "brand": "Ford",
+  "": "F150",
+  "year" : 
+  'stoppedByPolice':True
+}
+print()
 '''
         self.title=tk.Label(self.mainFrame, text='QUIZ',font=h1Font)
         self.title.configure(bg='#D9D9D9')
@@ -32,16 +35,11 @@ print( zoo , zoo , zoo )
         self.widget.pack()
 
         self.entry1 = tk.Entry(self.mainFrame)
-        self.widget.window_create(4.4, window=self.entry1)
+        self.widget.window_create(7.5, window=self.entry1)
         self.entry2 = tk.Entry(self.mainFrame)
-        self.widget.window_create(4.6, window=self.entry2)
+        self.widget.window_create(8.13, window=self.entry2)
         self.entry3 = tk.Entry(self.mainFrame)
-        self.widget.window_create(5.4, window=self.entry3)
-        self.entry4 = tk.Entry(self.mainFrame)
-        self.widget.window_create(6.11, window=self.entry4)
-        self.entry5 = tk.Entry(self.mainFrame)
-        self.widget.window_create(6.17, window=self.entry5)
-        self.entry6 = tk.Entry(self.mainFrame)
+        self.widget.window_create(10.6, window=self.entry3)
         
         self.valider=tk.PhotoImage(file='sources/assets/ElementDivers/valider.png').subsample(2,2)
         self.continuer=tk.PhotoImage(file='sources/assets/ElementDivers/continuer.png')
@@ -59,7 +57,7 @@ print( zoo , zoo , zoo )
         self.prochainButton.configure(bg="#D9D9D9")
         
     def check(self):
-        if "insert" in self.entry1.get() and "1" in self.entry2.get() and "remove" in self.entry3.get() and "1" in self.entry4.get() and "2" in self.entry5.get() and "3" in self.entry6.get() :
+        if "model" in self.entry1.get() and "2024" in self.entry2.get() and "car['stoppedByPolice']" in self.entry3.get() :
             self.completionStatus.set("Correct!")
             self.message.configure(fg='#00FF00')
             self.prochainButton.pack(padx=15)

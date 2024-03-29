@@ -42,7 +42,7 @@ class Content(tk.Frame):
         self.mainFrame.pack(expand=True, fill='both')
 
         # set title
-        titleText = 'Affectation d’une variable'
+        titleText = 'Introduction'
         titleWidget = ctk.CTkButton(
             master=self.mainFrame, 
             text=titleText, 
@@ -83,6 +83,7 @@ class Content(tk.Frame):
     def nextPage(self):
         nextFrame.Content(self.root)
         self.mainFrame.pack_forget()
+        
     def getHeight(self, targetText: str):
         coef = 1.37
         newlines = len(targetText.splitlines())

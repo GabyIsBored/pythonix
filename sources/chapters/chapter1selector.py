@@ -30,28 +30,10 @@ class ChapterFrame(tk.Frame):
         n1Img = self.canvas.create_image(981, 536, image=self.n1, anchor="nw")
         n2Img = self.canvas.create_image(390, 974, image=self.n2, anchor="nw")
         n3Img = self.canvas.create_image(778, 1475, image=self.n3, anchor="nw")
-        self.canvas.tag_bind(n1Img, "<Button-1>", lambda event: self.loadSummary(event, "unit1"))
-        self.canvas.tag_bind(n2Img, "<Button-1>", lambda event: self.loadSummary(event, "unit2"))
-        self.canvas.tag_bind(n3Img, "<Button-1>", lambda event: self.loadSummary(event, "unit3"))
+        self.canvas.tag_bind(n1Img, "<Button-1>", lambda event: self.loadUnit(event, "unit1"))
+        self.canvas.tag_bind(n2Img, "<Button-1>", lambda event: self.loadUnit(event, "unit2"))
+        self.canvas.tag_bind(n3Img, "<Button-1>", lambda event: self.loadUnit(event, "unit3"))
         self.canvas.pack()
-
-    def loadSummary(self,event,unitName):
-        self.coordonnees=[]
-        if unitName=='unit1':
-            self.coordonnees=[(500-70, 500+60),(500, 560+120),(330, 500)]
-        elif unitName=='unit2':
-            self.coordonnees=[(810-65, 974+60),(800, 1034+120),(630, 974)]
-        elif unitName=='unit3':
-            self.coordonnees=[(290-75, 1475+60),(300, 1525+120),(130, 1475)]
-        
-        self.unitFile=files[unitName]
-        self.importedUnit_title = self.unitFile.unit_title
-        titleText=self.canvas.create_text(self.coordonnees[0][0],self.coordonnees[0][1], text=self.importedUnit_title, anchor="nw",font=h1Font)
-        commencerBtn=self.canvas.create_image(self.coordonnees[1][0],self.coordonnees[1][1], image=self.commencer, anchor="nw")
-        self.canvas.create_image(self.coordonnees[2][0],self.coordonnees[2][1], image=self.fond, anchor="nw")
-        self.canvas.tag_raise(titleText)
-        self.canvas.tag_raise(commencerBtn)
-        self.canvas.tag_bind(commencerBtn, "<Button-1>", lambda event: self.loadUnit(event, self.unitFile))
 
     def loadAssets(self):
         self.background=tk.PhotoImage(file='sources/assets/ChapterSelectionBackgrounds/Introduction.png')
@@ -66,9 +48,9 @@ class ChapterFrame(tk.Frame):
         self.fond=tk.PhotoImage(file='sources/assets/Lecon_exemple/fond_exemple.png')
 
     def loadUnit(self,event, unitName):
-        print('x')
+        self.unitFile=files[unitName]
         self.mainFrame.pack_forget()
-        unitName.Content(self.root)
+        self.unitFile.Content(self.root)
     
     
         

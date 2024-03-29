@@ -49,36 +49,20 @@ class ChapterFrame(tk.Frame):
         mImg = self.canvas.create_image(549, 3102, image=self.megaQuiz, anchor="nw")
 
         # add bindings
-        self.canvas.tag_bind(n1Img, "<Button-1>", lambda event:self.loadSummary(event,'unit1'))
-        self.canvas.tag_bind(q1Img, "<Button-1>", lambda event:self.loadSummary(event,'quiz1'))
-        self.canvas.tag_bind(n2Img, "<Button-1>", lambda event:self.loadSummary(event,'unit2'))
-        self.canvas.tag_bind(q2Img, "<Button-1>", lambda event:self.loadSummary(event,'quiz2'))
-        self.canvas.tag_bind(n3Img, "<Button-1>", lambda event:self.loadSummary(event,'unit3'))
-        self.canvas.tag_bind(q3Img, "<Button-1>", lambda event:self.loadSummary(event,'quiz3'))
-        self.canvas.tag_bind(n4Img, "<Button-1>", lambda event:self.loadSummary(event,'unit4'))
-        self.canvas.tag_bind(q4Img, "<Button-1>", lambda event:self.loadSummary(event,'quiz4'))
-        self.canvas.tag_bind(n5Img, "<Button-1>", lambda event:self.loadSummary(event,'unit5'))
-        self.canvas.tag_bind(q5Img, "<Button-1>", lambda event:self.loadSummary(event,'quiz5'))
-        self.canvas.tag_bind(mImg, "<Button-1>", lambda event:self.loadSummary(event,'megaquiz'))
+        self.canvas.tag_bind(n1Img, "<Button-1>", lambda event:self.loadUnit(event,'unit1'))
+        self.canvas.tag_bind(q1Img, "<Button-1>", lambda event:self.loadUnit(event,'quiz1'))
+        self.canvas.tag_bind(n2Img, "<Button-1>", lambda event:self.loadUnit(event,'unit2'))
+        self.canvas.tag_bind(q2Img, "<Button-1>", lambda event:self.loadUnit(event,'quiz2'))
+        self.canvas.tag_bind(n3Img, "<Button-1>", lambda event:self.loadUnit(event,'unit3'))
+        self.canvas.tag_bind(q3Img, "<Button-1>", lambda event:self.loadUnit(event,'quiz3'))
+        self.canvas.tag_bind(n4Img, "<Button-1>", lambda event:self.loadUnit(event,'unit4'))
+        self.canvas.tag_bind(q4Img, "<Button-1>", lambda event:self.loadUnit(event,'quiz4'))
+        self.canvas.tag_bind(n5Img, "<Button-1>", lambda event:self.loadUnit(event,'unit5'))
+        self.canvas.tag_bind(q5Img, "<Button-1>", lambda event:self.loadUnit(event,'quiz5'))
+        self.canvas.tag_bind(mImg, "<Button-1>", lambda event:self.loadUnit(event,'megaquiz'))
         self.canvas.pack()
 
-    def loadSummary(self,event,unitName):
-        self.coordonnees=[]
-        if unitName=='unit1':
-            self.coordonnees=[(500-70, 500+60),(500, 560+120),(330, 500)]
-        elif unitName=='unit2':
-            self.coordonnees=[(810-65, 974+60),(800, 1034+120),(630, 974)]
-        elif unitName=='unit3':
-            self.coordonnees=[(290-75, 1475+60),(300, 1525+120),(130, 1475)]
-        
-        self.unitFile=files[unitName]
-        self.importedUnit_title = self.unitFile.unit_title
-        titleText=self.canvas.create_text(self.coordonnees[0][0],self.coordonnees[0][1], text=self.importedUnit_title, anchor="nw",font=h1Font)
-        commencerBtn=self.canvas.create_image(self.coordonnees[1][0],self.coordonnees[1][1], image=self.commencer, anchor="nw")
-        self.canvas.create_image(self.coordonnees[2][0],self.coordonnees[2][1], image=self.fond, anchor="nw")
-        self.canvas.tag_raise(titleText)
-        self.canvas.tag_raise(commencerBtn)
-        self.canvas.tag_bind(commencerBtn, "<Button-1>", lambda event: self.loadUnit(event, self.unitFile))
+
 
     def loadAssets(self):
         self.background=tk.PhotoImage(file='sources/assets/ChapterSelectionBackgrounds/Boucles.png')
@@ -93,6 +77,6 @@ class ChapterFrame(tk.Frame):
         self.fond=tk.PhotoImage(file='sources/assets/Lecon_exemple/fond_exemple.png')
 
     def loadUnit(self,event, unitName):
-        print('x')
+        self.unitFile=files[unitName]
         self.mainFrame.pack_forget()
-        unitName.Content(self.root)
+        self.unitFile.Content(self.root)

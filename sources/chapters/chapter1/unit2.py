@@ -23,7 +23,7 @@ unit_content = [(unit_content1, 'text'), (code_block1, 'code'),
                  (unit_content2, 'text')]
 unit_title = 'Intendation'
 
-import chapters.chapter1.unit3 as nextFrame
+import chapters.chapter1.unit2 as nextFrame
 import customtkinter as ctk
 from markdown import setTextWidget
 import tkinter as tk
@@ -38,7 +38,7 @@ class Content(tk.Frame):
         self.mainFrame.pack(expand=True, fill='both')
 
         # set title
-        titleText = 'Affectation d’une variable'
+        titleText = 'Introduction'
         titleWidget = ctk.CTkButton(
             master=self.mainFrame, 
             text=titleText, 

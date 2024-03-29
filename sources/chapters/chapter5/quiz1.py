@@ -5,7 +5,7 @@ import chapters.chapter3.unit2 as nextFrame
 h1Font = ('Inter', 54, "bold")
 h2Font = ('Inter', 20, "bold")
 
-unit_title = 'Quiz 2'
+unit_title = 'Quiz 1'
 class Content(tk.Frame):
     def __init__(self, master: tk.Tk):
         super().__init__()

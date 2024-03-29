@@ -1,14 +1,3 @@
-from markdown import setTextWidget
-import tkinter as tk
-root=tk.Tk()
-root.title('Dashboard')
-root.geometry('1280x720')
-root.resizable(False,False)
-mainFrame=tk.Frame(root)
-mainFrame.pack(expand=True, fill='both',padx=10,pady=10)
-h1Font = ('Inter', 34, "bold")
-mainFrame.configure(bg='#D9D9D9')
-
 
 unit_content1='''
 # Boucles: range()
@@ -189,7 +178,7 @@ unit_content = [(unit_content1, 'text'), (code_block1, 'code'),
                  (unit_content2, 'text'), (code_block2, 'code'),
                  (unit_content3, 'text'), (code_block3, 'code'),
                  (unit_content4, 'text'), (code_block4, 'code'),
-                 (unit_content5, 'text'), (code_block5, 'code')
+                 (unit_content5, 'text'), (code_block5, 'code'),
                 (unit_content6, 'text'), (code_block6, 'code'),
                  (unit_content7, 'text'), (code_block7, 'code'),
                  (unit_content8, 'text'), (code_block8, 'code'),
@@ -215,7 +204,7 @@ class Content(tk.Frame):
         self.mainFrame.pack(expand=True, fill='both')
 
         # set title
-        titleText = 'Affectation d’une variable'
+        titleText = 'Boucles'
         titleWidget = ctk.CTkButton(
             master=self.mainFrame, 
             text=titleText, 
