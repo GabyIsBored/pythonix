@@ -31,6 +31,7 @@ class ChapterFrame(tk.Frame):
         backgroundImg = self.canvas.create_image(0, 0, image=self.background, anchor="nw")
         
         n1Img = self.canvas.create_image(233, 378, image=self.n1, anchor="nw")
+        print(canvas.coords(n1Img))
         q1Img = self.canvas.create_image(141, 720, image=self.quiz, anchor="nw")
         n2Img = self.canvas.create_image(415, 871, image=self.n2, anchor="nw")
         q2Img = self.canvas.create_image(497, 1099, image=self.quiz, anchor="nw")

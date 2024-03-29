@@ -1,6 +1,6 @@
 from markdown import setTextWidget
 import tkinter as tk
-import chapters.chapter2.megaquiz as nextFrame
+import chapters.chapter3.unit2 as nextFrame
 h1Font = ('Inter', 54, "bold")
 h2Font = ('Inter', 20, "bold")
 
@@ -27,9 +27,9 @@ print(64  9  45)'''
         self.widget.pack()
 
         self.entry1 = tk.Entry(self.mainFrame)
-        self.widget.window_create(3.8, window=self.entry1)
+        self.widget.window_create(3.9, window=self.entry1)
         self.entry2 = tk.Entry(self.mainFrame)
-        self.widget.window_create(3.11, window=self.entry2)
+        self.widget.window_create(3.13, window=self.entry2)
 
         self.valider=tk.PhotoImage(file='sources/assets/ElementDivers/valider.png').subsample(2,2)
         self.continuer=tk.PhotoImage(file='sources/assets/ElementDivers/continuer.png')

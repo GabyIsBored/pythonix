@@ -1,1 +1,1 @@
-unit_title = 'Quiz 1'
+unit_title = 'Mega quiz'
