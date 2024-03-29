@@ -31,7 +31,6 @@ class ChapterFrame(tk.Frame):
         backgroundImg = self.canvas.create_image(0, 0, image=self.background, anchor="nw")
         
         n1Img = self.canvas.create_image(233, 378, image=self.n1, anchor="nw")
-        print(canvas.coords(n1Img))
         q1Img = self.canvas.create_image(141, 720, image=self.quiz, anchor="nw")
         n2Img = self.canvas.create_image(415, 871, image=self.n2, anchor="nw")
         q2Img = self.canvas.create_image(497, 1099, image=self.quiz, anchor="nw")
@@ -48,7 +47,7 @@ class ChapterFrame(tk.Frame):
     def loadSummary(self,event,unitName):
         self.coordonnees=[]
         if unitName=='unit1':
-            self.coordonnees=[(500-70, 500+60),(500, 560+120),(330, 500)]
+            self.coordonnees=[(840-70, 250+60),(810, 310+120),(650, 250)]
         elif unitName=='unit2':
             self.coordonnees=[(810-65, 974+60),(800, 1034+120),(630, 974)]
         elif unitName=='unit3':
