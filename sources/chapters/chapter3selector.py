@@ -3,15 +3,15 @@
 
 import tkinter as tk
 from ttkbootstrap.scrolled import ScrolledFrame
-from chapters.chapter1 import unit1 
-from chapters.chapter1 import quiz1 
-from chapters.chapter1 import unit2 
-from chapters.chapter1 import quiz2
-from chapters.chapter1 import unit3
-from chapters.chapter1 import quiz3
-from chapters.chapter1 import unit4
-from chapters.chapter1 import quiz4
-from chapters.chapter1 import megaquiz
+from chapters.chapter3 import unit1 
+from chapters.chapter3 import quiz1 
+from chapters.chapter3 import unit2 
+from chapters.chapter3 import quiz2
+from chapters.chapter3 import unit3
+from chapters.chapter3 import quiz3
+from chapters.chapter3 import unit4
+from chapters.chapter3 import quiz4
+from chapters.chapter3 import megaquiz
 files={'unit1':unit1,'quiz1':quiz1,'unit2':unit2,'quiz2':quiz2,'unit3':unit3,'quiz3':quiz3,'unit4':unit4,'quiz4':quiz4,'megaquiz':megaquiz}
 
 font = ('Yu Gothic Ui Light', 12)
