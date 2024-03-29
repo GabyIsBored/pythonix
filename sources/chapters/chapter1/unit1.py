@@ -60,8 +60,8 @@ class Content(tk.Frame):
 
         # ------- CONTENT HERE -------
         textBlock1 = tk.Text(master=self.mainFrame, relief='flat', height=self.getHeight(unit_content1), width=100)
-        codeBlock1 = tk.Text(master=self.mainFrame, relief='flat', height=6, width=50)
-        textBlock2 = tk.Text(master=self.mainFrame, relief='flat', height=17, width=100)
+        codeBlock1 = tk.Text(master=self.mainFrame, relief='flat', height=self.getHeight(code_block1), width=50)
+        textBlock2 = tk.Text(master=self.mainFrame, relief='flat', height=self.getHeight(unit_content2), width=100)
         
 
         setTextWidget(textBlock1, unit_content1, 'p')

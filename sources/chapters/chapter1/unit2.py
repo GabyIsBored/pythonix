@@ -22,6 +22,7 @@ Pour montrer que la commande **`**print(End of program)` s’active indépendamm
 unit_content = [(unit_content1, 'text'), (code_block1, 'code'),
                  (unit_content2, 'text')]
 unit_title = 'Intendation'
+
 import chapters.chapter1.unit3 as nextFrame
 import customtkinter as ctk
 from markdown import setTextWidget
@@ -32,8 +33,8 @@ class Content(tk.Frame):
         super().__init__()
 
         # initialize mainframe
-        self.App = master
-        self.mainFrame = ctk.CTkScrollableFrame(master=self.App, fg_color='#D9D9D9', bg_color='#D9D9D9')
+        self.root = master
+        self.mainFrame = ctk.CTkScrollableFrame(master=self.root, fg_color='#D9D9D9', bg_color='#D9D9D9')
         self.mainFrame.pack(expand=True, fill='both')
 
         # set title
@@ -54,9 +55,9 @@ class Content(tk.Frame):
         titleWidget.pack()
 
         # ------- CONTENT HERE -------
-        textBlock1 = tk.Text(master=self.mainFrame, relief='flat', height=17, width=100)
-        codeBlock1 = tk.Text(master=self.mainFrame, relief='flat', height=6, width=50)
-        textBlock2 = tk.Text(master=self.mainFrame, relief='flat', height=17, width=100)
+        textBlock1 = tk.Text(master=self.mainFrame, relief='flat', height=self.getHeight(unit_content1), width=100)
+        codeBlock1 = tk.Text(master=self.mainFrame, relief='flat', height=self.getHeight(code_block1), width=50)
+        textBlock2 = tk.Text(master=self.mainFrame, relief='flat', height=self.getHeight(unit_content2), width=100)
         
 
         setTextWidget(textBlock1, unit_content1, 'p')
@@ -70,10 +71,15 @@ class Content(tk.Frame):
         
 
         # ------- Next page button -------
-        continuer=tk.PhotoImage(file='sources/assets/ElementDivers/continuer.png')
-        self.prochainButton=tk.Button(self.mainFrame, image=continuer, bd=0,command=self.nextPage)
+        self.continuer=tk.PhotoImage(file='sources/assets/ElementDivers/continuer.png')
+        self.prochainButton=tk.Button(self.mainFrame, image=self.continuer, bd=0,command=self.nextPage)
         self.prochainButton.configure(bg="#D9D9D9", activebackground="#D9D9D9")
         self.prochainButton.pack(pady=20)
 
     def nextPage(self):
-        nextFrame.Content(self.mainFrame)
+        nextFrame.Content(self.root)
+        self.mainFrame.pack_forget()
+    def getHeight(self, targetText: str):
+        coef = 1.37
+        newlines = len(targetText.splitlines())
+        return round(coef * newlines)

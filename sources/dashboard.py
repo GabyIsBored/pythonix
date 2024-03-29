@@ -1,5 +1,5 @@
 import tkinter as tk
-from chapters import chapter1selector,chapter2selector,chapter3selector,chapter4selector,chapter5selector,chapter6selector,chapter7selector
+from chapters import chapter1selector,chapter2selector,chapter3selector#,chapter4selector,chapter5selector,chapter6selector,chapter7selector
 
 root = tk.Tk()
 root.title('Dashboard')
@@ -32,8 +32,8 @@ pFont = ('Inter', 9, "bold")
 i = 0
 chapitres=['Introduction\n','Variables \net affectations','Arithmetique \net comparaisons','Conditions\n','Boucles\n','Fonctions\n','Listes et Dictionnaires']
 chapitresFiles=['chapter1','chapter2','chapter3','chapter4','chapter5','chapter6','chapter7']
-chapitresFilesTransform={'chapter1':chapter1selector,
-						 'chapter2':chapter2selector,'chapter3':chapter3selector,'chapter4':chapter4selector,'chapter5':chapter5selector,'chapter6':chapter6selector,'chapter7':chapter7selector
+chapitresFilesTransform={'chapter1':chapter1selector,'chapter2':chapter2selector,'chapter3':chapter3selector,
+						 #'chapter4':chapter4selector,'chapter5':chapter5selector,'chapter6':chapter6selector,'chapter7':chapter7selector
                          }
 progressions=[0,0,0,0,0,0,0,0,0,0]
 
